@@ -20,7 +20,7 @@ conda activate 573-env
 pip install -r requirements.txt
 ```
 
-# Development
+# Virtual environment usage
 1. Activate conda environment:
 ```cmd
 conda activate 573-env
@@ -28,7 +28,7 @@ conda activate 573-env
 
 # ATS development
 
-After testing that a pre-existing ATS code repo works independently, we mirror that repository in the `preprocess` child directory and only make edits as needed to create that mirrored repo's corresponding virtual environment.
+After testing that a pre-existing ATS code repo behaves as expected when tested independently, we mirror that repository in the `preprocess` child directory and only make edits as needed to create that mirrored repo's corresponding virtual environment.
 
 ## (WIP) ATS virtual env 1
 instructions coming soon!
@@ -36,3 +36,13 @@ instructions coming soon!
 instructions coming soon!
 
 In our final finetuning + testing processes, we use `conda` to manage virtual environment switching between subprocesses (data preprocessing, model tuning, inference/evaluation).
+
+# System development
+(WIP)
+## Data processing
+...
+## System Fine-tuning
+...
+## System Deployment
+...
+## System Evaluation
