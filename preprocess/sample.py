@@ -1,20 +1,27 @@
 from datasets import load_dataset
 import argparse
+import re
+
+def clean(df):
+    df["text_clean"] = df.text.str.replace("\n", "").apply(lambda b: re.sub(' +', ' ', b))
+    df["summary_clean"] = df.summary.str.replace("\n", "").apply(lambda b: re.sub(' +', ' ', b))
+    return 
 
 def sample_data(n=100):
     ds = load_dataset("FiscalNote/billsum")
     sample_data = ds["train"].train_test_split(test_size=n, seed=42)
     result = sample_data["test"].to_pandas()
+    clean(result)
     return result
 
 def to_text(n=100):
-    sample_data(n)["text"].to_csv("sample_text.txt", header=False, index=False)
-    sample_data(n)["summary"].to_csv("sample_summary.txt", header=False, index=False)
+    sample_data(n)["text_clean"].to_csv("sample_text.txt", index=False)
+    sample_data(n)["summary_clean"].to_csv("sample_summary.txt", index=False)
     return
 
 def to_csv(n=100):
-    sample_data(n)["text"].to_csv("sample_text.csv", header=False, index=False)
-    sample_data(n)["summary"].to_csv("sample_summary.csv", header=False, index=False)
+    sample_data(n)["text_clean"].to_csv("sample_text.csv", index=False)
+    sample_data(n)["summary_clean"].to_csv("sample_summary.csv", index=False)
     return 
 
 def main():
