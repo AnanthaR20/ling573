@@ -26,3 +26,9 @@ def get_readability_scores(text: str) -> dict:
         "smog": r.smog(),
         "spache": r.spache()
     }
+
+def get_factuality_scores(text: str) -> dict:
+    """
+    Gets a dictionary of factuality scores for a summary.
+    """
+    return None
