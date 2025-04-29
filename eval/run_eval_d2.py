@@ -78,7 +78,7 @@ for gold, gen in zip(df['summary'], generated_summaries['summary_generated']):
     # Readability
     if len(gen.split()) < 100:
         continue
-    readability_all.append(get_readability_scores(gen))
+    #readability_all.append(get_readability_scores(gen))
 
 
 #######################################
@@ -86,8 +86,11 @@ for gold, gen in zip(df['summary'], generated_summaries['summary_generated']):
 #######################################
 print("\nAVERAGE ROUGE SCORES")
 for key, aggregator in rouge_aggregators.items():
+    #print("Key: " + str(key) + '\n' + "Aggregator: " + str(aggregator))
     result = aggregator.aggregate()
-    print(f"{key}: precision={result['precision']['mid']}, recall={result['recall']['mid']}, f1={result['fmeasure']['mid']}")
+    print(f"{key}: precision={result['precision'][1]}, recall={result['recall'][1]}, f1={result['fmeasure'][1]}")
+    #print(result)
+    #break
 
 print("\nAVERAGE READABILITY SCORES")
 n = len(readability_all)
