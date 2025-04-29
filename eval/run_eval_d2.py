@@ -1,6 +1,8 @@
 import pandas as pd
 from rouge_score import rouge_scorer, scoring
 from readability import Readability
+import nltk
+nltk.download('punkt_tab')
 
 
 #######################################
@@ -65,9 +67,17 @@ for gold, gen in zip(df['summary'], generated_summaries['summary_generated']):
     # ROUGE
     rouge_scores = get_rouge_scores(gold, gen)
     for key in rouge_aggregators:
-        rouge_aggregators[key].add_scores(rouge_scores[key])
+        score_obj = rouge_scores[key]
+        score_dict = {
+            'precision': score_obj.precision,
+            'recall': score_obj.recall,
+            'fmeasure': score_obj.fmeasure
+        }
+        rouge_aggregators[key].add_scores(score_dict)
 
     # Readability
+    if len(gen.split()) < 100:
+        continue
     readability_all.append(get_readability_scores(gen))
 
 

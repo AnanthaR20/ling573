@@ -1,2 +1,2 @@
 #!/bin/sh
-python run_eval_d2.py
+python3 run_eval_d2.py
