@@ -35,7 +35,7 @@ def main():
     model = PegasusForConditionalGeneration.from_pretrained(model_name).to(device)
 
     # Generate summaries for each doc in docs
-    for i,doc in docs.iterrows():
+    for i,doc in enumerate(docs):
         batch = tokenizer(doc, truncation=True, padding="longest", return_tensors="pt").to(device)
         translated = model.generate(**batch)
         tgt_text = tokenizer.batch_decode(translated, skip_special_tokens=True)
