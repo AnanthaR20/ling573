@@ -1,34 +1,56 @@
 from rouge_score import rouge_scorer
-from readability import Readability
+from rouge_score import scoring
+import pandas as pd
+from tqdm import tqdm
+import spacy
+import lftk
+# import tensorflow as tf
 
-def get_rouge_scores(gold: str, test: str) -> dict:
-    """
-    Gets the ROUGE score between the gold and test strings using the rouge_score library.
-    Returns a dictionary with the ROUGE scores for each metric.
-    """
-    scorer = rouge_scorer.RougeScorer(['rouge1', 'rouge2', 'rougeL'], use_stemmer=True)
-    score = scorer.score(gold, test)
-    return score
+# globals
+_ROUGE_METRIC = "rouge"
 
-def get_readability_scores(text: str) -> dict:
+def eval_all(gold_data: list, gen_data: list) -> None:
+    eval_rouge(gold_data, gen_data)
+    print("ROUGE evaluated")
+    return
+
+def eval_rouge(gold_data: list, gen_data: list) -> None:
     """
-    Gets a dictionary of readability scores and other metadata for a given string after tokenizing.
+    - Evaluate ROUGE scores on gold and generated summaries
+    - Aggregate confidence intervals on ROUGE scores
+    - Write to output
     """
-    r = Readability(text)
-    return {
-        "flesch_kincaid": r.flesch_kincaid(),
-        "flesch": r.flesch(),
-        "gunning_fog": r.gunning_fog(),
-        "coleman_liau": r.coleman_liau(),
-        "dale_chall": r.dale_chall(),
-        "ari": r.ari(),
-        "linsear_write": r.linsear_write(),
-        "smog": r.smog(),
-        "spache": r.spache()
-    }
+    scorers_dict = {}
+    scorers_dict[_ROUGE_METRIC] = rouge_scorer.RougeScorer(
+      ["rouge1", "rouge2", "rougeL", "rougeLsum"], use_stemmer=True)
+    aggregators_dict = {k: scoring.BootstrapAggregator() for k in scorers_dict}
+
+    for gold, gen in tqdm(zip(gold_data, gen_data)):
+        for key, scorer in scorers_dict.items():
+            scores_i = scorer.score(gold, gen)
+            aggregators_dict[key].add_scores(scores_i)
+    
+    aggregates_dict = {k: v.aggregate() for k, v in aggregators_dict.items()}
+
+    rouge_filename = "rouge_scores.txt"
+    with open(rouge_filename, "w") as f:
+        for k, v in sorted(aggregates_dict[_ROUGE_METRIC].items()):
+            f.write("%s-R,%f,%f,%f\n" %
+              (k, v.low.recall, v.mid.recall, v.high.recall))
+            f.write("%s-P,%f,%f,%f\n" %
+              (k, v.low.precision, v.mid.precision, v.high.precision))
+            f.write("%s-F,%f,%f,%f\n" %
+              (k, v.low.fmeasure, v.mid.fmeasure, v.high.fmeasure))
+    return
 
 def get_factuality_scores(text: str) -> dict:
     """
     Gets a dictionary of factuality scores for a summary.
     """
     return None
+
+if __name__ == "__main__":
+    data = pd.read_csv("temp_out.csv")
+    temp_gold = data.gold.tolist()
+    temp_gen = data.summary_generated.tolist()
+    eval_all(temp_gold, temp_gen)
