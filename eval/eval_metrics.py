@@ -2,9 +2,7 @@ from rouge_score import rouge_scorer
 from rouge_score import scoring
 import pandas as pd
 from tqdm import tqdm
-import spacy
-import lftk
-# import tensorflow as tf
+from datasets import load_dataset
 
 # globals
 _ROUGE_METRIC = "rouge"
@@ -50,7 +48,8 @@ def get_factuality_scores(text: str) -> dict:
     return None
 
 if __name__ == "__main__":
-    data = pd.read_csv("temp_out.csv")
-    temp_gold = data.gold.tolist()
+    data = pd.read_csv("../output/baseline_test.csv", usecols=["summary_generated"])
+    gold = load_dataset("FiscalNote/billsum")["test"].to_pandas()
+    temp_gold = gold.summary.tolist()
     temp_gen = data.summary_generated.tolist()
     eval_all(temp_gold, temp_gen)
