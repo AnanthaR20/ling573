@@ -22,6 +22,7 @@ def generate():
         tgt_text = tokenizer.batch_decode(translated, skip_special_tokens=True)
         print(tgt_text)
 
+# Post-hoc processing - align generated summaries with titles 
 def align():
     data = pd.read_csv("output/baseline_console.txt", delimiter="\t", dtype=str)
     data["title"] = df.title

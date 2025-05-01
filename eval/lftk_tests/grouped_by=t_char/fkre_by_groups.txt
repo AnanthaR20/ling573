@@ -1,0 +1,65 @@
+--- LFTK feature=fkre: Generated vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 1.8236, df = 1305, p-value = 0.06844
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.1744114  4.7781147
+sample estimates:
+mean of x mean of y 
+ 22.62291  20.32106 
+
+--- LFTK feature=fkre: Generated vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.85461, df = 1305.1, p-value = 0.3929
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -4.120340  1.619772
+sample estimates:
+mean of x mean of y 
+ 10.54128  11.79157 
+
+--- LFTK feature=fkre: Generated vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -5.5836, df = 1218.1, p-value = 2.903e-08
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -13.26582  -6.36730
+sample estimates:
+mean of x mean of y 
+ 3.039301 12.855859 
+
+--- LFTK feature=fkre: Generated vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -3.3753, df = 1132.6, p-value = 0.0007623
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -11.19618  -2.96458
+sample estimates:
+mean of x mean of y 
+ 2.523535  9.603916 
+
+--- LFTK feature=fkre: Generated vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -9.4499, df = 1149.6, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -27.13385 -17.80375
+sample estimates:
+mean of x mean of y 
+-12.29152  10.17728 
+

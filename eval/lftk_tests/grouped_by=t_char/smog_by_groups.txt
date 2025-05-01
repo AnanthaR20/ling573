@@ -1,0 +1,65 @@
+--- LFTK feature=smog: Generated vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.066493, df = 1303.3, p-value = 0.947
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.4498576  0.4203622
+sample estimates:
+mean of x mean of y 
+ 10.05394  10.06869 
+
+--- LFTK feature=smog: Generated vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 1.3221, df = 1304, p-value = 0.1864
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.1352955  0.6945341
+sample estimates:
+mean of x mean of y 
+ 11.87796  11.59835 
+
+--- LFTK feature=smog: Generated vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 5.1047, df = 1240.6, p-value = 3.831e-07
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.725513 1.631303
+sample estimates:
+mean of x mean of y 
+ 12.86053  11.68212 
+
+--- LFTK feature=smog: Generated vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 1.2159, df = 1234.3, p-value = 0.2243
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.1669495  0.7111605
+sample estimates:
+mean of x mean of y 
+ 12.53598  12.26387 
+
+--- LFTK feature=smog: Generated vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 9.7833, df = 1151.7, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 1.90770 2.86482
+sample estimates:
+mean of x mean of y 
+ 14.71157  12.32531 
+
