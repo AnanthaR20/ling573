@@ -1,0 +1,65 @@
+--- LFTK feature=cole: Generated vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -2.7314, df = 1301.8, p-value = 0.006392
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.7385287 -0.1211074
+sample estimates:
+mean of x mean of y 
+ 14.95860  15.38842 
+
+--- LFTK feature=cole: Generated vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.5926, df = 1297.5, p-value = 0.5536
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.3316368  0.1777622
+sample estimates:
+mean of x mean of y 
+ 15.05737  15.13430 
+
+--- LFTK feature=cole: Generated vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -3.4725, df = 1276.4, p-value = 0.0005328
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.6803898 -0.1891423
+sample estimates:
+mean of x mean of y 
+ 14.75651  15.19127 
+
+--- LFTK feature=cole: Generated vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -10.176, df = 1284.6, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.4123529 -0.9557939
+sample estimates:
+mean of x mean of y 
+ 13.85223  15.03631 
+
+--- LFTK feature=cole: Generated vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 3.4489, df = 1304, p-value = 0.0005809
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.1562087 0.5683518
+sample estimates:
+mean of x mean of y 
+ 15.42522  15.06294 
+

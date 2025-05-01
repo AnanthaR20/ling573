@@ -1,0 +1,65 @@
+--- LFTK feature=fogi: Generated vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.30061, df = 1304.4, p-value = 0.7638
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.8663656  0.6361301
+sample estimates:
+mean of x mean of y 
+ 25.23537  25.35048 
+
+--- LFTK feature=fogi: Generated vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 1.2316, df = 1300.4, p-value = 0.2183
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.381562  1.668816
+sample estimates:
+mean of x mean of y 
+ 29.81911  29.17548 
+
+--- LFTK feature=fogi: Generated vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 6.9483, df = 1214.9, p-value = 6.014e-12
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 3.149839 5.628473
+sample estimates:
+mean of x mean of y 
+ 33.12056  28.73140 
+
+--- LFTK feature=fogi: Generated vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 5.6031, df = 1111.5, p-value = 2.653e-08
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 2.878474 5.980826
+sample estimates:
+mean of x mean of y 
+ 34.62126  30.19161 
+
+--- LFTK feature=fogi: Generated vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 9.3245, df = 1126.2, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  6.658344 10.207193
+sample estimates:
+mean of x mean of y 
+ 38.49461  30.06184 
+
