@@ -43,6 +43,21 @@ family$entity <- c(
   "t_n_ent_law"
 )
 
+# Generate bar charts for readability metrics
+j <- lftk$gold %>% left_join(lftk$gen,by="X",suffix=c(".GOLD",".GEN"))
+bar <- j %>% pivot_longer(cols = colnames(j)[str_detect(colnames(j),"[(GOLD)(GEN)]")])
+bar <- bar %>% mutate(metric = str_extract(name,"([^.]*)\\.",group=1),
+                      summary_type = str_extract(name,"\\.(.*)",group=1))
+
+bar %>% filter(metric %in% family$readformula) %>% 
+  ggplot(aes(x = summary_type,y=value)) + 
+    geom_boxplot() + 
+    facet_wrap(~metric) + 
+    coord_cartesian(ylim = c(-50, 100)) +
+    labs(x = "Summary Type",
+         y = "Value",
+         title = "Generated vs Gold Summaries") 
+
 # ----------------------------------------------------------------------- #
 # ----------------------------------------------------------------------- #
 # ---------- Everything Above is Setup. Below Generates Plots ----------- #
