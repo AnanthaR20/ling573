@@ -39,7 +39,7 @@ checkpoint = "google/pegasus-large"
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 prefix = "summarize: "
 tokenized_billsum = billsum.map(preprocess_function, batched=True)
-data_collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=checkpoint, return_tensors="tf")
+data_collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=checkpoint)
 model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint)
 
 ## EVAL
