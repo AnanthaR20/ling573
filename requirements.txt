@@ -1,6 +1,8 @@
-huggingface-hub==0.17.0
 summac
-datasets
-torch==2.5.1
-transformers
-accelerate
+huggingface-hub==0.17.0
+fsspec==2023.9.2
+datasets==2.8.0
+pyarrow==6.0.0
+torch==2.1.0
+transformers==4.24.0
+accelerate==0.31.0
