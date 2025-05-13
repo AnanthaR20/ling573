@@ -34,12 +34,13 @@ billsum = load_dataset("billsum", split="ca_test")
 billsum = billsum.train_test_split(test_size=0.2)
 
 ## MODEL
-checkpoint = "zphang/pegasus-x-base"
+# checkpoint = "zphang/pegasus-x-base"
+checkpoint = "google/pegasus-large"
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 prefix = "summarize: "
 tokenized_billsum = billsum.map(preprocess_function, batched=True)
 data_collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=checkpoint, return_tensors="tf")
-model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint)
+model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint, device_map="auto")
 
 ## EVAL
 rouge = evaluate.load("rouge")
