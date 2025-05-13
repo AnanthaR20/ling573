@@ -57,7 +57,6 @@ training_args = Seq2SeqTrainingArguments(
     num_train_epochs=4,
     predict_with_generate=True,
     fp16=True, #change to bf16=True for XPU
-    push_to_hub=True,
 )
 
 trainer = Seq2SeqTrainer(
