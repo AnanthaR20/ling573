@@ -1,5 +1,6 @@
 huggingface-hub==0.17.0
 summac
 datasets
-transformers==4.35.2
-accelerate==0.32.1
+torch==2.5.1
+transformers
+accelerate
