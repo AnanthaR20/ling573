@@ -1,4 +1,3 @@
-# Anantha Rao 
 # File for generating analysis plots for ling 573 project
 # This file expects to be in the same directory as "gold_lftk.csv" and "gen_lftk.csv"
 # Both of these files must have the same columns. 
@@ -43,21 +42,6 @@ family$entity <- c(
   "t_n_ent_law"
 )
 
-# Generate bar charts for readability metrics
-j <- lftk$gold %>% left_join(lftk$gen,by="X",suffix=c(".GOLD",".GEN"))
-bar <- j %>% pivot_longer(cols = colnames(j)[str_detect(colnames(j),"[(GOLD)(GEN)]")])
-bar <- bar %>% mutate(metric = str_extract(name,"([^.]*)\\.",group=1),
-                      summary_type = str_extract(name,"\\.(.*)",group=1))
-
-bar %>% filter(metric %in% family$readformula) %>% 
-  ggplot(aes(x = summary_type,y=value)) + 
-    geom_boxplot() + 
-    facet_wrap(~metric) + 
-    coord_cartesian(ylim = c(-50, 100)) +
-    labs(x = "Summary Type",
-         y = "Value",
-         title = "Generated vs Gold Summaries") 
-
 # ----------------------------------------------------------------------- #
 # ----------------------------------------------------------------------- #
 # ---------- Everything Above is Setup. Below Generates Plots ----------- #
@@ -85,7 +69,22 @@ for (feature in colnames(lftk$gold)) {
     ggsave(str_c(path_to_save,feature,"_distribution_gen_and_gold_summaries.png"),plt,create.dir = T)
     
   } # ----- End of Attributes loop
-} # ----- End of Generate Plots
+} # ----- End of lftk features loop
+
+# Generate bar charts for readability metrics
+j <- lftk$gold %>% left_join(lftk$gen,by="X",suffix=c(".GOLD",".GEN"))
+bar <- j %>% pivot_longer(cols = colnames(j)[str_detect(colnames(j),"[(GOLD)(GEN)]")])
+bar <- bar %>% mutate(metric = str_extract(name,"([^.]*)\\.",group=1),
+                      summary_type = str_extract(name,"\\.(.*)",group=1))
+
+bar %>% filter(metric %in% family$readformula) %>% 
+  ggplot(aes(x = summary_type,y=value)) + 
+  geom_boxplot() + 
+  facet_wrap(~metric) + 
+  coord_cartesian(ylim = c(-50, 100)) +
+  labs(x = "Summary Type",
+       y = "Value",
+       title = "Generated vs Gold Summaries") 
 
 
 # (2) Run t.tests and save results
