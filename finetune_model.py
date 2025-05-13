@@ -40,7 +40,7 @@ tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 prefix = "summarize: "
 tokenized_billsum = billsum.map(preprocess_function, batched=True)
 data_collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=checkpoint, return_tensors="tf")
-model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint, device_map="auto")
+model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint)
 
 ## EVAL
 rouge = evaluate.load("rouge")
