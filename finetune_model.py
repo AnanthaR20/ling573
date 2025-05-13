@@ -48,7 +48,7 @@ rouge = evaluate.load("rouge")
 ## FINE-TUNING
 training_args = Seq2SeqTrainingArguments(
     output_dir="my_control_billsum_model",
-    eval_strategy="epoch",
+    evaluation_strategy="epoch",
     learning_rate=2e-5,
     per_device_train_batch_size=16,
     per_device_eval_batch_size=16,
