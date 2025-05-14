@@ -1,17 +1,17 @@
-from summac.model_summac import SummaCZS, SummaCConv
+from summac.model_summac import SummaCConv
 from datasets import load_dataset
 import pandas as pd
 from collections import defaultdict
 
 #initialize model
-model_zs = SummaCZS(granularity="sentence", model_name="vitc", device="cpu") # If you have a GPU: switch to: device="cuda"
-model_conv = SummaCConv(models=["vitc"], bins='percentile', granularity="sentence", nli_labels="e", device="cpu", agg="mean")
+# model_zs = SummaCZS(granularity="sentence", model_name="vitc", device="cuda") # If you have a GPU: switch to: device="cuda"
+model_conv = SummaCConv(models=["vitc"], bins='percentile', granularity="sentence", nli_labels="e", device="cuda", agg="mean")
 
 #load our gold data
 gold_sum = load_dataset("FiscalNote/billsum")["test"].to_pandas()["summary"].tolist()
 gold_doc = load_dataset("FiscalNote/billsum")["test"].to_pandas()["text"].tolist()
 #load generated summaries
-baseline = pd.read_csv("../output/baseline_test.csv")
+baseline = pd.read_csv("../output/baseline_test.csv", usecols=["summary_generated"])
 
 #initialize data structure to store values
 ref_list_conv = [9999] * baseline.shape[0]
@@ -25,8 +25,8 @@ safety_output = 'summac_safety.txt'
 with open(safety_output, 'w') as file:
     file.write('')
 #itereate through rows and calculate scores
-#for i in range(baseline.shape[0]):
-for i in range(3):
+for i in range(baseline.shape[0]):
+# for i in range(3):
     print("processing pair: " + str(i))
     doc = gold_doc[i]
     ref = gold_sum[i]
