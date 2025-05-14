@@ -1,0 +1,16 @@
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+{'eval_loss': 1.7545019388198853, 'eval_rouge1': 0.3217, 'eval_rouge2': 0.1354, 'eval_rougeL': 0.2516, 'eval_rougeLsum': 0.2515, 'eval_gen_len': 251.4677, 'eval_runtime': 541.1322, 'eval_samples_per_second': 0.458, 'eval_steps_per_second': 0.229, 'epoch': 1.0}
+{'loss': 2.0637, 'learning_rate': 1.501010101010101e-05, 'epoch': 1.01}
+{'eval_loss': 1.7035681009292603, 'eval_rouge1': 0.3445, 'eval_rouge2': 0.1507, 'eval_rougeL': 0.2582, 'eval_rougeLsum': 0.2578, 'eval_gen_len': 245.8468, 'eval_runtime': 520.6288, 'eval_samples_per_second': 0.476, 'eval_steps_per_second': 0.238, 'epoch': 2.0}
+{'loss': 1.8288, 'learning_rate': 9.95959595959596e-06, 'epoch': 2.02}
+{'eval_loss': 1.6816720962524414, 'eval_rouge1': 0.3436, 'eval_rouge2': 0.1504, 'eval_rougeL': 0.2593, 'eval_rougeLsum': 0.259, 'eval_gen_len': 244.2944, 'eval_runtime': 523.6983, 'eval_samples_per_second': 0.474, 'eval_steps_per_second': 0.237, 'epoch': 3.0}
+{'loss': 1.7432, 'learning_rate': 4.90909090909091e-06, 'epoch': 3.03}
+{'eval_loss': 1.6755168437957764, 'eval_rouge1': 0.3566, 'eval_rouge2': 0.1609, 'eval_rougeL': 0.2646, 'eval_rougeLsum': 0.2645, 'eval_gen_len': 238.9355, 'eval_runtime': 529.5863, 'eval_samples_per_second': 0.468, 'eval_steps_per_second': 0.234, 'epoch': 4.0}
+{'train_runtime': 3032.0535, 'train_samples_per_second': 1.305, 'train_steps_per_second': 0.653, 'train_loss': 1.8380807279336333, 'epoch': 4.0}
