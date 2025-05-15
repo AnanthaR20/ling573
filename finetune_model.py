@@ -34,7 +34,7 @@ billsum = load_dataset("FiscalNote/billsum")
 
 ## MODEL
 checkpoint = "google/pegasus-large"
-tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+tokenizer = PegasusTokenizer.from_pretrained(checkpoint)
 prefix = ""
 tokenized_train_billsum = billsum["train"].map(preprocess_function, batched=True)
 tokenized_test_billsum = billsum["test"].map(preprocess_function, batched=True)
