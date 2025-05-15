@@ -13,6 +13,7 @@ def preprocess_function(examples):
     labels = tokenizer(text_target=examples["summary"], max_length=256, truncation=True)
 
     model_inputs["labels"] = labels["input_ids"]
+    print(model_inputs)
     return model_inputs
 
 def compute_metrics(eval_pred):
