@@ -12,7 +12,7 @@ def preprocess_function(examples):
 
     labels = tokenizer(text_target=examples["summary"], max_length=256, truncation=True, padding=True)
 
-    model_inputs["decoder_input_ids"] = labels["input_ids"]
+    model_inputs["labels"] = labels["input_ids"]
     return model_inputs
 
 def compute_metrics(eval_pred):
@@ -30,7 +30,7 @@ def compute_metrics(eval_pred):
 
 # GLOBALS
 ## DATA
-billsum = load_dataset("billsum", split="train")
+billsum = load_dataset("billsum")
 
 ## MODEL
 checkpoint = "google/pegasus-large"
@@ -62,8 +62,8 @@ training_args = Seq2SeqTrainingArguments(
 trainer = Seq2SeqTrainer(
     model=model,
     args=training_args,
-    train_dataset=tokenized_billsum,
-    # eval_dataset=tokenized_test_billsum,
+    train_dataset=tokenized_billsum["train"],
+    eval_dataset=tokenized_billsum["test"],
     tokenizer=tokenizer,
     data_collator=data_collator,
     # compute_metrics=compute_metrics,
