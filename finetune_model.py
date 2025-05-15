@@ -1,5 +1,5 @@
 from datasets import load_dataset
-from transformers import PegasusTokenizer
+from transformers import AutoTokenizer
 from transformers import DataCollatorForSeq2Seq
 from rouge_score import rouge_scorer
 from transformers import AutoModelForSeq2SeqLM, Seq2SeqTrainingArguments, Seq2SeqTrainer
@@ -36,7 +36,7 @@ billsum = load_dataset("billsum")
 checkpoint = "google/pegasus-large"
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 prefix = ""
-tokenized_billsum = billsum["train"].map(preprocess_function, batched=True)
+tokenized_train_billsum = billsum["train"].map(preprocess_function, batched=True)
 # tokenized_test_billsum = billsum["test"].map(preprocess_function, batched=True)
 data_collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=checkpoint)
 model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint)
@@ -62,8 +62,8 @@ training_args = Seq2SeqTrainingArguments(
 trainer = Seq2SeqTrainer(
     model=model,
     args=training_args,
-    train_dataset=tokenized_billsum,
-    eval_dataset=billsum["test"],
+    train_dataset=tokenized_train_billsum,
+    # eval_dataset=tokenized_test_billsum,
     tokenizer=tokenizer,
     data_collator=data_collator,
     compute_metrics=compute_metrics,
