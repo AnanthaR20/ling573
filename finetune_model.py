@@ -7,8 +7,7 @@ import numpy as np
 import evaluate
 
 def preprocess_function(examples):
-    # inputs = [prefix + doc for doc in examples["text"]]
-    inputs = list(examples["text"])
+    inputs = [prefix + doc for doc in examples["text"]]
     model_inputs = tokenizer(inputs, max_length=1024, truncation=True)
 
     labels = tokenizer(text_target=examples["summary"], max_length=256, truncation=True)
@@ -36,7 +35,7 @@ billsum = load_dataset("FiscalNote/billsum")
 ## MODEL
 checkpoint = "google/pegasus-large"
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-prefix = "summarize: "
+prefix = ""
 tokenized_train_billsum = billsum["train"].map(preprocess_function, batched=True)
 tokenized_test_billsum = billsum["test"].map(preprocess_function, batched=True)
 data_collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=checkpoint)
