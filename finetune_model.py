@@ -8,9 +8,9 @@ import evaluate
 
 def preprocess_function(examples):
     inputs = [prefix + doc for doc in examples["text"]]
-    model_inputs = tokenizer(inputs, max_length=1024, truncation=True)
+    model_inputs = tokenizer(inputs, max_length=1024, truncation=True, padding=True)
 
-    labels = tokenizer(text_target=examples["summary"], max_length=256, truncation=True)
+    labels = tokenizer(text_target=examples["summary"], max_length=256, truncation=True, padding=True)
 
     model_inputs["decoder_input_ids"] = labels["input_ids"]
     return model_inputs
@@ -66,7 +66,7 @@ trainer = Seq2SeqTrainer(
     # eval_dataset=tokenized_test_billsum,
     tokenizer=tokenizer,
     data_collator=data_collator,
-    compute_metrics=compute_metrics,
+    # compute_metrics=compute_metrics,
 )
 
 trainer.train()
