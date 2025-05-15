@@ -51,7 +51,6 @@ training_args = Seq2SeqTrainingArguments(
     learning_rate=2e-4,
     per_device_train_batch_size=2,
     per_device_eval_batch_size=2,
-    weight_decay=0.01,
     save_total_limit=3,
     max_steps=100000,
     # num_train_epochs=4,
