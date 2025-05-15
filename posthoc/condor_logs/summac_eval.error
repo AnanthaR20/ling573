@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home2/dcelon/573/ling573/posthoc/summac_eval.py", line 1, in <module>
+    from summac.model_summac import SummaCZS, SummaCConv
+  File "/home2/dcelon/miniconda3/envs/summac_env/lib/python3.10/site-packages/summac/model_summac.py", line 1, in <module>
+    from transformers import AutoTokenizer, AutoModelForSequenceClassification
+  File "/home2/dcelon/miniconda3/envs/summac_env/lib/python3.10/site-packages/transformers/__init__.py", line 26, in <module>
+    from . import dependency_versions_check
+  File "/home2/dcelon/miniconda3/envs/summac_env/lib/python3.10/site-packages/transformers/dependency_versions_check.py", line 16, in <module>
+    from .utils.versions import require_version, require_version_core
+  File "/home2/dcelon/miniconda3/envs/summac_env/lib/python3.10/site-packages/transformers/utils/__init__.py", line 31, in <module>
+    from .generic import (
+  File "/home2/dcelon/miniconda3/envs/summac_env/lib/python3.10/site-packages/transformers/utils/generic.py", line 432, in <module>
+    import torch.utils._pytree as _torch_pytree
+  File "/home2/dcelon/miniconda3/envs/summac_env/lib/python3.10/site-packages/torch/__init__.py", line 409, in <module>
+    from torch._C import *  # noqa: F403
+ImportError: /lib64/libc.so.6: version `GLIBC_2.28' not found (required by /home2/dcelon/miniconda3/envs/summac_env/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
