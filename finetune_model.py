@@ -8,9 +8,9 @@ import evaluate
 
 def preprocess_function(examples):
     inputs = [prefix + doc for doc in examples["text"]]
-    model_inputs = tokenizer(inputs, max_length=1024, truncation=True, return_tensors='pt')
+    model_inputs = tokenizer(inputs, max_length=1024, truncation=True)
 
-    labels = tokenizer(text_target=examples["summary"], max_length=256, truncation=True, return_tensors='pt')
+    labels = tokenizer(text_target=examples["summary"], max_length=256, truncation=True)
 
     model_inputs["labels"] = labels["input_ids"]
     return model_inputs
