@@ -30,14 +30,14 @@ def compute_metrics(eval_pred):
 
 # GLOBALS
 ## DATA
-billsum = load_dataset("FiscalNote/billsum")
+billsum = load_dataset("billsum")
 
 ## MODEL
 checkpoint = "google/pegasus-large"
-tokenizer = PegasusTokenizer.from_pretrained(checkpoint)
+tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 prefix = ""
-tokenized_train_billsum = billsum["train"].map(preprocess_function, batched=True)
-tokenized_test_billsum = billsum["test"].map(preprocess_function, batched=True)
+tokenized_billsum = billsum["train"].map(preprocess_function, batched=True)
+# tokenized_test_billsum = billsum["test"].map(preprocess_function, batched=True)
 data_collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=checkpoint)
 model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint)
 
@@ -63,8 +63,8 @@ training_args = Seq2SeqTrainingArguments(
 trainer = Seq2SeqTrainer(
     model=model,
     args=training_args,
-    train_dataset=tokenized_train_billsum,
-    eval_dataset=tokenized_test_billsum,
+    train_dataset=tokenized_billsum,
+    eval_dataset=billsum["test"],
     tokenizer=tokenizer,
     data_collator=data_collator,
     compute_metrics=compute_metrics,
