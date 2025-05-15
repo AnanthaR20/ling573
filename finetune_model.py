@@ -37,7 +37,7 @@ checkpoint = "google/pegasus-large"
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 prefix = ""
 tokenized_billsum = billsum.map(preprocess_function, batched=True)
-# tokenized_test_billsum = billsum["test"].map(preprocess_function, batched=True)
+print(tokenized_billsum["train"][0])
 data_collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=checkpoint)
 model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint)
 
@@ -66,7 +66,7 @@ trainer = Seq2SeqTrainer(
     eval_dataset=tokenized_billsum["test"],
     tokenizer=tokenizer,
     data_collator=data_collator,
-    # compute_metrics=compute_metrics,
+    compute_metrics=compute_metrics,
 )
 
 trainer.train()
