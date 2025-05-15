@@ -7,10 +7,11 @@ import numpy as np
 import evaluate
 
 def preprocess_function(examples):
-    inputs = [prefix + doc for doc in examples["text"]]
+    # inputs = [prefix + doc for doc in examples["text"]]
+    inputs = examples["text"]
     model_inputs = tokenizer(inputs, max_length=1024, truncation=True)
 
-    labels = tokenizer(text_target=examples["summary"], max_length=128, truncation=True)
+    labels = tokenizer(text_target=examples["summary"], max_length=256, truncation=True)
 
     model_inputs["labels"] = labels["input_ids"]
     return model_inputs
@@ -30,15 +31,14 @@ def compute_metrics(eval_pred):
 
 # GLOBALS
 ## DATA
-billsum = load_dataset("billsum", split="ca_test")
-billsum = billsum.train_test_split(test_size=0.2)
+billsum = load_dataset("FiscalNote/billsum")
 
 ## MODEL
-# checkpoint = "zphang/pegasus-x-base"
 checkpoint = "google/pegasus-large"
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 prefix = "summarize: "
-tokenized_billsum = billsum.map(preprocess_function, batched=True)
+tokenized_train_billsum = billsum["train"].map(preprocess_function, batched=True)
+tokenized_test_billsum = billsum["test"].map(preprocess_function, batched=True)
 data_collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=checkpoint)
 model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint)
 
@@ -48,22 +48,24 @@ rouge = evaluate.load("rouge")
 ## FINE-TUNING
 training_args = Seq2SeqTrainingArguments(
     output_dir="my_control_billsum_model",
-    evaluation_strategy="epoch",
-    learning_rate=2e-5,
+    evaluation_strategy="no",
+    learning_rate=2e-4,
     per_device_train_batch_size=2,
     per_device_eval_batch_size=2,
     weight_decay=0.01,
     save_total_limit=3,
-    num_train_epochs=4,
+    max_steps=100000,
+    # num_train_epochs=4,
     predict_with_generate=True,
-    fp16=True, #change to bf16=True for XPU
+    fp16=True, #change to bf16=True for XPU,
+    label_smoothing_factor=0.1
 )
 
 trainer = Seq2SeqTrainer(
     model=model,
     args=training_args,
-    train_dataset=tokenized_billsum["train"],
-    eval_dataset=tokenized_billsum["test"],
+    train_dataset=tokenized_train_billsum,
+    eval_dataset=tokenized_test_billsum,
     tokenizer=tokenizer,
     data_collator=data_collator,
     compute_metrics=compute_metrics,
