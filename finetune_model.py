@@ -1,5 +1,5 @@
 from datasets import load_dataset
-from transformers import AutoTokenizer
+from transformers import PegasusTokenizer
 from transformers import DataCollatorForSeq2Seq
 from rouge_score import rouge_scorer
 from transformers import AutoModelForSeq2SeqLM, Seq2SeqTrainingArguments, Seq2SeqTrainer
@@ -8,12 +8,11 @@ import evaluate
 
 def preprocess_function(examples):
     inputs = [prefix + doc for doc in examples["text"]]
-    model_inputs = tokenizer(inputs, max_length=1024, truncation=True)
+    model_inputs = tokenizer(inputs, max_length=1024, truncation=True, return_tensors='pt')
 
-    labels = tokenizer(text_target=examples["summary"], max_length=256, truncation=True)
+    labels = tokenizer(text_target=examples["summary"], max_length=256, truncation=True, return_tensors='pt')
 
     model_inputs["labels"] = labels["input_ids"]
-    print(model_inputs)
     return model_inputs
 
 def compute_metrics(eval_pred):
