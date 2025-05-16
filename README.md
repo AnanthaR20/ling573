@@ -25,6 +25,7 @@ conda activate 573-env
 ```
 
 # Baseline system
+Note that test data is directly loaded with the `datasets` library so no extra arguments are needed on the command line.
 ## Patas (NVIDIA Quadro 8000)
 1. SSH into Patas
 ```cmd
@@ -39,6 +40,7 @@ git clone git@github.com:AnanthaR20/ling573.git
 condor_submit run_baseline/run_baseline.cmd
 ```
 4. Wait...
+5. Find your output in `run_baseline.out`
 
 ## M1 Apple Silicon
 1. Activate virtual environment (see above)
@@ -47,6 +49,7 @@ condor_submit run_baseline/run_baseline.cmd
 python backup_run.py
 ```
 3. Wait...but hopefully not as long!
+4. In our ad-hoc backup run, output was directly printed to console and manually copied into a text file, `baseline_console.txt`. This console output can be aligned with the provided `title` column from BillSum using the `align()` function defined in `backup_run.py` and written to a CSV, `baseline_test.csv`. This CSV can be used for baseline evaluation.
 
 ## Baseline evaluation
 1. Extract confidence intervals on ROUGE scores with `eval_metrics.py`
