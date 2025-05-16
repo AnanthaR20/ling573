@@ -11,7 +11,7 @@ model_conv = SummaCConv(models=["vitc"], bins='percentile', granularity="sentenc
 gold_sum = load_dataset("FiscalNote/billsum")["test"].to_pandas()["summary"].tolist()
 gold_doc = load_dataset("FiscalNote/billsum")["test"].to_pandas()["text"].tolist()
 #load generated summaries
-baseline = pd.read_csv("../output/baseline_test.csv", usecols=["summary_generated"])
+baseline = pd.read_csv("../../output/baseline_test.csv", usecols=["summary_generated"])
 
 #initialize data structure to store values
 ref_list_conv = [9999] * baseline.shape[0]

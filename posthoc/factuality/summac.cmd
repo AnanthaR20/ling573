@@ -1,10 +1,12 @@
 executable = summac_eval.sh
 getenv     = true
-output     = condor_logs/summac_eval.out
-error      = condor_logs/summac_eval.error
-log        = condor_logs/summac_eval.log
+output     = summac_eval.out
+error      =summac_eval.error
+log        = summac_eval.log
 notification = complete
 arguments = ""
 transfer_executable = false
-request_memory = 2*1024
+request_memory = 16000
+request_GPUs = 1
+Requirements = (Machine == "patas-gn3.ling.washington.edu")
 queue
