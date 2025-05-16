@@ -9,8 +9,7 @@ import evaluate
 def preprocess_function(examples):
     inputs = [prefix + doc for doc in examples["text"]]
     model_inputs = tokenizer(inputs, max_length=1024, truncation=True)
-
-    labels = tokenizer(text_target=examples["summary"], max_length=256, truncation=True)
+    labels = tokenizer(text_target=examples["summary"], max_length=128, truncation=True)
 
     model_inputs["labels"] = labels["input_ids"]
     return model_inputs
@@ -37,7 +36,6 @@ checkpoint = "google/pegasus-large"
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 prefix = ""
 tokenized_billsum = billsum.map(preprocess_function, batched=True)
-print(tokenized_billsum["train"][0])
 data_collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=checkpoint)
 model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint)
 
@@ -47,16 +45,15 @@ rouge = evaluate.load("rouge")
 ## FINE-TUNING
 training_args = Seq2SeqTrainingArguments(
     output_dir="my_control_billsum_model",
-    evaluation_strategy="no",
+    evaluation_strategy="epoch",
     learning_rate=2e-4,
     per_device_train_batch_size=2,
     per_device_eval_batch_size=2,
+    # weight_decay=0.01,
     save_total_limit=3,
-    max_steps=100000,
-    # num_train_epochs=4,
+    num_train_epochs=4,
     predict_with_generate=True,
-    fp16=True, #change to bf16=True for XPU,
-    label_smoothing_factor=0.1
+    fp16=True, #change to bf16=True for XPU
 )
 
 trainer = Seq2SeqTrainer(
