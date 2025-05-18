@@ -1,0 +1,117 @@
+--- LFTK feature=t_word: Generated vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -34.437, df = 659.96, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -174.6994 -155.8519
+sample estimates:
+mean of x mean of y 
+ 254.2833  419.5590 
+
+--- LFTK feature=t_stopword: Generated vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -27.803, df = 753.61, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -58.01280 -50.36086
+sample estimates:
+mean of x mean of y 
+ 93.10107 147.28790 
+
+--- LFTK feature=t_punct: Generated vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -23.788, df = 860.37, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -23.66270 -20.05552
+sample estimates:
+mean of x mean of y 
+ 31.14395  53.00306 
+
+--- LFTK feature=t_syll: Generated vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -34.791, df = 679.48, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -257.0344 -229.5720
+sample estimates:
+mean of x mean of y 
+ 393.7626  637.0658 
+
+--- LFTK feature=t_syll2: Generated vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -29.729, df = 788.97, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -39.02023 -34.18651
+sample estimates:
+mean of x mean of y 
+ 61.55896  98.16233 
+
+--- LFTK feature=t_syll3: Generated vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -20.7, df = 994.42, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -14.87621 -12.29990
+sample estimates:
+mean of x mean of y 
+ 24.18070  37.76876 
+
+--- LFTK feature=t_uword: Generated vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -36.591, df = 806.19, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -53.87301 -48.38733
+sample estimates:
+mean of x mean of y 
+ 115.7887  166.9188 
+
+--- LFTK feature=t_sent: Generated vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -24.957, df = 926.51, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -5.031436 -4.297813
+sample estimates:
+mean of x mean of y 
+ 4.356815  9.021440 
+
+--- LFTK feature=t_char: Generated vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -35.415, df = 666.61, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -819.5829 -733.4769
+sample estimates:
+mean of x mean of y 
+ 1236.329  2012.859 
+

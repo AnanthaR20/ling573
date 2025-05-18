@@ -1,85 +1,85 @@
-# Semantic Self-Segmentation for Abstractive Summarization of Long Documents in Low-Resource Regimes
+# ling573
+Repository for CLMS LING 573 group project. Evaluated on the [BillSum corpus](https://huggingface.co/datasets/FiscalNote/billsum), taking in a plaintext legislative bill document and generating a summary of its contents.
 
-## Introduction
-The quadratic memory complexity of transformers prevents long document summarization in low computational resource scenarios. State-of-the-art models need to apply input truncation, thus discarding and ignoring potential summary-relevant contents, leading to a performance drop. Furthermore, this loss is generally destructive for semantic text analytics in high-impact domains such as the legal one. In this paper, we propose a novel semantic self-segmentation (Se3) approach for long document summarization to address the critical problems of low-resource regimes, namely to process inputs longer than the GPU memory capacity and produce accurate summaries despite the availability of only a few dozens of training instances. Se3 segments a long input into semantically coherent chunks, allowing transformers to summarize very long documents without truncation by summarizing each chunk and concatenating the results. Experimental outcomes show the approach significantly improves the performance of abstractive summarization transformers, even with just a dozen of labeled data, achieving new state-of-the-art results on two legal datasets of different domains and contents. Finally, we report ablation studies to evaluate each contribution of the components of our method to the performance gain.
+# Conda first-time setup
 
-## Setup
-You will need to install several packages:
+1. Download miniconda [for your OS](https://www.anaconda.com/docs/getting-started/miniconda/main)
+
+2. Create a new environment:
+```cmd
+conda create -n 573-env
 ```
+3. Activate the environment to start developing! Yay!
+```cmd
+conda activate 573-env
+```
+4. Install all the required packages:
+```cmd
 pip install -r requirements.txt
 ```
 
-## Deep Metric Learning
-The first step is to perform the metric learning training:
-```
-batch = 8
-epochs = 1
-model = "nlpaueb/legal-bert-base-uncased"
-seed = 1234
-
-python metric_learning.py \
-  --batch $batch \
-  --epochs $epochs \
-  --model $model \
-  --seed $seed
+# Virtual environment usage
+1. Activate conda environment:
+```cmd
+conda activate 573-env
 ```
 
-## Semantic Self-Segmentation
-The second step is to segment the documents:
+# Baseline system
+Note that test data is directly loaded with the `datasets` library so no extra arguments are needed on the command line.
+## Patas (NVIDIA Quadro 8000)
+1. SSH into Patas
+```cmd
+ssh <UW NetID>@patas.ling.washington.edu
 ```
-checkpoint = "allenai/led-base-16384" # "facebook/bart-base" for BART
-dataset = "billsum or austlii"
-dataset_only = "" # If you have just one dataset to segment, fill this field
-min_input_len = 1024 # 512 for BART
-max_input_len = 2048 # 1024 for BART
-max_output_len = 1024 # 512 for BART
-model = "models/metric_learning_nlpaueb/legal-bert-base-uncased"
-no_save = False # True if you do not want to save results (for toy experiments)
-seed = 1234
-toy = 0 # i > 0 to process just i documents
+2. Clone repository if it does not already exist
+```cmd
+git clone git@github.com:AnanthaR20/ling573.git
+```
+3. Submit condor job
+```cmd
+condor_submit run_baseline/run_baseline.cmd
+```
+4. Wait...
+5. Find your output in `run_baseline.out`
 
-python autofocus/segmentation.py \
-  --checkpoint $checkpoint \
-  --dataset $dataset \
-  --dataset_only $dataset_only \
-  --min_input_len $min_input_len \ 
-  --max_input_len $max_input_len \
-  --max_output_len $max_output_len \
-  --model $model \
-  --no_save $no_save \
-  --seed $seed \
-  --toy $toy 
+## M1 Apple Silicon
+1. Activate virtual environment (see above)
+2. Run system from terminal
+```cmd
+python backup_run.py
 ```
+3. Wait...but hopefully not as long!
+4. In our ad-hoc backup run, output was directly printed to console and manually copied into a text file, `baseline_console.txt`. This console output can be aligned with the provided `title` column from BillSum using the `align()` function defined in `backup_run.py` and written to a CSV, `baseline_test.csv`. This CSV can be used for baseline evaluation.
 
-## Abstractive Summarization
-The last step is to perform the downstream task fine-tuning on the chunked documents:
+## Baseline evaluation
+1. Extract confidence intervals on ROUGE scores with `eval_metrics.py`
+```cmd
+cd eval
+python eval_metrics.py
 ```
-batch = 1
-batch_eval = 2
-checkpoint = "allenai/led-base-16384" # "facebook/bart-base" for BART
-dataset = "billsum or austlii"
-epochs = 5
-full = False # To use the whole documents (not chunked)
-grad_acc = 1
-max_input_len = 2048 # 1024 for BART
-max_output_len = 1024 # 512 for BART
-model = "led" # "bart" for BART
-predict = False # To just predict
-seed = 1234
-toy = 0 # i > 0 to process just i documents
+2. Extract readability scores in `eval_readability.ipynb` as we are still testing out different eval resources
+```cmd
+jupyter notebook
+```
+3. Use the provided readability scores to evaluate t-tests on each readability score
 
-python train.py \
-  --batch $batch \
-  --batch_eval $batch_eval \
-  --checkpoint $checkpoint \
-  --dataset $dataset \
-  --epochs $epochs \
-  --full $full \
-  --grad_acc $grad_acc \  
-  --max_input_len $max_input_len \
-  --max_output_len $max_output_len \
-  --model $model \
-  --predict $predict \
-  --seed $seed \
-  --toy $toy 
-```
+# ATS development
+
+After testing that a pre-existing ATS code repo behaves as expected when tested independently, we plan to mirror that repository in the `preprocess` child directory.
+
+## (WIP) Discourse Simplification
+instructions coming soon!
+## (WIP) T5: Split and Rephrase
+instructions coming soon!
+
+In our final finetuning + testing processes, we plan to use shell scripts `finetune_model.sh` and `run_model.sh` to manage the the intermediary data processing, inference, and evaluation steps. 
+
+# Improved System 
+## Data processing
+...
+## System Fine-tuning
+...
+## System Deployment
+...
+## System Evaluation
+>>>>>>> 24-mirror-se3
