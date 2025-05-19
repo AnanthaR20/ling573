@@ -22,9 +22,9 @@ def main():
     args = parser.parse_args()
 
     ds = load_dataset(args.dataset, split = ["test", "train"])
-    ds = ds.map(clean_text, batched=True)
     
     for split, dataset in ds.items():
+        dataset.map(clean_text)
         dataset.to_csv(f"data/{args.dataset}_{split}_clean.csv", index=None)
 
 if __name__ == "__main__":
