@@ -17,7 +17,7 @@ def clean_text(example):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", default="FiscalNote/billsum", help="specify HuggingFace dataset")
+    parser.add_argument("--dataset", default="billsum", help="specify HuggingFace dataset")
     parser.add_argument("--output_file",default=None,help="overrides default naming schema")
     args = parser.parse_args()
 
