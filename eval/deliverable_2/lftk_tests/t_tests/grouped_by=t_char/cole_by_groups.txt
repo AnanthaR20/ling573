@@ -1,4 +1,4 @@
---- LFTK feature=cole: Generated vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
+--- LFTK feature = cole: PegasusBillSum vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
 
 	Welch Two Sample t-test
 
@@ -11,7 +11,7 @@ sample estimates:
 mean of x mean of y 
  14.95860  15.38842 
 
---- LFTK feature=cole: Generated vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
+--- LFTK feature = cole: PegasusBillSum vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
 
 	Welch Two Sample t-test
 
@@ -24,7 +24,7 @@ sample estimates:
 mean of x mean of y 
  15.05737  15.13430 
 
---- LFTK feature=cole: Generated vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
+--- LFTK feature = cole: PegasusBillSum vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
 
 	Welch Two Sample t-test
 
@@ -37,7 +37,7 @@ sample estimates:
 mean of x mean of y 
  14.75651  15.19127 
 
---- LFTK feature=cole: Generated vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
+--- LFTK feature = cole: PegasusBillSum vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
 
 	Welch Two Sample t-test
 
@@ -50,7 +50,7 @@ sample estimates:
 mean of x mean of y 
  13.85223  15.03631 
 
---- LFTK feature=cole: Generated vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
+--- LFTK feature = cole: PegasusBillSum vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
 
 	Welch Two Sample t-test
 

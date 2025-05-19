@@ -5,6 +5,7 @@ from tqdm import tqdm
 from datasets import load_dataset
 
 # globals
+PATH_TO_MODEL_OUTPUT = "../output/deliverable_2/pegasusbillsum_baseline.csv"
 _ROUGE_METRIC = "rouge"
 
 def eval_all(gold_data: list, gen_data: list) -> None:
@@ -48,7 +49,7 @@ def get_factuality_scores(text: str) -> dict:
     return None
 
 if __name__ == "__main__":
-    data = pd.read_csv("../output/baseline_test.csv", usecols=["summary_generated"])
+    data = pd.read_csv(PATH_TO_MODEL_OUTPUT, usecols=["summary_generated"])
     gold = load_dataset("FiscalNote/billsum")["test"].to_pandas()
     temp_gold = gold.summary.tolist()
     temp_gen = data.summary_generated.tolist()

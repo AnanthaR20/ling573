@@ -1,65 +1,65 @@
---- LFTK feature=fogi: Generated vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
+--- LFTK feature = auto: PegasusBillSum vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
 
 	Welch Two Sample t-test
 
 data:  gen_subset[[feature]] and gold_subset[[feature]]
-t = -0.30061, df = 1304.4, p-value = 0.7638
+t = -0.14407, df = 1297.6, p-value = 0.8855
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -0.8663656  0.6361301
+ -0.9413028  0.8125047
 sample estimates:
 mean of x mean of y 
- 25.23537  25.35048 
+ 22.40004  22.46443 
 
---- LFTK feature=fogi: Generated vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
+--- LFTK feature = auto: PegasusBillSum vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
 
 	Welch Two Sample t-test
 
 data:  gen_subset[[feature]] and gold_subset[[feature]]
-t = 1.2316, df = 1300.4, p-value = 0.2183
+t = 1.2318, df = 1300.5, p-value = 0.2182
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -0.381562  1.668816
+ -0.4693963  2.0535309
 sample estimates:
 mean of x mean of y 
- 29.81911  29.17548 
+ 27.67159  26.87952 
 
---- LFTK feature=fogi: Generated vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
+--- LFTK feature = auto: PegasusBillSum vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
 
 	Welch Two Sample t-test
 
 data:  gen_subset[[feature]] and gold_subset[[feature]]
-t = 6.9483, df = 1214.9, p-value = 6.014e-12
+t = 7.0901, df = 1213.4, p-value = 2.27e-12
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 3.149839 5.628473
+ 4.004103 7.067860
 sample estimates:
 mean of x mean of y 
- 33.12056  28.73140 
+ 31.91253  26.37655 
 
---- LFTK feature=fogi: Generated vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
+--- LFTK feature = auto: PegasusBillSum vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
 
 	Welch Two Sample t-test
 
 data:  gen_subset[[feature]] and gold_subset[[feature]]
-t = 5.6031, df = 1111.5, p-value = 2.653e-08
+t = 5.7757, df = 1106.1, p-value = 9.952e-09
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 2.878474 5.980826
+ 3.750978 7.610784
 sample estimates:
 mean of x mean of y 
- 34.62126  30.19161 
+ 33.79771  28.11683 
 
---- LFTK feature=fogi: Generated vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
+--- LFTK feature = auto: PegasusBillSum vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
 
 	Welch Two Sample t-test
 
 data:  gen_subset[[feature]] and gold_subset[[feature]]
-t = 9.3245, df = 1126.2, p-value < 2.2e-16
+t = 9.195, df = 1125.4, p-value < 2.2e-16
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
-  6.658344 10.207193
+  8.171486 12.604854
 sample estimates:
 mean of x mean of y 
- 38.49461  30.06184 
+ 38.32632  27.93815 
 

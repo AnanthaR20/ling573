@@ -1,4 +1,4 @@
---- LFTK feature=t_word: Generated vs Gold Summaries - full data
+--- LFTK feature = t_word: PegasusBillSum vs Gold Summaries - full data
 
 	Welch Two Sample t-test
 
@@ -11,7 +11,7 @@ sample estimates:
 mean of x mean of y 
  254.2833  419.5590 
 
---- LFTK feature=t_stopword: Generated vs Gold Summaries - full data
+--- LFTK feature = t_stopword: PegasusBillSum vs Gold Summaries - full data
 
 	Welch Two Sample t-test
 
@@ -24,7 +24,7 @@ sample estimates:
 mean of x mean of y 
  93.10107 147.28790 
 
---- LFTK feature=t_punct: Generated vs Gold Summaries - full data
+--- LFTK feature = t_punct: PegasusBillSum vs Gold Summaries - full data
 
 	Welch Two Sample t-test
 
@@ -37,7 +37,7 @@ sample estimates:
 mean of x mean of y 
  31.14395  53.00306 
 
---- LFTK feature=t_syll: Generated vs Gold Summaries - full data
+--- LFTK feature = t_syll: PegasusBillSum vs Gold Summaries - full data
 
 	Welch Two Sample t-test
 
@@ -50,7 +50,7 @@ sample estimates:
 mean of x mean of y 
  393.7626  637.0658 
 
---- LFTK feature=t_syll2: Generated vs Gold Summaries - full data
+--- LFTK feature = t_syll2: PegasusBillSum vs Gold Summaries - full data
 
 	Welch Two Sample t-test
 
@@ -63,7 +63,7 @@ sample estimates:
 mean of x mean of y 
  61.55896  98.16233 
 
---- LFTK feature=t_syll3: Generated vs Gold Summaries - full data
+--- LFTK feature = t_syll3: PegasusBillSum vs Gold Summaries - full data
 
 	Welch Two Sample t-test
 
@@ -76,7 +76,7 @@ sample estimates:
 mean of x mean of y 
  24.18070  37.76876 
 
---- LFTK feature=t_uword: Generated vs Gold Summaries - full data
+--- LFTK feature = t_uword: PegasusBillSum vs Gold Summaries - full data
 
 	Welch Two Sample t-test
 
@@ -89,7 +89,7 @@ sample estimates:
 mean of x mean of y 
  115.7887  166.9188 
 
---- LFTK feature=t_sent: Generated vs Gold Summaries - full data
+--- LFTK feature = t_sent: PegasusBillSum vs Gold Summaries - full data
 
 	Welch Two Sample t-test
 
@@ -102,7 +102,7 @@ sample estimates:
 mean of x mean of y 
  4.356815  9.021440 
 
---- LFTK feature=t_char: Generated vs Gold Summaries - full data
+--- LFTK feature = t_char: PegasusBillSum vs Gold Summaries - full data
 
 	Welch Two Sample t-test
 
