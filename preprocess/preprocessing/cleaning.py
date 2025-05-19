@@ -23,4 +23,4 @@ def clean_text(text):
 
 df['cleaned_text'] = df['text'].apply(clean_text)
 
-df[['cleaned_text']].to_csv("cleaned_bills.csv", index=False)
+df[['cleaned_text', 'summary']].to_csv("cleaned_bills.csv", index=False)
