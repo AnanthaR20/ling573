@@ -18,12 +18,11 @@ def clean_text(example):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", default="FiscalNote/billsum", help="specify HuggingFace dataset")
-    parser.add_argument("--split", default=["train", "test"])
     parser.add_argument("--output_file",default=None,help="overrides default naming schema")
     args = parser.parse_args()
 
-    ds = load_dataset(args.dataset, split = args.split)
-    ds = ds.map(clean_text)
+    ds = load_dataset(args.dataset, split = ["test", "train"])
+    ds = ds.map(clean_text, batched=True)
     
     for split, dataset in ds.items():
         dataset.to_csv(f"data/{args.dataset}_{split}_clean.csv", index=None)
