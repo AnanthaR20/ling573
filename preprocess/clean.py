@@ -25,7 +25,7 @@ def main():
     
     for split, dataset in ds.items():
         dataset.map(clean_text)
-        dataset.to_csv(f"data/{args.dataset}_{split}_clean.csv", index=None)
+        dataset.to_csv(f"data/{args.dataset}_{split}_clean.csv", index=None, escapechar="\\")
 
 if __name__ == "__main__":
     main()
