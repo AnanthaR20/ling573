@@ -21,7 +21,7 @@ def main():
     parser.add_argument("--output_file",default=None,help="overrides default naming schema")
     args = parser.parse_args()
 
-    ds = load_dataset(args.dataset, split = ["test", "train"])
+    ds = load_dataset(args.dataset)
     
     for split, dataset in ds.items():
         dataset.map(clean_text)
