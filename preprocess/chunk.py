@@ -12,7 +12,7 @@ from se3.se3 import segmentation
 from datasets import Dataset
 from rouge_score import rouge_scorer
 
-regex = re.compile(r'(?<=\.)\s+')
+SPLIT_RE = re.compile(r'(?<=\.)\s+')
 sent_tokenizer = pysbd.Segmenter(language="en", clean=True)
 scorer_rouge = rouge_scorer.RougeScorer(["rouge1"], use_stemmer=True)
 
@@ -35,7 +35,9 @@ def fixed_chunk(example, size):
     chunked_text = []
     current = ""
     # Split and strip parts
-    raw_parts = re.split(regex, example["text"])
+    print(type(example["text"]))
+    text = str(example["text"])
+    raw_parts = re.split(SPLIT_RE, text)
     stripped_parts = list(map(lambda s: s.strip(), raw_parts))
     # Loop
     for part in stripped_parts:
