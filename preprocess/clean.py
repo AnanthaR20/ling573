@@ -23,7 +23,7 @@ def main():
     args = parser.parse_args()
 
     # Preload output filename
-    outname = f"data/{args.dataset}_{args.split}_clean.csv"
+    outname = f"data/{args.dataset}_clean.csv"
     if args.output_file:
         print("Overriding default naming schema...")
         outname = args.output_file
@@ -31,11 +31,12 @@ def main():
     ds = load_dataset(args.dataset)
     
     for split, dataset in ds.items():
+        curr_name = outname.split(".")[0] + f"_{split}.csv"
         # Toy experiment setting
         if args.toy:
+            curr_name = curr_name.split(".")[0] + "_toy.csv"
             dataset = dataset.select(range(args.toy))
         dataset = dataset.map(clean_text)
-        curr_name = outname.split(".")[0] + f"_{split}.csv"
         dataset[["text", "summary"]].to_csv(curr_name, index=None, escapechar="\\")
 
 if __name__ == "__main__":
