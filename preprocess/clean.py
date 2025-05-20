@@ -36,7 +36,7 @@ def main():
         if args.toy:
             curr_name = curr_name.split(".")[0] + "_toy.csv"
             dataset = dataset.select(range(args.toy))
-        dataset = dataset.map(clean_text)
+        dataset = dataset.map(clean_text, batched=True)
         df = dataset.to_pandas()
         df.to_csv(curr_name, index=None, columns=["text", "summary"], escapechar="\\")
 
