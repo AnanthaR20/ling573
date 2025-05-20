@@ -95,13 +95,13 @@ def main():
     args = parser.parse_args()
 
     # Preload output filename
-    outname = f"data/{args.dataset}_{args.split}_clean_{args.type}.csv"
+    outname = f"data/{args.dataset}_clean_{args.split}_{args.type}.csv"
     if args.output_file:
         print("Overriding default naming schema...")
         outname = args.output_file
 
     # Load CSV as pandas dataframe
-    df = pd.read_csv(f"data/{args.dataset}_{args.split}_clean.csv")
+    df = pd.read_csv(f"data/{args.dataset}_clean_{args.split}.csv")
     # Cast as Dataset to leverage faster processing
     ds = Dataset.from_pandas(df)
     # For toy experiments

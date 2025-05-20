@@ -31,12 +31,12 @@ def main():
     args = parser.parse_args()
 
     # Preload output name
-    outname = f"data/{args.dataset}_{args.split}_clean_{args.chunk_type}_simple.csv"
+    outname = f"data/{args.dataset}_clean_{args.split}_{args.chunk_type}_simple.csv"
     if args.output_file:
         print("Overriding default naming schema...")
         outname = args.output_file
     # Load CSV as pandas dataframe
-    df = pd.read_csv(f"data/{args.dataset}_{args.split}_clean_{args.chunk_type}.csv")
+    df = pd.read_csv(f"data/{args.dataset}_clean_{args.split}_{args.chunk_type}.csv")
     # Cast as Dataset to leverage faster processing
     ds = Dataset.from_pandas(df)
     # For toy experiments
