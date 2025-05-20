@@ -107,7 +107,7 @@ def main():
         ds = ds.select(range(args.toy))
 
     if args.type == "fixed":
-        ds = ds.map(
+        chunked_ds = ds.map(
             fixed_chunk, 
             batched=True, 
             fn_kwargs={
@@ -118,7 +118,7 @@ def main():
         pass # TODO: implement with segementation package (low priority)
 
     # Write to output
-    ds.to_csv(outname, index=None, escapechar="\\")
+    chunked_ds.to_csv(outname, index=None, escapechar="\\")
     return
 
 if __name__ == "__main__":
