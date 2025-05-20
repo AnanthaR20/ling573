@@ -81,7 +81,7 @@ def main():
     # Source arguments
     parser.add_argument("--dataset", default="billsum", help="specify Huggingface dataset")
     parser.add_argument("--split", default="train", help="specify dataset partition")
-    parser.add_argument("--toy", default=0, type=int, help="specify size of toy dataset to simplify")
+    parser.add_argument("--toy", default=0, type=int, help="specify size of toy dataset to chunk")
     # Chunking arguments
     parser.add_argument("--type",default="fixed",help="Method by which we chunk the input text. Options are: fixed or se3")
     parser.add_argument("--fixed_chunk_size",default=200,help="specify size of the fixed chunks (only used when --type='fixed')")
@@ -92,11 +92,11 @@ def main():
     args = parser.parse_args()
 
     # Preload output filename
-    outname = f"data/{args.dataset}_{args.split}_clean_{args.chunk_type}.csv"
+    outname = f"data/{args.dataset}_{args.split}_clean_{args.type}.csv"
     if args.output_file:
         print("Overriding default naming schema...")
         outname = args.output_file
-    
+
     # Load CSV as pandas dataframe
     df = pd.read_csv(f"data/{args.dataset}_{args.split}_clean.csv")
     # Cast as Dataset to leverage faster processing
@@ -105,7 +105,6 @@ def main():
     if args.toy:
         outname = outname.split(".")[0] + "_toy.csv"
         ds = ds.select(range(args.toy))
-    # Map into function - N rows will return N rows
 
     if args.type == "fixed":
         ds = ds.map(
