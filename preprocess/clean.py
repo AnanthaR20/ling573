@@ -22,6 +22,12 @@ def main():
     parser.add_argument("--toy", default=0, type=int, help="specify size of toy datset to clean")
     args = parser.parse_args()
 
+    # Preload output filename
+    outname = f"data/{args.dataset}_{args.split}_clean.csv"
+    if args.output_file:
+        print("Overriding default naming schema...")
+        outname = args.output_file
+
     ds = load_dataset(args.dataset)
     
     for split, dataset in ds.items():
@@ -29,9 +35,8 @@ def main():
         if args.toy:
             dataset = dataset.select(range(args.toy))
         dataset = dataset.map(clean_text)
-        if args.output_file:
-            dataset.to_csv(f"data/{args.output_file}_{split}_clean.csv", index=None, escapechar="\\")
-        dataset.to_csv(f"data/{args.dataset}_{split}_clean.csv", index=None, escapechar="\\")
+        curr_name = outname.split(".")[0] + f"_{split}.csv"
+        dataset.to_csv(curr_name, index=None, escapechar="\\")
 
 if __name__ == "__main__":
     main()

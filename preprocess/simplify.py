@@ -30,12 +30,18 @@ def main():
     parser.add_argument("--output_file",default=None,help="overrides default output naming schema")
     args = parser.parse_args()
 
+    # Preload output name
+    outname = f"data/{args.dataset}_{args.split}_clean_{args.chunk_type}_simple.csv"
+    if args.output_file:
+        print("Overriding default naming schema...")
+        outname = args.output_file
     # Load CSV as pandas dataframe
     df = pd.read_csv(f"data/{args.dataset}_{args.split}_clean_{args.chunk_type}.csv")
     # Cast as Dataset to leverage faster processing
     ds = Dataset.from_pandas(df)
     # For toy experiments
     if args.toy:
+        outname = outname.split(".")[0] + "_toy.csv"
         ds = ds.select(range(args.toy))
     # Map into function - N rows will return N rows
     ds = ds.map(
@@ -47,9 +53,7 @@ def main():
         }
     )
     # Write to output
-    if args.output_file:
-        ds.to_csv(args.output_file, index=None, escapechar="\\")
-    ds.to_csv(f"data/{args.dataset}_{args.split}_clean_{args.chunk_type}_simple.csv", index=None, escapechar="\\")
+    ds.to_csv(outname, index=None, escapechar="\\")
     return
 
 if __name__ == "__main__":
