@@ -37,7 +37,7 @@ def main():
             curr_name = curr_name.split(".")[0] + "_toy.csv"
             dataset = dataset.select(range(args.toy))
         dataset = dataset.map(clean_text)
-        dataset[["text", "summary"]].to_csv(curr_name, index=None, escapechar="\\")
+        dataset[:, ["text", "summary"]].to_csv(curr_name, index=None, escapechar="\\")
 
 if __name__ == "__main__":
     main()
