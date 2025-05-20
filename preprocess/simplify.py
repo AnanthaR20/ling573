@@ -26,6 +26,7 @@ def main():
     parser.add_argument("--chunk_type", default="fixed_200", help="specify chunking strategy")
     parser.add_argument("--max_input_len", default=256, help="specify max input length in tokens")
     parser.add_argument("--max_output_len", default=256, help="specify max output length in tokens")
+    parser.add_argument("--toy", default=0, type=int, help="specify size of toy dataset to simplify")
     parser.add_argument("--output_file",default=None,help="overrides default output naming schema")
     args = parser.parse_args()
 
@@ -33,6 +34,9 @@ def main():
     df = pd.read_csv(f"data/{args.dataset}_{args.split}_clean_{args.chunk_type}.csv")
     # Cast as Dataset to leverage faster processing
     ds = Dataset.from_pandas(df)
+    # For toy experiments
+    if args.toy:
+        ds = ds.select(range(args.toy))
     # Map into function - N rows will return N rows
     ds = ds.map(
         simplify_bill, 

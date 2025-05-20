@@ -19,11 +19,15 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", default="billsum", help="specify HuggingFace dataset")
     parser.add_argument("--output_file",default=None,help="overrides default naming schema")
+    parser.add_argument("--toy", default=0, type=int, help="specify size of toy datset to clean")
     args = parser.parse_args()
 
     ds = load_dataset(args.dataset)
     
     for split, dataset in ds.items():
+        # Toy experiment setting
+        if args.toy:
+            dataset = dataset.select(range(args.toy))
         dataset = dataset.map(clean_text)
         if args.output_file:
             dataset.to_csv(f"data/{args.output_file}_{split}_clean.csv", index=None, escapechar="\\")
