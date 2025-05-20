@@ -55,7 +55,7 @@ def main():
     ds = ds.map(
         simplify_bill, 
         batched=True, 
-        batch_size=10,
+        batch_size=2,
         fn_kwargs={
             "max_input_len": args.max_input_len,
             "max_output_len": args.max_output_len
