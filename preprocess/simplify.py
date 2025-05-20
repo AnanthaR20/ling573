@@ -5,7 +5,7 @@ from datasets import Dataset
 import argparse
 
 checkpoint = "unikei/t5-base-split-and-rephrase"
-tokenizer = T5Tokenizer.from_pretrained(checkpoint)
+tokenizer = T5Tokenizer.from_pretrained(checkpoint, legacy=False)
 model = T5ForConditionalGeneration.from_pretrained(checkpoint)
 
 def simplify_bill(example, max_input_len, max_output_len):
@@ -55,6 +55,7 @@ def main():
     ds = ds.map(
         simplify_bill, 
         batched=True, 
+        batch_size=10,
         fn_kwargs={
             "max_input_len": args.max_input_len,
             "max_output_len": args.max_output_len
