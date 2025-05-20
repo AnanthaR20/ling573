@@ -24,7 +24,9 @@ def main():
     ds = load_dataset(args.dataset)
     
     for split, dataset in ds.items():
-        dataset.map(clean_text)
+        dataset = dataset.map(clean_text)
+        if args.output_file:
+            dataset.to_csv(f"data/{args.output_file}_{split}_clean.csv", index=None, escapechar="\\")
         dataset.to_csv(f"data/{args.dataset}_{split}_clean.csv", index=None, escapechar="\\")
 
 if __name__ == "__main__":
