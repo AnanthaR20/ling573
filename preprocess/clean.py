@@ -36,7 +36,7 @@ def main():
             dataset = dataset.select(range(args.toy))
         dataset = dataset.map(clean_text)
         curr_name = outname.split(".")[0] + f"_{split}.csv"
-        dataset.to_csv(curr_name, index=None, escapechar="\\")
+        dataset[["text", "summary"]].to_csv(curr_name, index=None, escapechar="\\")
 
 if __name__ == "__main__":
     main()
