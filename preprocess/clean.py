@@ -38,7 +38,7 @@ def main():
             dataset = dataset.select(range(args.toy))
         dataset = dataset.map(clean_text)
         df = dataset.to_pandas()
-        df.to_csv(curr_name, index=None, usecols=["text", "summary"], escapechar="\\")
+        df.to_csv(curr_name, index=None, columns=["text", "summary"], escapechar="\\")
 
 if __name__ == "__main__":
     main()
