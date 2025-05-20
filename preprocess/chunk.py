@@ -37,6 +37,7 @@ def fixed_chunk(example, size):
     # Split and strip parts
     print(type(example["text"]))
     text = str(example["text"])
+    full_summary = str(example["summary"])
     raw_parts = re.split(SPLIT_RE, text)
     stripped_parts = list(map(lambda s: s.strip(), raw_parts))
     # Loop
@@ -67,7 +68,7 @@ def fixed_chunk(example, size):
         chunked_text.append(current.strip())
     
     # Assign targets to chunks
-    chunked_summary = fixed_target(chunked_text, example["summary"])
+    chunked_summary = fixed_target(chunked_text, full_summary)
     example["text"] = chunked_text
     example["summary"] = chunked_summary
     return example
