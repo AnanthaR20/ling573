@@ -27,6 +27,7 @@ def main():
     parser.add_argument("--max_input_len", default=256, help="specify max input length in tokens")
     parser.add_argument("--max_output_len", default=256, help="specify max output length in tokens")
     parser.add_argument("--toy", default=0, type=int, help="specify size of toy dataset to simplify")
+    parser.add_argument("--from_toy", default=False, action="store_true", help="use toy chunked dataset")
     parser.add_argument("--output_file",default=None,help="overrides default output naming schema")
     args = parser.parse_args()
 
@@ -35,14 +36,21 @@ def main():
     if args.output_file:
         print("Overriding default naming schema...")
         outname = args.output_file
-    # Load CSV as pandas dataframe
-    df = pd.read_csv(f"data/{args.dataset}_clean_{args.split}_{args.chunk_type}.csv")
-    # Cast as Dataset to leverage faster processing
-    ds = Dataset.from_pandas(df)
+    
     # For toy experiments
     if args.toy:
         outname = outname.split(".")[0] + "_toy.csv"
         ds = ds.select(range(args.toy))
+
+    # Load CSV as pandas dataframe
+    sourcename = f"data/{args.dataset}_clean_{args.split}_{args.chunk_type}.csv"
+    if args.from_toy:
+        sourcename = sourcename.split(".")[0] + "_toy.csv"
+    df = pd.read_csv(sourcename)
+    
+    # Cast as Dataset to leverage faster processing
+    ds = Dataset.from_pandas(df)
+    
     # Map into function - N rows will return N rows
     ds = ds.map(
         simplify_bill, 
