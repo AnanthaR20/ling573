@@ -23,7 +23,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", default="billsum", help="specify Huggingface dataset")
     parser.add_argument("--split", default="train", help="specify dataset partition")
-    parser.add_argument("--chunk_type", default="fixed_200", help="specify chunking strategy")
+    parser.add_argument("--chunk_type", default="fixed", help="specify chunking strategy")
     parser.add_argument("--max_input_len", default=256, help="specify max input length in tokens")
     parser.add_argument("--max_output_len", default=256, help="specify max output length in tokens")
     parser.add_argument("--toy", default=0, type=int, help="specify size of toy dataset to simplify")
