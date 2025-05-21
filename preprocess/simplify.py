@@ -71,6 +71,8 @@ def main():
     # Map into function - N rows will return N rows
     ds = ds.map(
         simplify_bill, 
+        batched=True,
+        batch_size=5,
         with_indices=True,
         fn_kwargs={
             "max_input_len": args.max_input_len,
