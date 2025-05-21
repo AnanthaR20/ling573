@@ -112,7 +112,6 @@ def main():
     if args.type == "fixed":
         chunked_ds = ds.map(
             fixed_chunk, 
-            batched=True, 
             fn_kwargs={
                 "size": args.fixed_chunk_size,
             }
