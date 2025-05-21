@@ -8,15 +8,32 @@ checkpoint = "unikei/t5-base-split-and-rephrase"
 tokenizer = T5Tokenizer.from_pretrained(checkpoint, legacy=False)
 model = T5ForConditionalGeneration.from_pretrained(checkpoint)
 
-def simplify_bill(example, max_input_len, max_output_len):
-    # Tokenize input
-    tokens = tokenizer(example["text"], padding="max_length", truncation=True, max_length=max_input_len, return_tensors='pt')
-    # Generate output tokens with suggested params
-    output_ids = model.generate(tokens['input_ids'], attention_mask=tokens['attention_mask'], max_length=max_output_len, num_beams=5)
-    # Decode the result
-    decoded = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
-    # Overwrite the original text column with decoded simple text
-    example["text"] = decoded
+def simplify_bill(example, idx, max_input_len, max_output_len):
+    try: 
+        # Tokenize input
+        tokens = tokenizer(
+            example["text"], 
+            padding="max_length", 
+            truncation=True, 
+            max_length=max_input_len, 
+            return_tensors='pt'
+        )
+        # Generate output tokens with suggested params
+        output_ids = model.generate(
+            tokens['input_ids'], 
+            attention_mask=tokens['attention_mask'], 
+            max_length=max_output_len, 
+            num_beams=5
+        )
+        # 
+        # Decode the result
+        decoded = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
+        # Overwrite the original text column with decoded simple text
+        example["text"] = decoded
+    except IndexError:
+        print(f"IndexError at index {idx}")
+        print("First 100 characters so you can look into it manually")
+        print(example["text"][0:100])
     return example
 
 def main():
@@ -54,6 +71,7 @@ def main():
     # Map into function - N rows will return N rows
     ds = ds.map(
         simplify_bill, 
+        with_indices=True,
         fn_kwargs={
             "max_input_len": args.max_input_len,
             "max_output_len": args.max_output_len
