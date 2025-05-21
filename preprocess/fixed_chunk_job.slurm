@@ -10,4 +10,4 @@
 #SBATCH -o log/%x_%j.out
 
 # command:
-apptainer exec --cleanenv --bind /gscratch ../../project.sif \ source /opt/conda/etc/profile.d/conda.sh && conda activate 573-env && python chunk.py
+apptainer exec --cleanenv --bind /gscratch ../../project.sif /gscratch/scrubbed/jcmw614/envs/573-env/bin/python chunk.py
