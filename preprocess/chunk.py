@@ -4,11 +4,14 @@ Script for fixed or semantic (se3-based) chunking of the billsum training data
 I'm working on getting this script to accept a file as an input rather than a string
 The code from this is being pieced together from preprocessing/simplify.py and se3/se3/segmentation.py
 """
+# Add hyak path
+import sys
+sys.path.insert(0,"/gscratch/scrubbed/jcmw614/ling573/preprocess/se3")
 import argparse
 import pandas as pd
 import re
 import pysbd
-from se3.se3 import segmentation 
+from se3 import segmentation 
 from datasets import Dataset
 from rouge_score import rouge_scorer
 
