@@ -77,12 +77,12 @@ def main():
         print("Running toy experiment")
         outname = outname.split(".")[0] + "_toy.csv"
         ds = ds.select(range(args.toy))
-        
+
     # Map into function - N rows will return N rows
     ds = ds.map(
         simplify_bill, 
         batched=True,
-        batch_size=10,
+        batch_size=25,
         with_indices=True,
         fn_kwargs={
             "max_input_len": args.max_input_len,
