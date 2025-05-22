@@ -54,12 +54,6 @@ def main():
     if args.output_file:
         print("Overriding default naming schema...")
         outname = args.output_file
-    
-    # For toy experiments
-    if args.toy:
-        print("Running toy experiment")
-        outname = outname.split(".")[0] + "_toy.csv"
-        ds = ds.select(range(args.toy))
 
     # Determine source name by arguments
     sourcename = f"data/{args.dataset}_clean_{args.split}_{args.chunk_type}.csv"
@@ -78,6 +72,12 @@ def main():
     # Cast as Dataset to leverage faster processing
     ds = Dataset.from_pandas(df)
     
+    # For toy experiments
+    if args.toy:
+        print("Running toy experiment")
+        outname = outname.split(".")[0] + "_toy.csv"
+        ds = ds.select(range(args.toy))
+        
     # Map into function - N rows will return N rows
     ds = ds.map(
         simplify_bill, 

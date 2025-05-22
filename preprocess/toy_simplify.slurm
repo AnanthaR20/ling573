@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=simplify_job
+#SBATCH --job-name=toy_simplify_job
 #SBATCH --partition=ckpt
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=a40:1
@@ -11,4 +11,4 @@
 #SBATCH --error=error/%j_%x.error
 
 # command:
-apptainer exec --cleanenv --bind /gscratch ../../project.sif /gscratch/scrubbed/jcmw614/envs/573-env/bin/python simplify.py --split test --chunk_type se3 --checkpoint t5
+apptainer exec --cleanenv --bind /gscratch ../../project.sif /gscratch/scrubbed/jcmw614/envs/573-env/bin/python simplify.py --split test --toy 1 --chunk_type se3 --checkpoint t5
