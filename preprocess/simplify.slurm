@@ -5,7 +5,7 @@
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=a40:1
 #SBATCH --ntasks-per-node=1
-#SBATCH --mem=10G
+#SBATCH --mem=15G
 #SBATCH --time=12:00:00
 #SBATCH -o log/%j_%x.out
 #SBATCH --error=error/%j_%x.error
