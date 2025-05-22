@@ -69,8 +69,8 @@ def fixed_chunk(example, size):
     
     # Assign targets to chunks
     chunked_summary = fixed_target(chunked_text, full_summary)
-    example["text"] = chunked_text
-    example["summary"] = chunked_summary
+    example["text_chunks"] = chunked_text
+    example["summary_chunks"] = chunked_summary
     return example
 
 
@@ -110,17 +110,24 @@ def main():
         ds = ds.select(range(args.toy))
 
     if args.type == "fixed":
+        # Create a stack of chunked text and summary rows from the original
+        # Enable batching and remove old columns to maintain proper data shape
         chunked_ds = ds.map(
             fixed_chunk, 
+            batched=True,
+            batch_size=5,
+            remove_columns=ds.column_names,
             fn_kwargs={
                 "size": args.fixed_chunk_size,
             }
         )
+        # Rename chunked columns by mapping new nones and removing old named columns
+        ds_final = chunked_ds.map(lambda example: {"text": example["text_chunks"], "summary": example["summary_chunks"]}, remove_columns=["text_chunks", "summary_chunks"])
     elif args.type == "se3":
         pass # TODO: implement with segementation package (low priority)
 
     # Write to output
-    chunked_ds.to_csv(outname, index=None, escapechar="\\")
+    ds_final.to_csv(outname, index=None, escapechar="\\")
     return
 
 if __name__ == "__main__":
