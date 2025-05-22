@@ -10,4 +10,4 @@
 #SBATCH -o log/%x_%j.out
 
 # command:
-apptainer exec --cleanenv --bind /gscratch ../../project.sif /gscratch/scrubbed/jcmw614/envs/573-env/bin/python chunk.py --split test
+apptainer exec --cleanenv --bind /gscratch ../../project.sif /gscratch/scrubbed/jcmw614/envs/573-env/bin/python chunk.py --split test --type fixed
