@@ -33,7 +33,7 @@ def fixed_target(chunks, summary):
             targets[indices[0]] += " " + sent
     return targets
 
-def fixed_chunk(example, size):
+def fixed_chunk(example, idx, size):
     # Store variables
     chunked_text = []
     current = ""
@@ -74,6 +74,7 @@ def fixed_chunk(example, size):
     chunked_summary = fixed_target(chunked_text, full_summary)
     example["text_chunks"] = chunked_text
     example["summary_chunks"] = chunked_summary
+    example["text_id"] = [idx] * len(chunked_text)
     return example
 
 
@@ -119,6 +120,7 @@ def main():
             fixed_chunk, 
             batched=True,
             batch_size=5,
+            with_indices=True,
             remove_columns=ds.column_names,
             fn_kwargs={
                 "size": args.fixed_chunk_size,
