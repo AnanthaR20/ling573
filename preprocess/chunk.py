@@ -11,7 +11,7 @@ import argparse
 import pandas as pd
 import re
 import pysbd
-from se3 import segmentation 
+from se3.se3 import segmentation 
 from datasets import Dataset
 from rouge_score import rouge_scorer
 
