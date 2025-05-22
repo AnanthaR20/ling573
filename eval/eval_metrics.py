@@ -4,6 +4,20 @@ import pandas as pd
 from tqdm import tqdm
 from datasets import load_dataset
 
+
+# def eval_for_jessica(
+#   gen:str,
+#   gold:str,
+#   include_rouge: True,
+#   include_read_formula: True,
+#   include_word_sent: True,
+#   include_AOA: False
+# ) -> dict[str,float]
+# rouge1,rouge2,rougeL,rougeLsum
+# fkre,fkgl,fogi,auto
+# wordsent family
+# don't include t_kup,t_bry,t_subtlex but re-add-able later
+
 # globals
 PATH_TO_MODEL_OUTPUT = "../output/deliverable_2/pegasusbillsum_baseline.csv"
 _ROUGE_METRIC = "rouge"
