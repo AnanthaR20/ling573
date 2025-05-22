@@ -33,7 +33,7 @@ def simplify_bill(example, idx, max_input_len, max_output_len):
     except IndexError:
         print(f"IndexError at index {idx}")
         print("First 100 characters so you can look into it manually")
-        print(example["text"][0:100])
+        print(example["text"][:100])
     return example
 
 def main():
@@ -41,8 +41,9 @@ def main():
     parser.add_argument("--dataset", default="billsum", help="specify Huggingface dataset")
     parser.add_argument("--split", default="train", help="specify dataset partition")
     parser.add_argument("--chunk_type", default="fixed", help="specify chunking strategy")
-    parser.add_argument("--max_input_len", default=256, help="specify max input length in tokens")
-    parser.add_argument("--max_output_len", default=256, help="specify max output length in tokens")
+    parser.add_argument("--checkpoint", default=None, help="specify checkpoint for se3 chunking strategy")
+    parser.add_argument("--max_input_len", default=512, help="specify max input length in tokens")
+    parser.add_argument("--max_output_len", default=512, help="specify max output length in tokens")
     parser.add_argument("--toy", default=0, type=int, help="specify size of toy dataset to simplify")
     parser.add_argument("--from_toy", default=False, action="store_true", help="use toy chunked dataset")
     parser.add_argument("--output_file",default=None,help="overrides default output naming schema")
@@ -56,13 +57,22 @@ def main():
     
     # For toy experiments
     if args.toy:
+        print("Running toy experiment")
         outname = outname.split(".")[0] + "_toy.csv"
         ds = ds.select(range(args.toy))
 
-    # Load CSV as pandas dataframe
+    # Determine source name by arguments
     sourcename = f"data/{args.dataset}_clean_{args.split}_{args.chunk_type}.csv"
+    
+    # Specify checkpoint if this is an se3 chunked file
+    if args.chunk_type == "se3" and args.checkpoint != None:
+        sourcename = sourcename.split(".")[0] + f"-{args.checkpoint}-{args.max_input_len}-{args.max_output_len}.csv"
+        print("Loading se3 chunked data")
+    # Check for toy file if relevant
     if args.from_toy:
+        print("Loading toy file")
         sourcename = sourcename.split(".")[0] + "_toy.csv"
+    # Load CSV as pandas dataframe
     df = pd.read_csv(sourcename)
     
     # Cast as Dataset to leverage faster processing
@@ -72,7 +82,7 @@ def main():
     ds = ds.map(
         simplify_bill, 
         batched=True,
-        batch_size=5,
+        batch_size=10,
         with_indices=True,
         fn_kwargs={
             "max_input_len": args.max_input_len,
