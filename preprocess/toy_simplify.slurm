@@ -9,6 +9,9 @@
 #SBATCH --time=12:00:00
 #SBATCH -o log/%j_%x.out
 #SBATCH --error=error/%j_%x.error
+#SBATCH --mail-user=$USER@uw.edu
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL
 
 # command:
 apptainer exec --cleanenv --bind /gscratch ../../project.sif /gscratch/scrubbed/jcmw614/envs/573-env/bin/python simplify.py --split test --toy 1 --chunk_type se3 --checkpoint t5
