@@ -84,7 +84,7 @@ EOF
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=a40:1
 #SBATCH --ntasks-per-node=1
-#SBATCH --mem=15G
+#SBATCH --mem=4G
 #SBATCH --time=12:00:00
 #SBATCH --mail-user=$USER@uw.edu
 #SBATCH --mail-type=END
