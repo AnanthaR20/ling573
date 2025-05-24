@@ -19,11 +19,12 @@ def reconstruct(preds, data_index):
     rows_seen = 0
 
     for i in data_index: 
+        chunk_count = int(i)
         summary = ""
-        for j in range(i):
+        for j in range(chunk_count):
             summary += preds["prediction"][rows_seen + j].strip()
         final_summaries.append(summary)
-        rows_seen += i # update the number of rows seen
+        rows_seen += chunk_count # update the number of rows seen
     return final_summaries
 
 def create_prediction(max_input_len, max_output_len, tokenizer, model):
@@ -56,6 +57,7 @@ if __name__ == "__main__":
     # parser.add_argument("--fulltext", default=False, action="store_true", help="To not use the chunking")
     parser.add_argument("--concat", default="pre", help="Specify when to concatenate chunks")
     parser.add_argument("--mode", default="predict", help="To specify prediction or pipeline mode")
+    parser.add_argument("--batch_size", default=2, help="Batch size for generating predictions")
     parser.add_argument("--device", default="cuda", help="The device to use") # TODO: how to add to config file?
     # parser.add_argument("--max_input_len", type=int, default=2048, help="The input max size")
     # parser.add_argument("--max_output_len", type=int, default=512, help="The output max size")    
@@ -77,7 +79,7 @@ if __name__ == "__main__":
         os.makedirs("predictions/", exist_ok=True)
 
     # TEMPORARY: load gold set
-    gold = load_dataset("billsum", split="test").to_pandas()
+    gold = load_dataset("billsum", split="test").to_pandas()["summary"].tolist()
 
     # Generate dataset name from the test file path
     dataset_file = os.path.basename(args.testfile)
@@ -91,7 +93,7 @@ if __name__ == "__main__":
     chunk_strategy = data_attr[-1].split("-")
     # max_input_len, max_output_len = (int(chunk_strategy[1]), int(chunk_strategy[2]))
     max_input_len, max_output_len = (512, 512)
-    
+
     # Configure model and tokenizer
     model = AutoModelForSeq2SeqLM.from_pretrained(args.checkpoint).to(device)
     model.config.num_beams = 2
@@ -147,7 +149,7 @@ if __name__ == "__main__":
                 predictions = reconstruct(result["prediction"], test_index["idx"].tolist())
 
             # Evaluate metrics
-            pred_scores = [eval_all(p) for p in predictions]
+            pred_scores = [eval_all(g, p) for g, p in zip(gold, predictions)]
             final = pd.DataFrame(pred_scores)
 
             # Add predictions back on
