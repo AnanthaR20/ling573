@@ -128,20 +128,22 @@ if __name__ == "__main__":
             print("\nRead predictions already saved...\n")
             sys.exit()
         else:
-            if args.concat == "pre": 
-                pass                
             # Convert the datasets in Huggingface's Datasets format.
             test_dataset = Dataset.from_pandas(test_dataset)
             # Run model predictions
             predict_func = create_prediction(max_input_len, max_output_len, word_tok, model)
-            result = test_dataset.map(
-                predict_func,
-                batched=True,
-                batch_size=32 # TODO: make this configurable with config
-            )
 
-            # Reconstruct original lengths
-            predictions = reconstruct(result["prediction"], test_index["idx"].tolist())
+            if args.concat == "pre": 
+                pass # TODO: implement pre concatenation
+            else:               
+                result = test_dataset.map(
+                    predict_func,
+                    batched=True,
+                    batch_size=32 # TODO: make this configurable with config
+                )
+
+                # Reconstruct original lengths
+                predictions = reconstruct(result["prediction"], test_index["idx"].tolist())
 
             # Evaluate metrics
             pred_scores = [eval_all(p) for p in predictions]
