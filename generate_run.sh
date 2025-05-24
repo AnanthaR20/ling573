@@ -44,12 +44,14 @@ fi
 case "$PLATFORM" in
     patas)
         echo "Preparing to run on Patas..."
+        # spacy model download
+        /home2/jcmw614/miniconda3/envs/573-env/bin/python -m spacy download en_core_web_sm
         # Generate Condor .cmd file
         output_file="run_model.cmd"
         
         cat > "$output_file" <<EOF
 executable = run_model.sh
-arguments = --checkpoint "$CHECKPOINT" --mode "$MODE" --testfile $TESTFILE  --concat $CONCAT
+arguments = --checkpoint "$CHECKPOINT" --mode "$MODE" --testfile $TESTFILE  --concat "$CONCAT" 
 output = run_model.\$(Cluster).out
 error = run_model.\$(Cluster).err
 log = run_model.\$(Cluster).log
@@ -65,6 +67,8 @@ EOF
         
     hyak)
         echo "Preparing to run on Hyak..."
+        # spacy model download
+        /gscratch/scrubbed/jcmw614/envs/573-env/bin/python -m spacy download en_core_web_sm
         # Generate Slurm .sbatch file
         output_file="run_model.slurm"
         
@@ -84,7 +88,7 @@ EOF
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
 
-apptainer exec --cleanenv --bind /gscratch /gscratch/scrubbed/jcmw614/project.sif /gscratch/scrubbed/jcmw614/envs/573-env/bin/python run_model.py --checkpoint "$CHECKPOINT" --mode "$MODE" --testfile $TESTFILE --concat $CONCAT
+apptainer exec --cleanenv --bind /gscratch /gscratch/scrubbed/jcmw614/project.sif /gscratch/scrubbed/jcmw614/envs/573-env/bin/python run_model.py --checkpoint "$CHECKPOINT" --mode "$MODE" --testfile "$TESTFILE" --concat "$CONCAT"
 EOF
         
         echo "Generated Slurm submit file: $output_file"
