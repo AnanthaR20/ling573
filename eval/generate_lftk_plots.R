@@ -3,10 +3,16 @@
 MODEL_NAME <- "PegasusBillSum" # The name of the Model whose output is being evaluated
 MODEL_OUTPUT_PATH <- "deliverable_2/pegasusbillsum_baseline_lftk.csv" # place to look for model output csv
 GOLD_PATH <- "gold_lftk.csv" # place to look for gold data csv
-ANALYSIS_PATH <- "deliverable_2/" # place to write the plots and tests to. must end with a "/"
-# -------------------------------------------------------------------------------------------------------- #
-# -------------------------------------------------------------------------------------------------------- #
-# -------------------------------------------------------------------------------------------------------- #
+ANALYSIS_PATH <- "deliverable_3/" # place to write the plots and tests to. Must end with a "/"
+# ----------------------------------------------------------------------- #
+# Do not change these variables. These represent suffixes we expect to read in from csv headers
+GOLD_SUFFIX <- ".GOLD"
+GEN_SUFFIX <- ".GEN"
+# ----------------------------------------------------------------------- #
+# ----------------------------------------------------------------------- #
+# ------------------------- (0) Setup Variables ------------------------- #
+# ----------------------------------------------------------------------- #
+# ----------------------------------------------------------------------- #
 library(tidyr)
 library(ggplot2)
 library(stringr)
@@ -17,6 +23,10 @@ library(dplyr)
 lftk <- list()
 lftk[["gold"]] <- read.csv(GOLD_PATH)
 lftk[['gen']] <- read.csv(MODEL_OUTPUT_PATH)
+
+# Set column names properly for processing
+colnames(lftk$gold) <- str_replace(colnames(lftk$gold),GOLD_SUFFIX,"")
+colnames(lftk$gen) <- str_replace(colnames(lftk$gen),GEN_SUFFIX,"")
 
 # Refers to LFTK family of metrics. See README
 family <- list()
@@ -47,12 +57,6 @@ family$worddiff <- c(
 family$entity <- c(
   "t_n_ent_law"
 )
-
-# ----------------------------------------------------------------------- #
-# ----------------------------------------------------------------------- #
-# ---------- Everything Above is Setup. Below Generates Analysis -------- #
-# ----------------------------------------------------------------------- #
-# ----------------------------------------------------------------------- #
 
 # ------------------------------------------------------------ #
 # -------------------- (1) Generate plots -------------------- #
