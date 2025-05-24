@@ -50,9 +50,9 @@ case "$PLATFORM" in
         cat > "$output_file" <<EOF
 executable = run_model.sh
 arguments = --checkpoint "$CHECKPOINT" --mode "$MODE" --testfile $TESTFILE  --concat $CONCAT
-output = run_model.out
-error = run_model.err
-log = run_model.log
+output = run_model.\$(Cluster).out
+error = run_model.\$(Cluster).err
+log = run_model.\$(Cluster).log
 request_gpus = 1
 request_memory = 4GB
 queue
@@ -71,17 +71,15 @@ EOF
         cat > "$output_file" <<EOF
 #!/bin/bash
 #SBATCH --job-name=run_model
-#SBATCH --output=out/run_model.out
-#SBATCH --error=error/run_model.err
-#SBATCH --log=log/run_model.log
+#SBATCH --output=out/%x/%j.out
+#SBATCH --error=error/%x/%j.err
+#SBATCH --log=log/%x/%j.log
 #SBATCH --partition=ckpt
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=a40:1
 #SBATCH --ntasks-per-node=1
 #SBATCH --mem=15G
 #SBATCH --time=12:00:00
-#SBATCH -o log/%j_%x.out
-#SBATCH --error=error/%j_%x.error
 #SBATCH --mail-user=$USER@uw.edu
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
