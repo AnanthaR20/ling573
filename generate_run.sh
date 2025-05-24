@@ -40,13 +40,6 @@ else
     echo "Running end-to-end system"
 fi
 
-# Log full text parameter
-if [ $FULLTEXT = true ] ; then
-    echo "Model $CHECKPOINT to expect full documents for summary prediction"
-else
-    echo "Model $CHECKPOINT to expect document chunks for summary prediction"
-fi
-
 # Generate files based on PLATFORM
 case "$PLATFORM" in
     patas)
@@ -56,7 +49,7 @@ case "$PLATFORM" in
         
         cat > "$output_file" <<EOF
 executable = run_model.sh
-arguments = --checkpoint "$CHECKPOINT" --mode "$MODE" --testfile $TESTFILE $( [ "$fulltext" = "true" ] && echo "--fulltext" )
+arguments = --checkpoint "$CHECKPOINT" --mode "$MODE" --testfile $TESTFILE  --concat $CONCAT
 output = run_model.out
 error = run_model.err
 log = run_model.log
@@ -93,7 +86,7 @@ EOF
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
 
-apptainer exec --cleanenv --bind /gscratch /gscratch/scrubbed/jcmw614/project.sif /gscratch/scrubbed/jcmw614/envs/573-env/bin/python run_model.py --checkpoint "$CHECKPOINT" --mode "$MODE" --testfile $TESTFILE $( [ "$fulltext" = "true" ] && echo "--fulltext" )
+apptainer exec --cleanenv --bind /gscratch /gscratch/scrubbed/jcmw614/project.sif /gscratch/scrubbed/jcmw614/envs/573-env/bin/python run_model.py --checkpoint "$CHECKPOINT" --mode "$MODE" --testfile $TESTFILE --concat $CONCAT
 EOF
         
         echo "Generated Slurm submit file: $output_file"
