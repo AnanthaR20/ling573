@@ -1,9 +1,9 @@
 # File for generating model analysis plots for ling 573 project
 # File Arguments:
-MODEL_NAME <- "LED" # The name of the Model whose output is being evaluated
-MODEL_OUTPUT_PATH <- "../output/deliverable_3/led_billsum_clean_test_se3_simple_toy.csv" # place to look for model output csv
+MODEL_NAME <- "PegasusBillSum" # The name of the Model whose output is being evaluated
+MODEL_OUTPUT_PATH <- "../output/deliverable_3/pegasusbillsum_clean_se3_t5_simple_toy.csv" # place to look for model output csv
 GOLD_PATH <- "gold_lftk.csv" # place to look for gold data csv
-ANALYSIS_PATH <- "deliverable_3/led_billsum_clean_test_se3_simple_toy/" # place to write the plots and tests to. Must end with a "/"
+ANALYSIS_PATH <- "deliverable_3/pegasusbillsum_clean_se3_t5_simple_toy/" # place to write the plots and tests to. Must end with a "/"
 HISTOGRAM_BINS <- 10
 # ----------------------------------------------------------------------- #
 # Do not change these variables. These represent suffixes we expect to read in from csv headers
@@ -18,6 +18,7 @@ library(tidyr)
 library(ggplot2)
 library(stringr)
 library(dplyr)
+library(pastecs)
 
 # LFTK readability and other metrics of gold and generated summaries on test partition
 # These two CSVs must have to same columns
@@ -154,6 +155,17 @@ for(feature in family$readformula){
     append = T
   )
 }
+
+
+# Get model summary
+result <- capture.output(lftk$gen %>% stat.desc())
+
+write(
+  c(str_c("--- Model: ",MODEL_NAME," ---"), result),
+  file = str_c(ANALYSIS_PATH,"lftk_tests/t_tests/",MODEL_NAME,"_output_stats.txt"),
+  append = T
+)
+
 
 
 # ----------------------------------------------------------------------- #
