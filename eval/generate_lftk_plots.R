@@ -1,7 +1,7 @@
 # File for generating model analysis plots for ling 573 project
 # File Arguments:
-MODEL_NAME <- "PegasusBillSum" # The name of the Model whose output is being evaluated
-MODEL_OUTPUT_PATH <- "deliverable_2/pegasusbillsum_baseline_lftk.csv" # place to look for model output csv
+MODEL_NAME <- "PegasusBillSum_with_se3_t5_toy" # The name of the Model whose output is being evaluated
+MODEL_OUTPUT_PATH <- "../output/deliverable_3/pegasusbillsum_clean_se3_t5_simple_toy.csv" # place to look for model output csv
 GOLD_PATH <- "gold_lftk.csv" # place to look for gold data csv
 ANALYSIS_PATH <- "deliverable_3/" # place to write the plots and tests to. Must end with a "/"
 # ----------------------------------------------------------------------- #
@@ -64,7 +64,7 @@ family$entity <- c(
 # -------------------- (1) Generate plots -------------------- #
 # ------------------------------------------------------------ #
 
-for (feature in colnames(lftk$gold)) {
+for (feature in colnames(lftk$gen)) {
   for(fam in names(family)){
     if(!(feature %in% family[[fam]])){
       next
@@ -128,7 +128,8 @@ for(feature in family$readformula){
 # Get wordsent t tests
 for(feature in family$wordsent){
   
-  result <- capture.output(t.test(gen_subset[[feature]],gold_subset[[feature]]))
+  # result <- capture.output(t.test(gen_subset[[feature]],gold_subset[[feature]]))
+  result <- capture.output(t.test(lftk$gen[[feature]],lftk$gold[[feature]]))
   
   # write to file
   write(
@@ -136,7 +137,20 @@ for(feature in family$wordsent){
     file = str_c(ANALYSIS_PATH,"lftk_tests/t_tests/wordsent_gen_vs_gold.txt"),
     append = T
   )
+}
+
+# Get full data readformula t tests
+for(feature in family$readformula){
   
+  # result <- capture.output(t.test(gen_subset[[feature]],gold_subset[[feature]]))
+  result <- capture.output(t.test(lftk$gen[[feature]],lftk$gold[[feature]]))
+  
+  # write to file
+  write(
+    c(str_c("--- LFTK feature = ",feature,": ",MODEL_NAME," vs Gold Summaries - full data"), result),
+    file = str_c(ANALYSIS_PATH,"lftk_tests/t_tests/readformula_gen_vs_gold.txt"),
+    append = T
+  )
 }
 
 

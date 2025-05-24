@@ -1,0 +1,65 @@
+--- LFTK feature = fkre: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -1.2506, df = 3.0187, p-value = 0.2992
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -69.83711  30.33449
+sample estimates:
+mean of x mean of y 
+  0.56975  20.32106 
+
+--- LFTK feature = fkre: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.63891, df = 2.1951, p-value = 0.5831
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -22.58505  16.30459
+sample estimates:
+mean of x mean of y 
+ 8.651333 11.791566 
+
+--- LFTK feature = fkre: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 0.068557, df = 2.03, p-value = 0.9515
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -51.51240  53.20468
+sample estimates:
+mean of x mean of y 
+ 13.70200  12.85586 
+
+--- LFTK feature = fkre: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.86402, df = 2.2465, p-value = 0.4699
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -23.10835  14.69185
+sample estimates:
+mean of x mean of y 
+ 5.395667  9.603916 
+
+--- LFTK feature = fkre: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 1.4762, df = 2.5323, p-value = 0.2522
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -8.286582 20.128682
+sample estimates:
+mean of x mean of y 
+ 16.09833  10.17728 
+
