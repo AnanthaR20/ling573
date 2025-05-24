@@ -52,13 +52,13 @@ case "$PLATFORM" in
         cat > "$output_file" <<EOF
 executable = run_model.sh
 getenv = true
-arguments = --checkpoint $CHECKPOINT --mode $MODE --testfile $TESTFILE  --concat $CONCAT --batch_size $BATCH_SIZE
+arguments = --checkpoint $CHECKPOINT --mode $MODE --testfile $TESTFILE  --concat $CONCAT --batch_size $BATCH_SIZE 
 transfer_executable = false
 output = run_model.\$(Cluster).out
 error = run_model.\$(Cluster).err
 log = run_model.\$(Cluster).log
 request_GPUs = 1
-request_memory = 3000
+request_memory = 16000
 queue
 EOF
         
@@ -89,7 +89,10 @@ EOF
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
 
-apptainer exec --cleanenv --bind /gscratch /gscratch/scrubbed/jcmw614/project.sif /gscratch/scrubbed/jcmw614/envs/573-env/bin/python run_model.py --checkpoint $CHECKPOINT --mode $MODE --testfile $TESTFILE --concat $CONCAT --batch_size $BATCH_SIZE
+apptainer exec --cleanenv --bind /gscratch /gscratch/scrubbed/jcmw614/project.sif \
+/gscratch/scrubbed/jcmw614/envs/573-env/bin/python run_model.py \
+--checkpoint $CHECKPOINT --mode $MODE --testfile $TESTFILE --concat $CONCAT \
+--batch_size $BATCH_SIZE 
 EOF
         
         echo "Generated Slurm submit file: $output_file"
