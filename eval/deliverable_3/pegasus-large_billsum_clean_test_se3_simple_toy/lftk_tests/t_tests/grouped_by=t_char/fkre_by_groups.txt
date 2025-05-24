@@ -1,0 +1,65 @@
+--- LFTK feature = fkre: PegasusBillSumLarge vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -2.5271, df = 3.4568, p-value = 0.0746
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -178.19242   13.97542
+sample estimates:
+mean of x mean of y 
+ -37.5920   44.5165 
+
+--- LFTK feature = fkre: PegasusBillSumLarge vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -10.932, df = 3.8578, p-value = 0.0004816
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -215.6137 -127.2550
+sample estimates:
+mean of x mean of y 
+-154.9223   16.5120 
+
+--- LFTK feature = fkre: PegasusBillSumLarge vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -4.3646, df = 2.1887, p-value = 0.04128
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -144.369130   -6.908203
+sample estimates:
+mean of x mean of y 
+-64.63700  11.00167 
+
+--- LFTK feature = fkre: PegasusBillSumLarge vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.91923, df = 2.0861, p-value = 0.4516
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -224.7774  143.0461
+sample estimates:
+mean of x mean of y 
+-30.73867  10.12700 
+
+--- LFTK feature = fkre: PegasusBillSumLarge vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.090928, df = 2.04, p-value = 0.9357
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -414.2494  396.7854
+sample estimates:
+mean of x mean of y 
+-86.88567 -78.15367 
+

@@ -1,0 +1,65 @@
+--- LFTK feature = cole: LED vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 0.23638, df = 5.9199, p-value = 0.8211
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.789542  4.597042
+sample estimates:
+mean of x mean of y 
+ 13.65025  13.24650 
+
+--- LFTK feature = cole: LED vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -1.9013, df = 2.0736, p-value = 0.1931
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -9.859521  3.673521
+sample estimates:
+mean of x mean of y 
+ 12.12867  15.22167 
+
+--- LFTK feature = cole: LED vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -3.6018, df = 3.0735, p-value = 0.03529
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -6.5704456 -0.4502211
+sample estimates:
+mean of x mean of y 
+ 12.09533  15.60567 
+
+--- LFTK feature = cole: LED vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.54858, df = 3.889, p-value = 0.6133
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -4.550183  3.062850
+sample estimates:
+mean of x mean of y 
+ 15.45167  16.19533 
+
+--- LFTK feature = cole: LED vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 0.14401, df = 3.1899, p-value = 0.8941
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -8.325861  9.143194
+sample estimates:
+mean of x mean of y 
+ 15.66533  15.25667 
+

@@ -1,0 +1,65 @@
+--- LFTK feature = smog: PegasusBillSum vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 2.9156, df = 3.839, p-value = 0.04566
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  0.1970522 12.2069478
+sample estimates:
+mean of x mean of y 
+  14.5505    8.3485 
+
+--- LFTK feature = smog: PegasusBillSum vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 0.56921, df = 3.3834, p-value = 0.6048
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -6.494054  9.550721
+sample estimates:
+mean of x mean of y 
+ 13.48333  11.95500 
+
+--- LFTK feature = smog: PegasusBillSum vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 0.30079, df = 2.7063, p-value = 0.7852
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -7.562127  9.036127
+sample estimates:
+mean of x mean of y 
+   12.528    11.791 
+
+--- LFTK feature = smog: PegasusBillSum vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 0.35875, df = 3.7819, p-value = 0.7389
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -4.001162  5.157828
+sample estimates:
+mean of x mean of y 
+ 13.59200  13.01367 
+
+--- LFTK feature = smog: PegasusBillSum vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -1.1059, df = 2.0747, p-value = 0.3804
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -43.49489  25.21756
+sample estimates:
+mean of x mean of y 
+ 10.57533  19.71400 
+

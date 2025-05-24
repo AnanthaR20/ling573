@@ -1,0 +1,78 @@
+--- LFTK feature = fkre: PegasusBillSum vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 0.25055, df = 16.694, p-value = 0.8052
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -35.90503  45.56678
+sample estimates:
+mean of x mean of y 
+ 8.363812  3.532937 
+
+--- LFTK feature = fkgl: PegasusBillSum vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = -0.22311, df = 16.254, p-value = 0.8262
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -16.56679  13.40804
+sample estimates:
+mean of x mean of y 
+ 24.74569  26.32506 
+
+--- LFTK feature = fogi: PegasusBillSum vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = -0.17037, df = 16.321, p-value = 0.8668
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -16.63269  14.15444
+sample estimates:
+mean of x mean of y 
+ 31.12225  32.36138 
+
+--- LFTK feature = smog: PegasusBillSum vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 0.20073, df = 20.823, p-value = 0.8429
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.467073  4.207448
+sample estimates:
+mean of x mean of y 
+ 13.04612  12.67594 
+
+--- LFTK feature = cole: PegasusBillSum vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = -0.21171, df = 29.365, p-value = 0.8338
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.620265  1.316140
+sample estimates:
+mean of x mean of y 
+ 14.83694  14.98900 
+
+--- LFTK feature = auto: PegasusBillSum vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = -0.23193, df = 16.268, p-value = 0.8195
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -21.28641  17.08291
+sample estimates:
+mean of x mean of y 
+ 29.06794  31.16969 
+

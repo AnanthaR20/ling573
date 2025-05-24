@@ -1,0 +1,78 @@
+--- LFTK feature = fkre: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 1.9431, df = 16.662, p-value = 0.06909
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.274874 78.166874
+sample estimates:
+mean of x mean of y 
+40.978938  3.532937 
+
+--- LFTK feature = fkgl: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = -1.772, df = 15.717, p-value = 0.09578
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -27.333626   2.463251
+sample estimates:
+mean of x mean of y 
+ 13.88987  26.32506 
+
+--- LFTK feature = fogi: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = -1.7226, df = 15.667, p-value = 0.1046
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -27.678392   2.885892
+sample estimates:
+mean of x mean of y 
+ 19.96513  32.36138 
+
+--- LFTK feature = smog: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = -2.195, df = 18.715, p-value = 0.04099
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -7.6569386 -0.1780614
+sample estimates:
+mean of x mean of y 
+ 8.758437 12.675937 
+
+--- LFTK feature = cole: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = -1.4268, df = 29.22, p-value = 0.1642
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.9195915  0.5195915
+sample estimates:
+mean of x mean of y 
+   13.789    14.989 
+
+--- LFTK feature = auto: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = -1.6818, df = 15.568, p-value = 0.1126
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -34.104556   3.968431
+sample estimates:
+mean of x mean of y 
+ 16.10163  31.16969 
+

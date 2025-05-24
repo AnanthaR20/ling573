@@ -1,0 +1,65 @@
+--- LFTK feature = auto: PegasusBillSum vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 2.1355, df = 3.9861, p-value = 0.09983
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -4.70844 35.89694
+sample estimates:
+mean of x mean of y 
+ 32.30475  16.71050 
+
+--- LFTK feature = auto: PegasusBillSum vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 1.2288, df = 3.9499, p-value = 0.2873
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -7.466814 19.217481
+sample estimates:
+mean of x mean of y 
+ 28.15667  22.28133 
+
+--- LFTK feature = auto: PegasusBillSum vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 0.51382, df = 3.9995, p-value = 0.6345
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -7.819693 11.371027
+sample estimates:
+mean of x mean of y 
+ 26.79167  25.01600 
+
+--- LFTK feature = auto: PegasusBillSum vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 1.5092, df = 3.552, p-value = 0.2144
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -4.818513 15.127179
+sample estimates:
+mean of x mean of y 
+ 30.33633  25.18200 
+
+--- LFTK feature = auto: PegasusBillSum vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.98015, df = 2.0038, p-value = 0.4302
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -241.1379  151.5239
+sample estimates:
+mean of x mean of y 
+ 26.67133  71.47833 
+

@@ -1,0 +1,65 @@
+--- LFTK feature = cole: PegasusBillSumLarge vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 2.0246, df = 3.412, p-value = 0.1249
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.25499  6.59749
+sample estimates:
+mean of x mean of y 
+ 15.91775  13.24650 
+
+--- LFTK feature = cole: PegasusBillSumLarge vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = 0.22909, df = 2.9437, p-value = 0.8338
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -5.386893  6.212893
+sample estimates:
+mean of x mean of y 
+ 15.63467  15.22167 
+
+--- LFTK feature = cole: PegasusBillSumLarge vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.49852, df = 2.2402, p-value = 0.6628
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -8.517313  6.581979
+sample estimates:
+mean of x mean of y 
+ 14.63800  15.60567 
+
+--- LFTK feature = cole: PegasusBillSumLarge vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.92705, df = 3.9992, p-value = 0.4064
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -4.610425  2.302425
+sample estimates:
+mean of x mean of y 
+ 15.04133  16.19533 
+
+--- LFTK feature = cole: PegasusBillSumLarge vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.64333, df = 3.9983, p-value = 0.5551
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -6.907858  4.309191
+sample estimates:
+mean of x mean of y 
+ 13.95733  15.25667 
+

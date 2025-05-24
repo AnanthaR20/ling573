@@ -1,0 +1,65 @@
+--- LFTK feature = fkgl: LED vs Gold Summaries - Quantile 1 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -0.070923, df = 5.9982, p-value = 0.9458
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -7.766375  7.328875
+sample estimates:
+mean of x mean of y 
+ 13.77725  13.99600 
+
+--- LFTK feature = fkgl: LED vs Gold Summaries - Quantile 2 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -2.8196, df = 3.0798, p-value = 0.06476
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -20.635363   1.097363
+sample estimates:
+mean of x mean of y 
+ 10.21367  19.98267 
+
+--- LFTK feature = fkgl: LED vs Gold Summaries - Quantile 3 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -1.894, df = 2.9344, p-value = 0.1566
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -21.991232   5.711898
+sample estimates:
+mean of x mean of y 
+ 13.86467  22.00433 
+
+--- LFTK feature = fkgl: LED vs Gold Summaries - Quantile 4 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -1.9116, df = 3.4457, p-value = 0.1399
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -14.484515   3.121181
+sample estimates:
+mean of x mean of y 
+ 16.29800  21.97967 
+
+--- LFTK feature = fkgl: LED vs Gold Summaries - Quantile 5 of 5 - Data batched by character count
+
+	Welch Two Sample t-test
+
+data:  gen_subset[[feature]] and gold_subset[[feature]]
+t = -1.1927, df = 2.0061, p-value = 0.355
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -195.0939  110.2159
+sample estimates:
+mean of x mean of y 
+ 15.33333  57.77233 
+

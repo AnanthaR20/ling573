@@ -1,9 +1,9 @@
 # File for generating model analysis plots for ling 573 project
 # File Arguments:
-MODEL_NAME <- "PegasusBillSum_with_se3_t5_toy" # The name of the Model whose output is being evaluated
-MODEL_OUTPUT_PATH <- "../output/deliverable_3/pegasusbillsum_clean_se3_t5_simple_toy.csv" # place to look for model output csv
+MODEL_NAME <- "LED" # The name of the Model whose output is being evaluated
+MODEL_OUTPUT_PATH <- "../output/deliverable_3/led_billsum_clean_test_se3_simple_toy.csv" # place to look for model output csv
 GOLD_PATH <- "gold_lftk.csv" # place to look for gold data csv
-ANALYSIS_PATH <- "deliverable_3/pegasus_clean_se3_t5_simple_toy/" # place to write the plots and tests to. Must end with a "/"
+ANALYSIS_PATH <- "deliverable_3/led_billsum_clean_test_se3_simple_toy/" # place to write the plots and tests to. Must end with a "/"
 HISTOGRAM_BINS <- 10
 # ----------------------------------------------------------------------- #
 # Do not change these variables. These represent suffixes we expect to read in from csv headers
@@ -27,7 +27,7 @@ lftk[['gen']] <- read.csv(MODEL_OUTPUT_PATH)
 
 # Remove the redundant '.GOLD' lftk columns if included in file headers at MODEL_OUTPUT_PATH then
 # set column names properly for processing
-# lftk$gold <- lftk$gold %>% slice(1:15)
+lftk$gold <- lftk$gold %>% slice(1:16)
 lftk$gen <- lftk$gen %>% select(-ends_with(GOLD_SUFFIX))
 colnames(lftk$gold) <- str_replace(colnames(lftk$gold),GOLD_SUFFIX,"")
 colnames(lftk$gen) <- str_replace(colnames(lftk$gen),GEN_SUFFIX,"")

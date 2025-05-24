@@ -1,0 +1,117 @@
+--- LFTK feature = t_word: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 7.3615, df = 18.394, p-value = 6.873e-07
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 371.9122 668.3378
+sample estimates:
+mean of x mean of y 
+ 707.5625  187.4375 
+
+--- LFTK feature = t_stopword: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 6.9466, df = 17.518, p-value = 1.999e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 151.7636 283.7364
+sample estimates:
+mean of x mean of y 
+  281.875    64.125 
+
+--- LFTK feature = t_punct: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 7.1116, df = 15.468, p-value = 2.988e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 118.7446 220.0054
+sample estimates:
+mean of x mean of y 
+ 191.4375   22.0625 
+
+--- LFTK feature = t_syll: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 6.7151, df = 17.433, p-value = 3.182e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  610.5995 1168.5255
+sample estimates:
+mean of x mean of y 
+ 1182.188   292.625 
+
+--- LFTK feature = t_syll2: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 6.6337, df = 17.965, p-value = 3.192e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  88.18196 169.94304
+sample estimates:
+mean of x mean of y 
+ 173.4375   44.3750 
+
+--- LFTK feature = t_syll3: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 5.857, df = 18.854, p-value = 1.256e-05
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 30.79786 65.07714
+sample estimates:
+mean of x mean of y 
+  66.3125   18.3750 
+
+--- LFTK feature = t_uword: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 8.5845, df = 22.102, p-value = 1.73e-08
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 126.2871 206.7129
+sample estimates:
+mean of x mean of y 
+   261.75     95.25 
+
+--- LFTK feature = t_sent: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 7.2178, df = 15.392, p-value = 2.57e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 18.95623 34.79377
+sample estimates:
+mean of x mean of y 
+  30.8125    3.9375 
+
+--- LFTK feature = t_char: LED vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 6.9677, df = 17.532, p-value = 1.913e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 1971.046 3677.454
+sample estimates:
+mean of x mean of y 
+ 3740.625   916.375 
+
