@@ -72,18 +72,6 @@ if __name__ == "__main__":
     else:
         device = torch.device("cpu")
 
-    # Configure model and tokenizer
-    model = AutoModelForSeq2SeqLM.from_pretrained(args.checkpoint).to(device)
-    model.config.num_beams = 2
-    model.config.max_length = args.max_output_len
-    model.config.length_penalty = 2.0
-    model.config.early_stopping = True
-    model.config.no_repeat_ngram_size = 3
-
-    model_name = args.checkpoint.split("/")[1].split("-")[0]
-
-    word_tok = AutoTokenizer.from_pretrained(args.checkpoint)
-
     # Check for predictions folder and create if it does not exist    
     if not os.path.exists("predictions/"):
         os.makedirs("predictions/", exist_ok=True)
@@ -103,6 +91,18 @@ if __name__ == "__main__":
     chunk_strategy = data_attr[-1].split("-")
     max_input_len, max_output_len = (int(chunk_strategy[1]), int(chunk_strategy[2]))
     
+    # Configure model and tokenizer
+    model = AutoModelForSeq2SeqLM.from_pretrained(args.checkpoint).to(device)
+    model.config.num_beams = 2
+    model.config.max_length = max_output_len
+    model.config.length_penalty = 2.0
+    model.config.early_stopping = True
+    model.config.no_repeat_ngram_size = 3
+
+    model_name = args.checkpoint.split("/")[1].split("-")[0]
+
+    word_tok = AutoTokenizer.from_pretrained(args.checkpoint)
+
     # TODO: expand this to account for unchunked data 
     predictions_path = "predictions/" + f"{model_name}_{dataset_file}"
 

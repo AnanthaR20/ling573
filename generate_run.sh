@@ -51,12 +51,14 @@ case "$PLATFORM" in
         
         cat > "$output_file" <<EOF
 executable = run_model.sh
+getenv = true
 arguments = --checkpoint $CHECKPOINT --mode $MODE --testfile $TESTFILE  --concat $CONCAT
+transfer_executable = false
 output = run_model.\$(Cluster).out
 error = run_model.\$(Cluster).err
 log = run_model.\$(Cluster).log
-request_gpus = 1
-request_memory = 4GB
+request_GPUs = 1
+request_memory = 3000
 queue
 EOF
         
