@@ -63,7 +63,6 @@ def eval_lftk(text:str, lftk_features:list[str] = READFORMULA, suffix:str = "") 
   feature_dict = LFTK.extract(lftk_features)
   return {key+suffix:val for key,val in feature_dict.items()}
 
-
 def eval_all(
   gold_text: str, 
   gen_text: str,
