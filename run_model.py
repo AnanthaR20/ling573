@@ -104,7 +104,7 @@ if __name__ == "__main__":
     max_input_len, max_output_len = (int(chunk_strategy[1]), int(chunk_strategy[2]))
     
     # TODO: expand this to account for unchunked data 
-    predictions_path = "predictions/" + f"{model_name}_{dataset_file.split(".")[0]}.csv"
+    predictions_path = "predictions/" + f"{model_name}_{dataset_file}"
 
     test_dataset = pd.read_csv(args.testfile) # TODO: add dropna configuration
     test_index = pd.read_csv(data_index_file)
