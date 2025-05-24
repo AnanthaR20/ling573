@@ -102,7 +102,7 @@ if __name__ == "__main__":
     model.config.early_stopping = True
     model.config.no_repeat_ngram_size = 3
 
-    model_name = args.checkpoint.split("/")[1].split("-")[0]
+    model_name = '-'.join(args.checkpoint.split("/")[1].split("-")[0:2])
 
     word_tok = AutoTokenizer.from_pretrained(args.checkpoint)
 

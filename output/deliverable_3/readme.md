@@ -25,21 +25,19 @@ clean : indicates whether billsum document text is "cleaned" (using regexes to r
 
 det : chunking of bill text into fixed size blocks
 
-se3 : chunking of bill text based on semantic chunking done by [se3 model]()
+se3 : chunking of bill text based on semantic chunking (based on the Se3 framework) using a model tokenizer and LegalBERT
 
 ---
-{Simplify} = Automatic Text Simplification module to use.
+{Simplify} = Binary flag indicating whether to use simplified or "raw" billsum data.
 
-TSR : [Text Split and Rephrase]()
-
-DisSim : [Discourse Simplification](https://github.com/Lambda-3/DiscourseSimplification)
+simple : indicates whether a billsum document text was simplified by T5 split and rephrase model
 
 ---
 {Training Instance Count} = Number of Training Instances used for fine-tuning
 
 \# : The number of training instances ran
 
-toy : means we ran <10 instances
+toy : means we ran 15 instances
 
 ---
 
