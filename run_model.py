@@ -22,7 +22,7 @@ def reconstruct(preds, data_index):
         chunk_count = int(i)
         summary = ""
         for j in range(chunk_count):
-            summary += preds["prediction"][rows_seen + j].strip()
+            summary += preds[rows_seen + j].strip()
         final_summaries.append(summary)
         rows_seen += chunk_count # update the number of rows seen
     return final_summaries
