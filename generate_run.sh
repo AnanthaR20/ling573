@@ -79,12 +79,11 @@ EOF
 #SBATCH --job-name=run_model
 #SBATCH --output=out/%x/%j.out
 #SBATCH --error=error/%x/%j.err
-#SBATCH --log=log/%x/%j.log
 #SBATCH --partition=ckpt
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=a40:1
 #SBATCH --ntasks-per-node=1
-#SBATCH --mem=4G
+#SBATCH --mem=16G
 #SBATCH --time=12:00:00
 #SBATCH --mail-user=$USER@uw.edu
 #SBATCH --mail-type=END
