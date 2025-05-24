@@ -84,7 +84,7 @@ if __name__ == "__main__":
     dataset_dir = os.path.dirname(args.testfile)
 
     # Infer chunk index file
-    data_index_file = os.join(dataset_dir, f"idx_{dataset_file}")
+    data_index_file = os.path.join(dataset_dir, f"idx_{dataset_file}")
 
     # Infer max input length and max output length from data name since it is pre-chunked
     data_attr = dataset_file.split("_")
