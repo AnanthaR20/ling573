@@ -3,7 +3,8 @@
 MODEL_NAME <- "PegasusBillSum_with_se3_t5_toy" # The name of the Model whose output is being evaluated
 MODEL_OUTPUT_PATH <- "../output/deliverable_3/pegasusbillsum_clean_se3_t5_simple_toy.csv" # place to look for model output csv
 GOLD_PATH <- "gold_lftk.csv" # place to look for gold data csv
-ANALYSIS_PATH <- "deliverable_3/" # place to write the plots and tests to. Must end with a "/"
+ANALYSIS_PATH <- "deliverable_3/pegasus_clean_se3_t5_simple_toy/" # place to write the plots and tests to. Must end with a "/"
+HISTOGRAM_BINS <- 10
 # ----------------------------------------------------------------------- #
 # Do not change these variables. These represent suffixes we expect to read in from csv headers
 GOLD_SUFFIX <- ".GOLD"
@@ -26,6 +27,7 @@ lftk[['gen']] <- read.csv(MODEL_OUTPUT_PATH)
 
 # Remove the redundant '.GOLD' lftk columns if included in file headers at MODEL_OUTPUT_PATH then
 # set column names properly for processing
+# lftk$gold <- lftk$gold %>% slice(1:15)
 lftk$gen <- lftk$gen %>% select(-ends_with(GOLD_SUFFIX))
 colnames(lftk$gold) <- str_replace(colnames(lftk$gold),GOLD_SUFFIX,"")
 colnames(lftk$gen) <- str_replace(colnames(lftk$gen),GEN_SUFFIX,"")
@@ -71,8 +73,8 @@ for (feature in colnames(lftk$gen)) {
     }
     plt <- 
     ggplot() + 
-      geom_histogram(aes(x=lftk$gold[[feature]],fill='Gold'),bins=60) +
-      geom_histogram(aes(x=lftk$gen[[feature]], fill='Generated'), alpha=0.55,bins=60) +
+      geom_histogram(aes(x=lftk$gold[[feature]],fill='Gold'),bins=HISTOGRAM_BINS) +
+      geom_histogram(aes(x=lftk$gen[[feature]], fill='Generated'), alpha=0.55,bins=HISTOGRAM_BINS) +
       # scale_x_continuous(breaks = seq(0,30,5)) +
       labs(x = 'Value', y = "Count", title= str_c(feature," for ",MODEL_NAME," and Gold Summaries")) +
       scale_color_manual(name='Legend',

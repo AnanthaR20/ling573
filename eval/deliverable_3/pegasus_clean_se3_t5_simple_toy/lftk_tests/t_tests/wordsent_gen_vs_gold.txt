@@ -1,0 +1,117 @@
+--- LFTK feature = t_word: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 6.6073, df = 23.973, p-value = 7.852e-07
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 205.1387 391.5280
+sample estimates:
+mean of x mean of y 
+ 478.0000  179.6667 
+
+--- LFTK feature = t_stopword: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 6.9165, df = 20.179, p-value = 9.731e-07
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 103.5121 192.8379
+sample estimates:
+mean of x mean of y 
+  208.375    60.200 
+
+--- LFTK feature = t_punct: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 6.553, df = 23.723, p-value = 9.414e-07
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 27.76219 53.31281
+sample estimates:
+mean of x mean of y 
+  61.9375   21.4000 
+
+--- LFTK feature = t_syll: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 7.441, df = 23.98, p-value = 1.116e-07
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 391.4554 691.9779
+sample estimates:
+mean of x mean of y 
+ 822.2500  280.5333 
+
+--- LFTK feature = t_syll2: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 7.419, df = 24.656, p-value = 9.852e-08
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  61.00184 107.93149
+sample estimates:
+mean of x mean of y 
+127.00000  42.53333 
+
+--- LFTK feature = t_syll3: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 5.9535, df = 25.011, p-value = 3.238e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 20.18088 41.52745
+sample estimates:
+mean of x mean of y 
+ 48.18750  17.33333 
+
+--- LFTK feature = t_uword: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 7.6927, df = 27.703, p-value = 2.386e-08
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  81.22374 140.21793
+sample estimates:
+mean of x mean of y 
+203.18750  92.46667 
+
+--- LFTK feature = t_sent: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 5.8481, df = 21.379, p-value = 7.781e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 3.914330 8.227337
+sample estimates:
+mean of x mean of y 
+ 9.937500  3.866667 
+
+--- LFTK feature = t_char: PegasusBillSum_with_se3_t5_toy vs Gold Summaries - full data
+
+	Welch Two Sample t-test
+
+data:  lftk$gen[[feature]] and lftk$gold[[feature]]
+t = 7.2899, df = 24.18, p-value = 1.501e-07
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 1178.692 2109.175
+sample estimates:
+mean of x mean of y 
+2524.0000  880.0667 
+
