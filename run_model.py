@@ -57,7 +57,7 @@ if __name__ == "__main__":
     # parser.add_argument("--fulltext", default=False, action="store_true", help="To not use the chunking")
     parser.add_argument("--concat", default="pre", help="Specify when to concatenate chunks")
     parser.add_argument("--mode", default="predict", help="To specify prediction or pipeline mode")
-    parser.add_argument("--batch_size", default=2, help="Batch size for generating predictions")
+    parser.add_argument("--batch_size", default=2, type=int, help="Batch size for generating predictions")
     parser.add_argument("--device", default="cuda", help="The device to use") # TODO: how to add to config file?
     # parser.add_argument("--max_input_len", type=int, default=2048, help="The input max size")
     # parser.add_argument("--max_output_len", type=int, default=512, help="The output max size")    
