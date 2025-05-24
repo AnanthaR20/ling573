@@ -142,7 +142,7 @@ if __name__ == "__main__":
                 result = test_dataset.map(
                     predict_func,
                     batched=True,
-                    batch_size=32 # TODO: make this configurable with config
+                    batch_size=args.batch_size # TODO: make this configurable with config
                 )
 
                 # Reconstruct original lengths
