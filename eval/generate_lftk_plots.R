@@ -24,7 +24,9 @@ lftk <- list()
 lftk[["gold"]] <- read.csv(GOLD_PATH)
 lftk[['gen']] <- read.csv(MODEL_OUTPUT_PATH)
 
-# Set column names properly for processing
+# Remove the redundant '.GOLD' lftk columns if included in file headers at MODEL_OUTPUT_PATH then
+# set column names properly for processing
+lftk$gen <- lftk$gen %>% select(-ends_with(GOLD_SUFFIX))
 colnames(lftk$gold) <- str_replace(colnames(lftk$gold),GOLD_SUFFIX,"")
 colnames(lftk$gen) <- str_replace(colnames(lftk$gen),GEN_SUFFIX,"")
 
