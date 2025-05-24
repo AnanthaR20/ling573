@@ -54,7 +54,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--checkpoint", default="google/pegasus-billsum", help="The model checkpoint to use")
     parser.add_argument("--testfile", default="", help="The test filepath to use")
-    # parser.add_argument("--fulltext", default=False, action="store_true", help="To not use the chunking")
     parser.add_argument("--concat", default="pre", help="Specify when to concatenate chunks")
     parser.add_argument("--mode", default="predict", help="To specify prediction or pipeline mode")
     parser.add_argument("--batch_size", default=2, type=int, help="Batch size for generating predictions")
@@ -92,7 +91,7 @@ if __name__ == "__main__":
     data_attr = dataset_file.split("_")
     chunk_strategy = data_attr[-1].split("-")
     # max_input_len, max_output_len = (int(chunk_strategy[1]), int(chunk_strategy[2]))
-    max_input_len, max_output_len = (512, 512)
+    max_input_len, max_output_len = (1024, 512)
 
     # Configure model and tokenizer
     model = AutoModelForSeq2SeqLM.from_pretrained(args.checkpoint).to(device)
