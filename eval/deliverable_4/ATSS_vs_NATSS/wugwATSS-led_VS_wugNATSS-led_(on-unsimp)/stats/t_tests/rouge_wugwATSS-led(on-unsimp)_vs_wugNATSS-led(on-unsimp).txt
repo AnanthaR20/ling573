@@ -1,0 +1,126 @@
+--- Feature = rouge1_precision: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -34.645, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.04542110 -0.04055539
+sample estimates:
+mean difference 
+    -0.04298824 
+
+--- Feature = rouge2_precision: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -40.953, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.04491202 -0.04080804
+sample estimates:
+mean difference 
+    -0.04286003 
+
+--- Feature = rougeL_precision: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -41.826, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.04740998 -0.04316406
+sample estimates:
+mean difference 
+    -0.04528702 
+
+--- Feature = rouge1_recall: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -11.259, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.02031368 -0.01428801
+sample estimates:
+mean difference 
+    -0.01730085 
+
+--- Feature = rouge2_recall: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -25.492, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.04696055 -0.04025276
+sample estimates:
+mean difference 
+    -0.04360666 
+
+--- Feature = rougeL_recall: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -26.852, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.04440970 -0.03836554
+sample estimates:
+mean difference 
+    -0.04138762 
+
+--- Feature = rouge1_fmeasure: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -36.964, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.03930517 -0.03534549
+sample estimates:
+mean difference 
+    -0.03732533 
+
+--- Feature = rouge2_fmeasure: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -41.485, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.04494099 -0.04088462
+sample estimates:
+mean difference 
+    -0.04291281 
+
+--- Feature = rougeL_fmeasure: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -45.988, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.04650391 -0.04270065
+sample estimates:
+mean difference 
+    -0.04460228 
+

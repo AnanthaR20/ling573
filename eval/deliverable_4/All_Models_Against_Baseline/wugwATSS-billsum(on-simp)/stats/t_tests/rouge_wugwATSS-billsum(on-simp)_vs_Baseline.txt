@@ -1,0 +1,126 @@
+--- Feature = rouge1_precision: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -74.398, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.3032980 -0.2877221
+sample estimates:
+mean difference 
+     -0.2955101 
+
+--- Feature = rouge2_precision: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -66.691, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.2568652 -0.2421931
+sample estimates:
+mean difference 
+     -0.2495291 
+
+--- Feature = rougeL_precision: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -70.97, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.2880022 -0.2725167
+sample estimates:
+mean difference 
+     -0.2802594 
+
+--- Feature = rouge1_recall: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 43.657, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.1738065 0.1901525
+sample estimates:
+mean difference 
+      0.1819795 
+
+--- Feature = rouge2_recall: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 16.847, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.05433350 0.06864613
+sample estimates:
+mean difference 
+     0.06148981 
+
+--- Feature = rougeL_recall: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 19.804, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.06257593 0.07632815
+sample estimates:
+mean difference 
+     0.06945204 
+
+--- Feature = rouge1_fmeasure: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -33.67, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.1234947 -0.1099034
+sample estimates:
+mean difference 
+      -0.116699 
+
+--- Feature = rouge2_fmeasure: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -41.884, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.1338050 -0.1218377
+sample estimates:
+mean difference 
+     -0.1278213 
+
+--- Feature = rougeL_fmeasure: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -47.665, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.1514163 -0.1394516
+sample estimates:
+mean difference 
+     -0.1454339 
+

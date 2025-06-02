@@ -1,0 +1,81 @@
+--- Feature = t_word: wugwATSS-billsum(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.473993 (large)
+95 percent confidence interval:
+   lower    upper 
+1.419316 1.528671 
+
+--- Feature = t_stopword: wugwATSS-billsum(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.569622 (large)
+95 percent confidence interval:
+   lower    upper 
+1.514168 1.625076 
+
+--- Feature = t_punct: wugwATSS-billsum(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.417739 (large)
+95 percent confidence interval:
+   lower    upper 
+1.363500 1.471977 
+
+--- Feature = t_syll: wugwATSS-billsum(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.610623 (large)
+95 percent confidence interval:
+   lower    upper 
+1.554824 1.666422 
+
+--- Feature = t_syll2: wugwATSS-billsum(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.541075 (large)
+95 percent confidence interval:
+   lower    upper 
+1.485857 1.596293 
+
+--- Feature = t_syll3: wugwATSS-billsum(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.338855 (large)
+95 percent confidence interval:
+   lower    upper 
+1.285209 1.392502 
+
+--- Feature = t_uword: wugwATSS-billsum(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.602298 (large)
+95 percent confidence interval:
+   lower    upper 
+1.546570 1.658027 
+
+--- Feature = t_sent: wugwATSS-billsum(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.636007 (large)
+95 percent confidence interval:
+   lower    upper 
+1.579992 1.692023 
+
+--- Feature = t_char: wugwATSS-billsum(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.587505 (large)
+95 percent confidence interval:
+   lower    upper 
+1.531902 1.643109 
+

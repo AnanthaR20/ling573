@@ -1,0 +1,84 @@
+--- Feature = fkre: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+model_1 = wugwATSS-billsum(on-unsimp) | model_2 = wugNATSS-billsum(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 18.617, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 4.375263 5.405303
+sample estimates:
+mean difference 
+       4.890283 
+
+--- Feature = fkgl: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+model_1 = wugwATSS-billsum(on-unsimp) | model_2 = wugNATSS-billsum(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -17.036, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -1.765149 -1.400780
+sample estimates:
+mean difference 
+      -1.582964 
+
+--- Feature = fogi: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+model_1 = wugwATSS-billsum(on-unsimp) | model_2 = wugNATSS-billsum(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -16.078, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -1.734294 -1.357271
+sample estimates:
+mean difference 
+      -1.545783 
+
+--- Feature = smog: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+model_1 = wugwATSS-billsum(on-unsimp) | model_2 = wugNATSS-billsum(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -13.554, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.5763154 -0.4306543
+sample estimates:
+mean difference 
+     -0.5034849 
+
+--- Feature = cole: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+model_1 = wugwATSS-billsum(on-unsimp) | model_2 = wugNATSS-billsum(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -10.36, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.2759504 -0.1881187
+sample estimates:
+mean difference 
+     -0.2320346 
+
+--- Feature = auto: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+model_1 = wugwATSS-billsum(on-unsimp) | model_2 = wugNATSS-billsum(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -16.568, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -2.193799 -1.729504
+sample estimates:
+mean difference 
+      -1.961651 
+

@@ -1,0 +1,126 @@
+--- Feature = t_word: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 63.259, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 233.4739 248.4098
+sample estimates:
+mean difference 
+       240.9419 
+
+--- Feature = t_stopword: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 67.467, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 110.0454 116.6331
+sample estimates:
+mean difference 
+       113.3392 
+
+--- Feature = t_punct: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 61.475, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 36.94884 39.38337
+sample estimates:
+mean difference 
+       38.16611 
+
+--- Feature = t_syll: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 68.879, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 435.6212 461.1485
+sample estimates:
+mean difference 
+       448.3848 
+
+--- Feature = t_syll2: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 67.069, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 65.78520 69.74738
+sample estimates:
+mean difference 
+       67.76629 
+
+--- Feature = t_syll3: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 61.438, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 24.32981 25.93388
+sample estimates:
+mean difference 
+       25.13184 
+
+--- Feature = t_uword: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 70.802, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 74.99824 79.27034
+sample estimates:
+mean difference 
+       77.13429 
+
+--- Feature = t_sent: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 70.299, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 6.106238 6.456625
+sample estimates:
+mean difference 
+       6.281432 
+
+--- Feature = t_char: wugwATSS-billsum(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 67.816, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 1317.324 1395.765
+sample estimates:
+mean difference 
+       1356.544 
+

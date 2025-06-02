@@ -1,0 +1,54 @@
+--- Feature = fkre: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: 0.31021 (small)
+95 percent confidence interval:
+    lower     upper 
+0.2614311 0.3589890 
+
+--- Feature = fkgl: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.3244807 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3732869 -0.2756745 
+
+--- Feature = fogi: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.304182 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3529498 -0.2554142 
+
+--- Feature = smog: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.2038895 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.2525035 -0.1552755 
+
+--- Feature = cole: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.1290828 (negligible)
+95 percent confidence interval:
+      lower       upper 
+-0.17762151 -0.08054417 
+
+--- Feature = auto: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.3197035 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3685005 -0.2709066 
+

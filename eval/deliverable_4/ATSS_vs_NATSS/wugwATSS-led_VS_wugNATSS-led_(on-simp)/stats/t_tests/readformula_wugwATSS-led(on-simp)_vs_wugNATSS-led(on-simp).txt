@@ -1,0 +1,84 @@
+--- Feature = fkre: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -1.6627, df = 3268, p-value = 0.09647
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.81035865  0.06664743
+sample estimates:
+mean difference 
+     -0.3718556 
+
+--- Feature = fkgl: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 7.0568, df = 3268, p-value = 2.072e-12
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.3939235 0.6970432
+sample estimates:
+mean difference 
+      0.5454833 
+
+--- Feature = fogi: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 8.1745, df = 3268, p-value = 4.203e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.5031367 0.8206529
+sample estimates:
+mean difference 
+      0.6618948 
+
+--- Feature = smog: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 8.4028, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.2123091 0.3415447
+sample estimates:
+mean difference 
+      0.2769269 
+
+--- Feature = cole: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -11.206, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.3057945 -0.2147243
+sample estimates:
+mean difference 
+     -0.2602594 
+
+--- Feature = auto: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 7.5427, df = 3268, p-value = 5.93e-14
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.5522707 0.9402426
+sample estimates:
+mean difference 
+      0.7462567 
+

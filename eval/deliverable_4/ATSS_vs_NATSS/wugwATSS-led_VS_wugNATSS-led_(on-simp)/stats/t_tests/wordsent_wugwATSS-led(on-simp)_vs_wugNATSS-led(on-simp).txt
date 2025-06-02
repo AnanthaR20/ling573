@@ -1,0 +1,126 @@
+--- Feature = t_word: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 34.528, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 37.34803 41.84500
+sample estimates:
+mean difference 
+       39.59651 
+
+--- Feature = t_stopword: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 30.756, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 15.96466 18.13874
+sample estimates:
+mean difference 
+        17.0517 
+
+--- Feature = t_punct: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 34.74, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+  9.769564 10.938297
+sample estimates:
+mean difference 
+       10.35393 
+
+--- Feature = t_syll: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 31.907, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 57.02728 64.49490
+sample estimates:
+mean difference 
+       60.76109 
+
+--- Feature = t_syll2: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 28.963, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 8.322857 9.531532
+sample estimates:
+mean difference 
+       8.927195 
+
+--- Feature = t_syll3: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 24.739, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 3.200780 3.751805
+sample estimates:
+mean difference 
+       3.476292 
+
+--- Feature = t_uword: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 22.947, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 8.131671 9.651137
+sample estimates:
+mean difference 
+       8.891404 
+
+--- Feature = t_sent: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 22.635, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.5677519 0.6754418
+sample estimates:
+mean difference 
+      0.6215968 
+
+--- Feature = t_char: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 32.442, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 178.6768 201.6634
+sample estimates:
+mean difference 
+       190.1701 
+

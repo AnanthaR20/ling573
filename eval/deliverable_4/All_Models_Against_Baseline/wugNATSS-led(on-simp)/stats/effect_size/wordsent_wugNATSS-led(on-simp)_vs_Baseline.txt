@@ -1,0 +1,81 @@
+--- Feature = t_word: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.071785 (large)
+95 percent confidence interval:
+   lower    upper 
+1.019932 1.123637 
+
+--- Feature = t_stopword: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.297394 (large)
+95 percent confidence interval:
+   lower    upper 
+1.244048 1.350740 
+
+--- Feature = t_punct: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 0.9259058 (large)
+95 percent confidence interval:
+    lower     upper 
+0.8748856 0.9769259 
+
+--- Feature = t_syll: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.305569 (large)
+95 percent confidence interval:
+   lower    upper 
+1.252164 1.358973 
+
+--- Feature = t_syll2: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.216281 (large)
+95 percent confidence interval:
+   lower    upper 
+1.163500 1.269063 
+
+--- Feature = t_syll3: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 0.9886474 (large)
+95 percent confidence interval:
+    lower     upper 
+0.9372824 1.0400123 
+
+--- Feature = t_uword: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.296987 (large)
+95 percent confidence interval:
+   lower    upper 
+1.243644 1.350330 
+
+--- Feature = t_sent: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.625688 (large)
+95 percent confidence interval:
+   lower    upper 
+1.569761 1.681615 
+
+--- Feature = t_char: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.269872 (large)
+95 percent confidence interval:
+   lower    upper 
+1.216721 1.323023 
+

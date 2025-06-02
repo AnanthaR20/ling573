@@ -1,0 +1,81 @@
+--- Feature = t_word: wugwATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.472651 (large)
+95 percent confidence interval:
+   lower    upper 
+1.417984 1.527318 
+
+--- Feature = t_stopword: wugwATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.612024 (large)
+95 percent confidence interval:
+   lower    upper 
+1.556214 1.667835 
+
+--- Feature = t_punct: wugwATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.531901 (large)
+95 percent confidence interval:
+   lower    upper 
+1.476757 1.587044 
+
+--- Feature = t_syll: wugwATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.663638 (large)
+95 percent confidence interval:
+   lower    upper 
+1.607384 1.719892 
+
+--- Feature = t_syll2: wugwATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.560904 (large)
+95 percent confidence interval:
+   lower    upper 
+1.505522 1.616285 
+
+--- Feature = t_syll3: wugwATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.330415 (large)
+95 percent confidence interval:
+   lower    upper 
+1.276831 1.384000 
+
+--- Feature = t_uword: wugwATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.65899 (large)
+95 percent confidence interval:
+   lower    upper 
+1.602777 1.715204 
+
+--- Feature = t_sent: wugwATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.816451 (large)
+95 percent confidence interval:
+   lower    upper 
+1.758825 1.874078 
+
+--- Feature = t_char: wugwATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 1.633534 (large)
+95 percent confidence interval:
+   lower    upper 
+1.577540 1.689528 
+

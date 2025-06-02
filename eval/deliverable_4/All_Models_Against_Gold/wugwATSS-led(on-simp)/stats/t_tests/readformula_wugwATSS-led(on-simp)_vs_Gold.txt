@@ -1,0 +1,84 @@
+--- Feature = fkre: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 20.382, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+  9.032027 10.954726
+sample estimates:
+mean difference 
+       9.993377 
+
+--- Feature = fkgl: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -14.554, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -2.976724 -2.269923
+sample estimates:
+mean difference 
+      -2.623324 
+
+--- Feature = fogi: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -13.851, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -2.937442 -2.208950
+sample estimates:
+mean difference 
+      -2.573196 
+
+--- Feature = smog: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -11.139, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.8174669 -0.5727632
+sample estimates:
+mean difference 
+      -0.695115 
+
+--- Feature = cole: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -27.294, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -1.0346952 -0.8960017
+sample estimates:
+mean difference 
+     -0.9653484 
+
+--- Feature = auto: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -14.183, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -3.719755 -2.816236
+sample estimates:
+mean difference 
+      -3.267995 
+

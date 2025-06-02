@@ -1,0 +1,84 @@
+--- Feature = fkre: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 27.473, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 16.94678 19.55158
+sample estimates:
+mean difference 
+       18.24918 
+
+--- Feature = fkgl: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -25.13, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -6.689009 -5.720772
+sample estimates:
+mean difference 
+       -6.20489 
+
+--- Feature = fogi: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -24.859, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -6.792868 -5.799660
+sample estimates:
+mean difference 
+      -6.296264 
+
+--- Feature = smog: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -20.487, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -1.705582 -1.407630
+sample estimates:
+mean difference 
+      -1.556606 
+
+--- Feature = cole: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -18.981, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.7643831 -0.6212498
+sample estimates:
+mean difference 
+     -0.6928165 
+
+--- Feature = auto: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -24.931, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -8.485712 -7.248297
+sample estimates:
+mean difference 
+      -7.867005 
+

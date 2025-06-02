@@ -1,0 +1,81 @@
+--- Feature = rouge1_precision: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.4630497 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.5121834 -0.4139160 
+
+--- Feature = rouge2_precision: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.4664441 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.5155872 -0.4173010 
+
+--- Feature = rougeL_precision: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.5197383 (medium)
+95 percent confidence interval:
+     lower      upper 
+-0.5690383 -0.4704383 
+
+--- Feature = rouge1_recall: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: 0.3472256 (small)
+95 percent confidence interval:
+    lower     upper 
+0.2983734 0.3960778 
+
+--- Feature = rouge2_recall: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: 0.1340313 (negligible)
+95 percent confidence interval:
+     lower      upper 
+0.08548865 0.18257388 
+
+--- Feature = rougeL_recall: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: 0.136222 (negligible)
+95 percent confidence interval:
+     lower      upper 
+0.08767756 0.18476637 
+
+--- Feature = rouge1_fmeasure: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.3205796 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3693783 -0.2717810 
+
+--- Feature = rouge2_fmeasure: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.3314865 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3803066 -0.2826664 
+
+--- Feature = rougeL_fmeasure: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.4094396 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.4584332 -0.3604460 
+

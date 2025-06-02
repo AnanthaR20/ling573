@@ -1,0 +1,126 @@
+--- Feature = rouge1_precision: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -85.82, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.3167448 -0.3025951
+sample estimates:
+mean difference 
+     -0.3096699 
+
+--- Feature = rouge2_precision: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -79.137, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.2966025 -0.2822607
+sample estimates:
+mean difference 
+     -0.2894316 
+
+--- Feature = rougeL_precision: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -85.745, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.3264022 -0.3118086
+sample estimates:
+mean difference 
+     -0.3191054 
+
+--- Feature = rouge1_recall: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 30.395, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.1083421 0.1232833
+sample estimates:
+mean difference 
+      0.1158127 
+
+--- Feature = rouge2_recall: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -10.816, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.04596673 -0.03185905
+sample estimates:
+mean difference 
+    -0.03891289 
+
+--- Feature = rougeL_recall: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -6.2911, df = 3268, p-value = 3.572e-10
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.02813825 -0.01476649
+sample estimates:
+mean difference 
+    -0.02145237 
+
+--- Feature = rouge1_fmeasure: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -38.73, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.1399351 -0.1264494
+sample estimates:
+mean difference 
+     -0.1331923 
+
+--- Feature = rouge2_fmeasure: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -54.963, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.1805238 -0.1680878
+sample estimates:
+mean difference 
+     -0.1743058 
+
+--- Feature = rougeL_fmeasure: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -60.271, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.1937216 -0.1815146
+sample estimates:
+mean difference 
+     -0.1876181 
+

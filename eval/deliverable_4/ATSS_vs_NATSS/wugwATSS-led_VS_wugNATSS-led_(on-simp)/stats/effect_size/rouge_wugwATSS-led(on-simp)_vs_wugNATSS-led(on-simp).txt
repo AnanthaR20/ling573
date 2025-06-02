@@ -1,0 +1,81 @@
+--- Feature = rouge1_precision: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: -0.2093289 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.2579497 -0.1607081 
+
+--- Feature = rouge2_precision: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: -0.2399804 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.2886428 -0.1913180 
+
+--- Feature = rougeL_precision: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: -0.2605145 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3092079 -0.2118211 
+
+--- Feature = rouge1_recall: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: 0.1035463 (negligible)
+95 percent confidence interval:
+     lower      upper 
+0.05502564 0.15206701 
+
+--- Feature = rouge2_recall: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: -0.01278098 (negligible)
+95 percent confidence interval:
+      lower       upper 
+-0.06126968  0.03570771 
+
+--- Feature = rougeL_recall: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: 0.009916759 (negligible)
+95 percent confidence interval:
+      lower       upper 
+-0.03857174  0.05840526 
+
+--- Feature = rouge1_fmeasure: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: -0.1791988 (negligible)
+95 percent confidence interval:
+     lower      upper 
+-0.2277842 -0.1306134 
+
+--- Feature = rouge2_fmeasure: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: -0.2123428 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.2609675 -0.1637182 
+
+--- Feature = rougeL_fmeasure: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: -0.2509753 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.2996540 -0.2022966 
+

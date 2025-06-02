@@ -1,0 +1,126 @@
+--- Feature = rouge1_precision: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -35.304, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.04312019 -0.03858262
+sample estimates:
+mean difference 
+     -0.0408514 
+
+--- Feature = rouge2_precision: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -30.14, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.03049109 -0.02676640
+sample estimates:
+mean difference 
+    -0.02862874 
+
+--- Feature = rougeL_precision: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -33.408, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.03397811 -0.03021089
+sample estimates:
+mean difference 
+     -0.0320945 
+
+--- Feature = rouge1_recall: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 10.366, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.01113984 0.01633715
+sample estimates:
+mean difference 
+     0.01373849 
+
+--- Feature = rouge2_recall: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -1.1252, df = 3268, p-value = 0.2606
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.004258001  0.001152883
+sample estimates:
+mean difference 
+   -0.001552559 
+
+--- Feature = rougeL_recall: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 1.0239, df = 3268, p-value = 0.3059
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.001139887  0.003631791
+sample estimates:
+mean difference 
+    0.001245952 
+
+--- Feature = rouge1_fmeasure: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -25.677, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.02618856 -0.02247281
+sample estimates:
+mean difference 
+    -0.02433069 
+
+--- Feature = rouge2_fmeasure: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -22.687, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.02180084 -0.01833237
+sample estimates:
+mean difference 
+     -0.0200666 
+
+--- Feature = rougeL_fmeasure: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = wugNATSS-led(on-simp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -26.894, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.02371207 -0.02048960
+sample estimates:
+mean difference 
+    -0.02210083 
+

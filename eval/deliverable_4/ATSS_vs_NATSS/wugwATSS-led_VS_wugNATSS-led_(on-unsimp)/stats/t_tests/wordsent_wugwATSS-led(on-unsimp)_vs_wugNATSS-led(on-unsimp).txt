@@ -1,0 +1,126 @@
+--- Feature = t_word: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 21.833, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 30.88296 36.97693
+sample estimates:
+mean difference 
+       33.92995 
+
+--- Feature = t_stopword: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 22.42, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 15.05189 17.93679
+sample estimates:
+mean difference 
+       16.49434 
+
+--- Feature = t_punct: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 26.046, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+  8.93067 10.38472
+sample estimates:
+mean difference 
+       9.657693 
+
+--- Feature = t_syll: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 19.597, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 44.30121 54.15153
+sample estimates:
+mean difference 
+       49.22637 
+
+--- Feature = t_syll2: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 16.411, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 5.648960 7.181876
+sample estimates:
+mean difference 
+       6.415418 
+
+--- Feature = t_syll3: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 14.963, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 2.292955 2.984500
+sample estimates:
+mean difference 
+       2.638727 
+
+--- Feature = t_uword: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 12.582, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 4.849914 6.640450
+sample estimates:
+mean difference 
+       5.745182 
+
+--- Feature = t_sent: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 24.717, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.8989868 1.0539040
+sample estimates:
+mean difference 
+      0.9764454 
+
+--- Feature = t_char: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = wugNATSS-led(on-unsimp)
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 20.328, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 142.5859 173.0274
+sample estimates:
+mean difference 
+       157.8067 
+

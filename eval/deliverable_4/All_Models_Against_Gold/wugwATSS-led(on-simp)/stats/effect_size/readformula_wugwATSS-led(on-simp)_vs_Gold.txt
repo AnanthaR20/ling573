@@ -1,0 +1,54 @@
+--- Feature = fkre: wugwATSS-led(on-simp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: 0.4471435 (small)
+95 percent confidence interval:
+    lower     upper 
+0.3980531 0.4962339 
+
+--- Feature = fkgl: wugwATSS-led(on-simp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: -0.345387 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3942354 -0.2965386 
+
+--- Feature = fogi: wugwATSS-led(on-simp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: -0.3277195 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3765321 -0.2789069 
+
+--- Feature = smog: wugwATSS-led(on-simp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: -0.2256447 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.2742869 -0.1770024 
+
+--- Feature = cole: wugwATSS-led(on-simp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: -0.4727938 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.5219548 -0.4236329 
+
+--- Feature = auto: wugwATSS-led(on-simp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: -0.3393028 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3881387 -0.2904670 
+

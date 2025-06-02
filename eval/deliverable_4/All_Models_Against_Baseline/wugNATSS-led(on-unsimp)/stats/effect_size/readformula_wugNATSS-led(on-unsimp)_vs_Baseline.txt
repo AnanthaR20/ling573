@@ -1,0 +1,54 @@
+--- Feature = fkre: wugNATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 0.5351326 (medium)
+95 percent confidence interval:
+    lower     upper 
+0.4857842 0.5844810 
+
+--- Feature = fkgl: wugNATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: -0.5494006 (medium)
+95 percent confidence interval:
+     lower      upper 
+-0.5987950 -0.5000061 
+
+--- Feature = fogi: wugNATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: -0.5441395 (medium)
+95 percent confidence interval:
+     lower      upper 
+-0.5935169 -0.4947622 
+
+--- Feature = smog: wugNATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: -0.3834155 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.4323472 -0.3344838 
+
+--- Feature = cole: wugNATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: -0.1767403 (negligible)
+95 percent confidence interval:
+     lower      upper 
+-0.2253231 -0.1281576 
+
+--- Feature = auto: wugNATSS-led(on-unsimp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: -0.555062 (medium)
+95 percent confidence interval:
+     lower      upper 
+-0.6044750 -0.5056489 
+

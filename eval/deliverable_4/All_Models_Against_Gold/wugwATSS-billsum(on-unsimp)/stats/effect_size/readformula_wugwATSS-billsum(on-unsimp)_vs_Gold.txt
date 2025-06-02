@@ -1,0 +1,54 @@
+--- Feature = fkre: wugwATSS-billsum(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: 0.3637866 (small)
+95 percent confidence interval:
+    lower     upper 
+0.3148989 0.4126742 
+
+--- Feature = fkgl: wugwATSS-billsum(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: -0.284071 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3328032 -0.2353389 
+
+--- Feature = fogi: wugwATSS-billsum(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: -0.2764703 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3251896 -0.2277510 
+
+--- Feature = smog: wugwATSS-billsum(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: -0.192847 (negligible)
+95 percent confidence interval:
+     lower      upper 
+-0.2414478 -0.1442462 
+
+--- Feature = cole: wugwATSS-billsum(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: -0.398235 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.4472014 -0.3492685 
+
+--- Feature = auto: wugwATSS-billsum(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: -0.2832914 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3320222 -0.2345606 
+

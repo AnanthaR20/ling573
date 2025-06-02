@@ -1,0 +1,126 @@
+--- Feature = t_word: wugwATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 54.168, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 140.9308 151.5164
+sample estimates:
+mean difference 
+       146.2236 
+
+--- Feature = t_stopword: wugwATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 62.652, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 70.02737 74.55201
+sample estimates:
+mean difference 
+       72.28969 
+
+--- Feature = t_punct: wugwATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 56.561, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 26.81913 28.74527
+sample estimates:
+mean difference 
+        27.7822 
+
+--- Feature = t_syll: wugwATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 63.803, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 267.4227 284.3797
+sample estimates:
+mean difference 
+       275.9012 
+
+--- Feature = t_syll2: wugwATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 62.256, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 39.92473 42.52128
+sample estimates:
+mean difference 
+         41.223 
+
+--- Feature = t_syll3: wugwATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 56.994, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 14.85025 15.90840
+sample estimates:
+mean difference 
+       15.37932 
+
+--- Feature = t_uword: wugwATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 62.671, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 53.57387 57.03427
+sample estimates:
+mean difference 
+       55.30407 
+
+--- Feature = t_sent: wugwATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 72.468, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 4.569771 4.823927
+sample estimates:
+mean difference 
+       4.696849 
+
+--- Feature = t_char: wugwATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 61.997, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 808.9664 861.8051
+sample estimates:
+mean difference 
+       835.3857 
+

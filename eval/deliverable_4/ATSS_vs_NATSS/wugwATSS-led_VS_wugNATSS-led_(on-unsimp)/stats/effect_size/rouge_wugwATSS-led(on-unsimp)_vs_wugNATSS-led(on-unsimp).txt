@@ -1,0 +1,81 @@
+--- Feature = rouge1_precision: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.222629 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.2712672 -0.1739908 
+
+--- Feature = rouge2_precision: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.3706189 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.4195215 -0.3217162 
+
+--- Feature = rougeL_precision: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.3764239 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.4253396 -0.3275082 
+
+--- Feature = rouge1_recall: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.1345391 (negligible)
+95 percent confidence interval:
+      lower       upper 
+-0.18308216 -0.08599611 
+
+--- Feature = rouge2_recall: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.3408225 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3896615 -0.2919836 
+
+--- Feature = rougeL_recall: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.3038654 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3526326 -0.2550982 
+
+--- Feature = rouge1_fmeasure: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.2594829 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3081747 -0.2107911 
+
+--- Feature = rouge2_fmeasure: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.4543236 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.5034333 -0.4052138 
+
+--- Feature = rougeL_fmeasure: wugwATSS-led(on-unsimp) vs wugNATSS-led(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: -0.4950081 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.5442332 -0.4457829 
+

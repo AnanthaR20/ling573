@@ -1,0 +1,84 @@
+--- Feature = fkre: wugwATSS-billsum(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 24.204, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 14.57787 17.14792
+sample estimates:
+mean difference 
+       15.86289 
+
+--- Feature = fkgl: wugwATSS-billsum(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -23.225, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -6.125680 -5.171912
+sample estimates:
+mean difference 
+      -5.648796 
+
+--- Feature = fogi: wugwATSS-billsum(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -23.001, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -6.239973 -5.259702
+sample estimates:
+mean difference 
+      -5.749837 
+
+--- Feature = smog: wugwATSS-billsum(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -19.196, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -1.561993 -1.272477
+sample estimates:
+mean difference 
+      -1.417235 
+
+--- Feature = cole: wugwATSS-billsum(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -12.48, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.5146978 -0.3749332
+sample estimates:
+mean difference 
+     -0.4448155 
+
+--- Feature = auto: wugwATSS-billsum(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-billsum(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -23.274, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -7.837711 -6.619779
+sample estimates:
+mean difference 
+      -7.228745 
+

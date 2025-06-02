@@ -1,0 +1,54 @@
+--- Feature = fkre: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: -0.02569594 (negligible)
+95 percent confidence interval:
+      lower       upper 
+-0.07418614  0.02279426 
+
+--- Feature = fkgl: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: 0.1353764 (negligible)
+95 percent confidence interval:
+     lower      upper 
+0.08683267 0.18392008 
+
+--- Feature = fogi: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: 0.1564696 (negligible)
+95 percent confidence interval:
+    lower     upper 
+0.1079073 0.2050320 
+
+--- Feature = smog: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: 0.1206567 (negligible)
+95 percent confidence interval:
+     lower      upper 
+0.07212445 0.16918904 
+
+--- Feature = cole: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: -0.1326596 (negligible)
+95 percent confidence interval:
+     lower      upper 
+-0.1812011 -0.0841181 
+
+--- Feature = auto: wugwATSS-led(on-simp) vs wugNATSS-led(on-simp) Summaries
+
+Cohen's d
+
+d estimate: 0.1482394 (negligible)
+95 percent confidence interval:
+     lower      upper 
+0.09968462 0.19679412 
+

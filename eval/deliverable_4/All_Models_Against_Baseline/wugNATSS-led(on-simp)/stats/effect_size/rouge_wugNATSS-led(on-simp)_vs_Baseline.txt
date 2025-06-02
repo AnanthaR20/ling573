@@ -1,0 +1,81 @@
+--- Feature = rouge1_precision: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: -1.209915 (large)
+95 percent confidence interval:
+    lower     upper 
+-1.262654 -1.157177 
+
+--- Feature = rouge2_precision: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: -1.415691 (large)
+95 percent confidence interval:
+    lower     upper 
+-1.469914 -1.361468 
+
+--- Feature = rougeL_precision: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: -1.543249 (large)
+95 percent confidence interval:
+    lower     upper 
+-1.598485 -1.488013 
+
+--- Feature = rouge1_recall: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: 0.3720988 (small)
+95 percent confidence interval:
+    lower     upper 
+0.3231928 0.4210048 
+
+--- Feature = rouge2_recall: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: -0.4307037 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.4797509 -0.3816566 
+
+--- Feature = rougeL_recall: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: -0.3285074 (small)
+95 percent confidence interval:
+     lower      upper 
+-0.3773215 -0.2796932 
+
+--- Feature = rouge1_fmeasure: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: -0.7157465 (medium)
+95 percent confidence interval:
+     lower      upper 
+-0.7657631 -0.6657298 
+
+--- Feature = rouge2_fmeasure: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: -1.126042 (large)
+95 percent confidence interval:
+    lower     upper 
+-1.178232 -1.073853 
+
+--- Feature = rougeL_fmeasure: wugNATSS-led(on-simp) vs Baseline Summaries
+
+Cohen's d
+
+d estimate: -1.235023 (large)
+95 percent confidence interval:
+    lower     upper 
+-1.287932 -1.182114 
+

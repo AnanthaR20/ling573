@@ -1,0 +1,126 @@
+--- Feature = rouge1_precision: wugNATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugNATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -67.977, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.2567955 -0.2423970
+sample estimates:
+mean difference 
+     -0.2495962 
+
+--- Feature = rouge2_precision: wugNATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugNATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -68.838, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.2641417 -0.2495115
+sample estimates:
+mean difference 
+     -0.2568266 
+
+--- Feature = rougeL_precision: wugNATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugNATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -73.048, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.2859694 -0.2710192
+sample estimates:
+mean difference 
+     -0.2784943 
+
+--- Feature = rouge1_recall: wugNATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugNATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 16.899, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.05765703 0.07279197
+sample estimates:
+mean difference 
+      0.0652245 
+
+--- Feature = rouge2_recall: wugNATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugNATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -19.307, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.07854256 -0.06406049
+sample estimates:
+mean difference 
+    -0.07130153 
+
+--- Feature = rougeL_recall: wugNATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugNATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -16.005, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.06281911 -0.04910764
+sample estimates:
+mean difference 
+    -0.05596337 
+
+--- Feature = rouge1_fmeasure: wugNATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugNATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -31.204, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.11023918 -0.09720439
+sample estimates:
+mean difference 
+     -0.1037218 
+
+--- Feature = rouge2_fmeasure: wugNATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugNATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -49.097, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.1655497 -0.1528351
+sample estimates:
+mean difference 
+     -0.1591924 
+
+--- Feature = rougeL_fmeasure: wugNATSS-led(on-simp) vs Baseline Summaries
+model_1 = wugNATSS-led(on-simp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = -52.536, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.1729524 -0.1605073
+sample estimates:
+mean difference 
+     -0.1667299 
+

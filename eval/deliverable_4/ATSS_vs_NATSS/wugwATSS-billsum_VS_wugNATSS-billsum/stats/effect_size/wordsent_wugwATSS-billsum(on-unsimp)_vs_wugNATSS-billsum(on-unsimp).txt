@@ -1,0 +1,81 @@
+--- Feature = t_word: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: 0.4589657 (small)
+95 percent confidence interval:
+    lower     upper 
+0.4098433 0.5080882 
+
+--- Feature = t_stopword: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: 0.4484748 (small)
+95 percent confidence interval:
+    lower     upper 
+0.3993809 0.4975688 
+
+--- Feature = t_punct: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: 0.4764042 (small)
+95 percent confidence interval:
+    lower     upper 
+0.4272330 0.5255754 
+
+--- Feature = t_syll: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: 0.441582 (small)
+95 percent confidence interval:
+    lower     upper 
+0.3925065 0.4906576 
+
+--- Feature = t_syll2: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: 0.4170965 (small)
+95 percent confidence interval:
+    lower     upper 
+0.3680839 0.4661091 
+
+--- Feature = t_syll3: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: 0.3591242 (small)
+95 percent confidence interval:
+    lower     upper 
+0.3102467 0.4080017 
+
+--- Feature = t_uword: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: 0.3436674 (small)
+95 percent confidence interval:
+    lower     upper 
+0.2948226 0.3925122 
+
+--- Feature = t_sent: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: 0.6157072 (medium)
+95 percent confidence interval:
+    lower     upper 
+0.5660834 0.6653310 
+
+--- Feature = t_char: wugwATSS-billsum(on-unsimp) vs wugNATSS-billsum(on-unsimp) Summaries
+
+Cohen's d
+
+d estimate: 0.4474104 (small)
+95 percent confidence interval:
+    lower     upper 
+0.3983193 0.4965015 
+

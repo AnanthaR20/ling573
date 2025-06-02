@@ -1,0 +1,81 @@
+--- Feature = t_word: wugNATSS-large(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: 0.5252792 (medium)
+95 percent confidence interval:
+    lower     upper 
+0.4759620 0.5745965 
+
+--- Feature = t_stopword: wugNATSS-large(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: 0.814082 (large)
+95 percent confidence interval:
+    lower     upper 
+0.7636253 0.8645386 
+
+--- Feature = t_punct: wugNATSS-large(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: 0.6246303 (medium)
+95 percent confidence interval:
+    lower     upper 
+0.5749738 0.6742868 
+
+--- Feature = t_syll: wugNATSS-large(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: 0.7110758 (medium)
+95 percent confidence interval:
+    lower     upper 
+0.6610788 0.7610728 
+
+--- Feature = t_syll2: wugNATSS-large(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: 0.6270274 (medium)
+95 percent confidence interval:
+    lower     upper 
+0.5773621 0.6766928 
+
+--- Feature = t_syll3: wugNATSS-large(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: 0.5399973 (medium)
+95 percent confidence interval:
+    lower     upper 
+0.4906333 0.5893613 
+
+--- Feature = t_uword: wugNATSS-large(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: 0.5185286 (medium)
+95 percent confidence interval:
+    lower     upper 
+0.4692323 0.5678249 
+
+--- Feature = t_sent: wugNATSS-large(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: 0.5637451 (medium)
+95 percent confidence interval:
+    lower     upper 
+0.5143032 0.6131871 
+
+--- Feature = t_char: wugNATSS-large(on-unsimp) vs Gold Summaries
+
+Cohen's d
+
+d estimate: 0.6750357 (medium)
+95 percent confidence interval:
+    lower     upper 
+0.6251857 0.7248857 
+

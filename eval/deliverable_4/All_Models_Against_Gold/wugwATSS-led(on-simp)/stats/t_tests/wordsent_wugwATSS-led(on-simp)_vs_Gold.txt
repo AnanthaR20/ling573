@@ -1,0 +1,126 @@
+--- Feature = t_word: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 33.286, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+  91.91507 103.42112
+sample estimates:
+mean difference 
+       97.66809 
+
+--- Feature = t_stopword: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 48.029, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 55.83473 60.58741
+sample estimates:
+mean difference 
+       58.21107 
+
+--- Feature = t_punct: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 41.517, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 20.46031 22.48860
+sample estimates:
+mean difference 
+       21.47446 
+
+--- Feature = t_syll: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 44.067, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 190.1616 207.8714
+sample estimates:
+mean difference 
+       199.0165 
+
+--- Feature = t_syll2: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 42.205, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 27.53406 30.21694
+sample estimates:
+mean difference 
+        28.8755 
+
+--- Feature = t_syll3: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 37.968, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 10.02929 11.12152
+sample estimates:
+mean difference 
+       10.57541 
+
+--- Feature = t_uword: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 40.049, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 35.10421 38.71837
+sample estimates:
+mean difference 
+       36.91129 
+
+--- Feature = t_sent: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 45.446, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 2.997896 3.268240
+sample estimates:
+mean difference 
+       3.133068 
+
+--- Feature = t_char: wugwATSS-led(on-simp) vs Gold Summaries
+model_1 = wugwATSS-led(on-simp) | model_2 = Gold
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 41.786, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 564.2894 619.8513
+sample estimates:
+mean difference 
+       592.0704 
+

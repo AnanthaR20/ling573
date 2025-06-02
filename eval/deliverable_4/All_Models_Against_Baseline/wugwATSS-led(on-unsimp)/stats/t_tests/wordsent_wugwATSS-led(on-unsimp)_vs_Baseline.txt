@@ -1,0 +1,126 @@
+--- Feature = t_word: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 59.933, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 181.1940 193.4503
+sample estimates:
+mean difference 
+       187.3221 
+
+--- Feature = t_stopword: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 66.273, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 87.88919 93.24816
+sample estimates:
+mean difference 
+       90.56868 
+
+--- Feature = t_punct: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 62.627, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 34.25539 36.46960
+sample estimates:
+mean difference 
+        35.3625 
+
+--- Feature = t_syll: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 68.506, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 333.4650 353.1156
+sample estimates:
+mean difference 
+       343.2903 
+
+--- Feature = t_syll2: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 66.604, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 49.19523 52.17950
+sample estimates:
+mean difference 
+       50.68737 
+
+--- Feature = t_syll3: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 61.655, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 18.46213 19.67492
+sample estimates:
+mean difference 
+       19.06852 
+
+--- Feature = t_uword: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 68.406, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 62.66955 66.36808
+sample estimates:
+mean difference 
+       64.51881 
+
+--- Feature = t_sent: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 74.47, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 5.638001 5.942911
+sample estimates:
+mean difference 
+       5.790456 
+
+--- Feature = t_char: wugwATSS-led(on-unsimp) vs Baseline Summaries
+model_1 = wugwATSS-led(on-unsimp) | model_2 = Baseline
+
+	Paired t-test
+
+data:  model_1 and model_2
+t = 66.843, df = 3268, p-value < 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 1013.752 1075.021
+sample estimates:
+mean difference 
+       1044.387 
+
