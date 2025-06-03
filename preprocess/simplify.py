@@ -61,7 +61,7 @@ def main():
     model = T5ForConditionalGeneration.from_pretrained(checkpoint)
 
     # Warm up GPU
-    warm_up(model, tokenizer)
+    warm_up_default(model, tokenizer, 512)
 
     # Map into function - N rows will return N rows
     simplify_bill = create_simplify(
