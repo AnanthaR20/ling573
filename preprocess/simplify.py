@@ -3,6 +3,8 @@ import re
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 from datasets import Dataset
 import argparse
+import sys
+sys.path.append("..")
 from ..utils.utils import *
 
 checkpoint = "unikei/t5-base-split-and-rephrase"
