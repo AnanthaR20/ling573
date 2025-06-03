@@ -2,10 +2,7 @@
 # File Arguments:
 MODEL_NAME <- "wugwATSS-led(on-unsimp)" # The name of the Model whose output is being evaluated
 MODEL_OUTPUT_PATH <- "../output/deliverable_4/wugwATSS-led/eval_on_unsimp.csv" # place to look for model output csv
-BASELINE_OUTPUT_PATH <- "../output/deliverable_2/pegasusbillsum_baseline_ALL_metrics.csv"
-ALT_NAME <- "Gold" # The name of the Alternate Model to evaluate against (or just "Gold" if comparing to gold data)
-ALT_PATH <- "gold_lftk.csv" # place to look for gold data/alternate model data csv
-ANALYSIS_PATH <- "deliverable_4/tristograms_temp/" # place to write the plots and stats to. Must end with a "/"
+ANALYSIS_PATH <- "deliverable_4/yo/" # place to write the plots and stats to. Must end with a "/"
 HISTOGRAM_BINS <- 60
 # Note about these arguments - "ALT_NAME" and "ALT_PATH" could be the output of a different
 # model and not necessarily computed from reference data. It's a bad naming convention, but
@@ -19,15 +16,18 @@ library(stringr)
 library(dplyr)
 library(pastecs)
 library(effsize)
+
+ALT_NAME <- "Gold" # The name of the Alternate Model to evaluate against (or just "Gold" if comparing to gold data)
+ALT_PATH <- "gold_lftk.csv" # place to look for gold data/alternate model data csv
+BASE_NAME <- "Baseline"
+BASELINE_OUTPUT_PATH <- "../output/deliverable_2/pegasusbillsum_baseline_ALL_metrics.csv"
+
 ALT_SUFFIX <- ".GOLD"
 GEN_SUFFIX <- ".GEN"
-
 
 long <- "(.+)\\(.+\\)"
 SHORT_MODEL_NAME <- ifelse(str_detect(MODEL_NAME,long), str_extract(MODEL_NAME,long,group=1),MODEL_NAME)
 SHORT_ALT_NAME <- ifelse(str_detect(ALT_NAME,long), str_extract(ALT_NAME,long,group=1),ALT_NAME)
-BASE_NAME <- "Baseline"
-
 # ----------------------------------------------------------------------- #
 # ----------------------------------------------------------------------- #
 # ------------------------- (0) Setup Variables ------------------------- #
@@ -102,19 +102,19 @@ for (feature in colnames(metrics$gen)) {
     }
     plt <- 
       ggplot() + 
-      geom_histogram(aes(x=metrics$gen[[feature]], fill=SHORT_MODEL_NAME), alpha=0.95,bins=HISTOGRAM_BINS) +
-      geom_histogram(aes(x=metrics$alt[[feature]], fill=SHORT_ALT_NAME),alpha=0.55,bins=HISTOGRAM_BINS) +
-      geom_histogram(aes(x=metrics$alt[[base]], fill=SHORT_ALT_NAME),alpha=0.35,bins=HISTOGRAM_BINS) +
+      geom_histogram(aes(x=metrics$gen[[feature]], fill=SHORT_MODEL_NAME), alpha=0.70,bins=HISTOGRAM_BINS) +
+      geom_histogram(aes(x=metrics$alt[[feature]], fill=SHORT_ALT_NAME),alpha=0.60,bins=HISTOGRAM_BINS) +
+      geom_histogram(aes(x=metrics$base[[feature]], fill=BASE_NAME),alpha=0.50,bins=HISTOGRAM_BINS) +
       # scale_x_continuous(breaks = seq(0,30,5)) +
       labs(
         x = 'Value', 
         y = "Count", 
-        title= str_c(feature," for ",SHORT_MODEL_NAME," and ",SHORT_ALT_NAME," Summaries")
+        title= str_c(feature," for ",SHORT_MODEL_NAME,", ",SHORT_ALT_NAME," and ",BASE_NAME," Summaries")
       ) #+
     plt
     # Save plots in right place
     path_to_save <- str_c(ANALYSIS_PATH,"plots/",fam,"/")
-    ggsave(str_c(path_to_save,feature,"_distribution_",MODEL_NAME,"_and_",ALT_NAME,"_summaries.png"), plt, create.dir = TRUE)
+    ggsave(str_c(path_to_save,feature,"_distribution_",MODEL_NAME,"_",ALT_NAME,"_and_",BASE_NAME,"_summaries.png"), plt, create.dir = TRUE)
     
   } # ----- End of Attributes loop
 } # ----- End of lftk features loop
