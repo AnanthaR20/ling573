@@ -3,38 +3,10 @@ import re
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 from datasets import Dataset
 import argparse
+from ..utils.utils import *
 
 checkpoint = "unikei/t5-base-split-and-rephrase"
-tokenizer = T5Tokenizer.from_pretrained(checkpoint, legacy=False)
-model = T5ForConditionalGeneration.from_pretrained(checkpoint)
 
-def simplify_bill(example, idx, max_input_len, max_output_len):
-    try: 
-        # Tokenize input
-        tokens = tokenizer(
-            example["text"], 
-            padding="max_length", 
-            truncation=True, 
-            max_length=max_input_len, 
-            return_tensors='pt'
-        )
-        # Generate output tokens with suggested params
-        output_ids = model.generate(
-            tokens['input_ids'], 
-            attention_mask=tokens['attention_mask'], 
-            max_length=max_output_len, 
-            num_beams=5
-        )
-        # 
-        # Decode the result
-        decoded = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
-        # Overwrite the original text column with decoded simple text
-        example["text"] = decoded
-    except IndexError:
-        print(f"IndexError at index {idx}")
-        print("First 100 characters so you can look into it manually")
-        print(example["text"][:100])
-    return example
 
 def main():
     parser = argparse.ArgumentParser()
@@ -82,17 +54,25 @@ def main():
         outname = outname.split(".")[0] + "_toy.csv"
         ds = ds.select(range(args.toy))
 
+    # Configure model and tokenizer
+    tokenizer = T5Tokenizer.from_pretrained(checkpoint, legacy=False)
+    model = T5ForConditionalGeneration.from_pretrained(checkpoint)
+
+    # Warm up GPU
+    warm_up(model, tokenizer)
+
     # Map into function - N rows will return N rows
+    simplify_bill = create_simplify(
+        model,
+        tokenizer,
+        args.max_input_len,
+        args.max_output_len
+    )
+
     ds = ds.map(
         simplify_bill, 
         batched=True,
         batch_size=8,
-        with_indices=True,
-        num_proc=8,
-        fn_kwargs={
-            "max_input_len": args.max_input_len,
-            "max_output_len": args.max_output_len
-        }
     )
     # Write to output
     ds.to_csv(outname, index=None, escapechar="\\")
