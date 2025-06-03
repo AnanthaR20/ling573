@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: set dummy parameters to update so no faulty params are passed to python script
+
 # Check if config file was provided
 if [ $# -eq 0 ]; then
     echo "Usage: $0 <run strategy>.config"
@@ -67,7 +69,7 @@ case "$PLATFORM" in
         cat > "$output_file" <<EOF
 executable = run_model.sh
 getenv = true
-arguments = --checkpoint $CHECKPOINT --mode $MODE --testfile $TESTFILE  --concat $CONCAT --batch_size $BATCH_SIZE --source $SOURCE $( [ -v $MODEL_NAME ] && echo "--model_name $MODEL_NAME" )
+arguments = --checkpoint $CHECKPOINT --mode $MODE --testfile $TESTFILE  --concat $CONCAT --batch_size $BATCH_SIZE --source $SOURCE
 transfer_executable = false
 output = run_model.\$(Cluster).out
 error = run_model.\$(Cluster).err

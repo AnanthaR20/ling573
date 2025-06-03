@@ -127,7 +127,7 @@ if __name__ == "__main__":
                     predict_func,
                     batched=True,
                     batch_size=args.batch_size,
-                    num_proc=8
+                    # num_proc=8
                 )
 
                 # Reconstruct original lengths
