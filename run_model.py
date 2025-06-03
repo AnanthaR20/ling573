@@ -8,12 +8,16 @@ import torch
 from datasets import load_dataset, Dataset
 from eval.eval_metrics import eval_all
 from rouge_score import rouge_scorer
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, Seq2SeqTrainer, \
-    Seq2SeqTrainingArguments, set_seed
-# from preprocess.se3.se3.segmentation import get_rouge1_precision
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, set_seed
 from tqdm.auto import tqdm
-# from preprocess import clean, chunk, simplify # TODO: figure out if this is legal, given the existence of another official preprocess pkg
 from utils import *
+
+def warm_up(model, tokenizer):
+    with torch.no_grad():
+        for step in range(15):  # 15 steps to ensure stabilization
+            inputs = get_led_warmup_input(tokenizer)
+            _ = model.generate(**inputs, max_new_tokens=20)
+    return
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -81,9 +85,10 @@ if __name__ == "__main__":
     model.config.early_stopping = True
     model.config.no_repeat_ngram_size = 3
 
-    
-
     word_tok = AutoTokenizer.from_pretrained(args.checkpoint)
+
+    # Warm up GPU
+    warm_up(model, word_tok)
 
     # TODO: expand this to account for unchunked data 
     predictions_path = "predictions/" + f"{model_name}_{dataset_file}"
@@ -122,7 +127,7 @@ if __name__ == "__main__":
                     predict_func,
                     batched=True,
                     batch_size=args.batch_size,
-                    # num_proc=8
+                    num_proc=8
                 )
 
                 # Reconstruct original lengths

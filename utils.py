@@ -1,5 +1,12 @@
 import torch
 
+def get_led_warmup_input(tokenizer):
+    text = "This is a warm-up sequence. " * 160  # ~2048 tokens
+    inputs = tokenizer(text, return_tensors="pt", max_length=512, truncation=True, padding="max_length").to("cuda")
+    inputs["global_attention_mask"] = torch.zeros_like(inputs["input_ids"])
+    inputs["global_attention_mask"][:, [0]] = 1  # Global attention on [CLS]
+    return inputs
+
 def reconstruct(preds, data_index):
     final_summaries = []
     rows_seen = 0
