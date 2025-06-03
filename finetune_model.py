@@ -8,7 +8,7 @@ from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, Seq2SeqTrainingAr
 from transformers import set_seed
 from eval.eval_metrics import eval_all
 from tqdm.auto import tqdm
-from utils import *
+from utils.utils import *
 
 
 def load_data(source_name):

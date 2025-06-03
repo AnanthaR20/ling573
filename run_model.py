@@ -10,14 +10,7 @@ from eval.eval_metrics import eval_all
 from rouge_score import rouge_scorer
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, set_seed
 from tqdm.auto import tqdm
-from utils import *
-
-def warm_up(model, tokenizer):
-    with torch.no_grad():
-        for step in range(15):  # 15 steps to ensure stabilization
-            inputs = get_led_warmup_input(tokenizer)
-            _ = model.generate(**inputs, max_new_tokens=20)
-    return
+from utils.utils import *
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

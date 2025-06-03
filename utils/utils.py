@@ -1,5 +1,12 @@
 import torch
 
+def warm_up(model, tokenizer):
+    with torch.no_grad():
+        for step in range(15):  # 15 steps to ensure stabilization
+            inputs = get_led_warmup_input(tokenizer)
+            _ = model.generate(**inputs, max_new_tokens=20)
+    return
+
 def get_led_warmup_input(tokenizer):
     text = "This is a warm-up sequence. " * 160  # ~2048 tokens
     inputs = tokenizer(text, return_tensors="pt", max_length=512, truncation=True, padding="max_length").to("cuda")
@@ -19,6 +26,30 @@ def reconstruct(preds, data_index):
         final_summaries.append(summary)
         rows_seen += chunk_count # update the number of rows seen
     return final_summaries
+
+def create_simplify(model, tokenizer, max_input_len, max_output_len):
+    def simplify(example):
+        # Tokenize input
+        tokens = tokenizer(
+            example["text"], 
+            padding="max_length", 
+            truncation=True, 
+            max_length=max_input_len, 
+            return_tensors='pt'
+        )
+        # Generate output
+        output_ids = model.generate(
+        tokens['input_ids'], 
+        attention_mask=tokens['attention_mask'], 
+        max_length=max_output_len, 
+        num_beams=5
+        )
+        # Decode output
+        decoded = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
+        # Overwrite text content with decoded content
+        example["text"] = decoded
+        return example
+    return simplify
 
 def create_prediction(max_input_len, max_output_len, tokenizer, model, device, has_global_attn=False):
     def predict(examples):
