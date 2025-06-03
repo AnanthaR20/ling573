@@ -81,7 +81,7 @@ if __name__ == "__main__":
     word_tok = AutoTokenizer.from_pretrained(args.checkpoint)
 
     # Warm up GPU
-    warm_up(model, word_tok)
+    warm_up_global_attn(model, word_tok, 2048, device)
 
     # TODO: expand this to account for unchunked data 
     predictions_path = "predictions/" + f"{model_name}_{dataset_file}"

@@ -1,16 +1,16 @@
 import torch
 
-def warm_up_default(model, tokenizer, target_length):
+def warm_up_default(model, tokenizer, target_length, device):
     text = "warm up GPU" * 40 * (target_length // 512)  # ~512 tokens
-    inputs = tokenizer(text, return_tensors="pt", max_length=512, truncation=True, padding="max_length").to("cuda")
+    inputs = tokenizer(text, return_tensors="pt", max_length=512, truncation=True, padding="max_length").to(device)
     with torch.no_grad():
         for step in range(15):
             _ = model.generate(**inputs)
     return
 
-def warm_up_global_attn(model, tokenizer, target_length):
+def warm_up_global_attn(model, tokenizer, target_length, device):
     text = "This is a warm-up sequence. " * 40 * (target_length // 512)  # ~2048 tokens
-    inputs = tokenizer(text, return_tensors="pt", max_length=512, truncation=True, padding="max_length").to("cuda")
+    inputs = tokenizer(text, return_tensors="pt", max_length=512, truncation=True, padding="max_length").to(device)
     inputs["global_attention_mask"] = torch.zeros_like(inputs["input_ids"])
     inputs["global_attention_mask"][:, [0]] = 1  # Global attention on [CLS]
 

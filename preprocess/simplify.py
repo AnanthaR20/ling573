@@ -7,11 +7,9 @@ import sys
 sys.path.append("..")
 from utils.utils import *
 
-checkpoint = "unikei/t5-base-split-and-rephrase"
-
-
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--model", default="unikei/t5-base-split-and-rephrase", help="specify Split and Rephrase model to use for simplification")
     parser.add_argument("--dataset", default="billsum", help="specify Huggingface dataset")
     parser.add_argument("--split", default="train", help="specify dataset partition")
     parser.add_argument("--chunk_type", default="fixed", help="specify chunking strategy")
@@ -22,6 +20,7 @@ def main():
     parser.add_argument("--from_toy", default=False, action="store_true", help="use toy chunked dataset")
     parser.add_argument("--output_file",default=None,help="overrides default output naming schema")
     parser.add_argument("--input_file",default=None, help="Override default input naming schema")
+    parser.add_argument("--device", default="cuda", help="Specify device to use")
     args = parser.parse_args()
 
     # Preload output name
@@ -57,11 +56,17 @@ def main():
         ds = ds.select(range(args.toy))
 
     # Configure model and tokenizer
-    tokenizer = T5Tokenizer.from_pretrained(checkpoint, legacy=False)
-    model = T5ForConditionalGeneration.from_pretrained(checkpoint)
+    # Configure device
+    if args.device == "cuda":
+        device = torch.device(args.device if torch.cuda.is_available() else "cpu")
+    else:
+        device = torch.device("cpu")
+
+    model = T5ForConditionalGeneration.from_pretrained(args.model).to(device)
+    tokenizer = T5Tokenizer.from_pretrained(args.model, legacy=False)
 
     # Warm up GPU
-    warm_up_default(model, tokenizer, 512)
+    warm_up_default(model, tokenizer, 512, args.device)
 
     # Map into function - N rows will return N rows
     simplify_bill = create_simplify(
