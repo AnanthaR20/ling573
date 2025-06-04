@@ -73,7 +73,8 @@ def main():
         model,
         tokenizer,
         args.max_input_len,
-        args.max_output_len
+        args.max_output_len,
+        device=device
     )
 
     ds = ds.map(

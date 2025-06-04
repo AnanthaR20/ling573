@@ -32,7 +32,7 @@ def reconstruct(preds, data_index):
         rows_seen += chunk_count # update the number of rows seen
     return final_summaries
 
-def create_simplify(model, tokenizer, max_input_len, max_output_len):
+def create_simplify(model, tokenizer, max_input_len, max_output_len, device):
     def simplify(example):
         # Tokenize input
         tokens = tokenizer(
@@ -42,10 +42,14 @@ def create_simplify(model, tokenizer, max_input_len, max_output_len):
             max_length=max_input_len, 
             return_tensors='pt'
         )
+
+        input_ids = tokens.input_ids.to(device)
+        attention_mask = tokens.attention_mask.to(device)
+
         # Generate output
         output_ids = model.generate(
-        tokens['input_ids'], 
-        attention_mask=tokens['attention_mask'], 
+        input_ids, 
+        attention_mask=attention_mask, 
         max_length=max_output_len, 
         num_beams=5
         )
