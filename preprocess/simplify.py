@@ -78,9 +78,7 @@ def main():
     )
 
     ds = ds.map(
-        simplify_bill, 
-        batched=True,
-        batch_size=8,
+        simplify_bill
     )
     # Write to output
     ds.to_csv(outname, index=None, escapechar="\\")
