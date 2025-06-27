@@ -63,7 +63,7 @@ def main():
         device = torch.device("cpu")
 
     model = T5ForConditionalGeneration.from_pretrained(args.model).to(device)
-    tokenizer = T5Tokenizer.from_pretrained(args.model, legacy=False)
+    tokenizer = T5Tokenizer.from_pretrained(args.model)
 
     # Warm up GPU
     warm_up_default(model, tokenizer, 512, args.device)
