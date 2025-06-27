@@ -53,6 +53,10 @@ def create_simplify(model, tokenizer, max_input_len, max_output_len, device):
         max_length=max_output_len, 
         num_beams=5
         )
+        
+        # Manually fix padding
+        output_ids[output_ids == -1] = 0 # convert improper tokens to pad token ID
+
         # Decode output
         decoded = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
         # Overwrite text content with decoded content
