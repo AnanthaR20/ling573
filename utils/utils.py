@@ -60,14 +60,6 @@ def create_simplify(model, tokenizer, max_input_len, max_output_len, device):
         print(set(output_ids[output_ids < 0]))
         print("OUT OF BOUNDS TOKENS??")
         print(set(output_ids[output_ids > tokenizer.vocab_size]))
-        
-        # Manually fix padding
-        # PAD to EOS
-        output_ids = np.where(output_ids != 0, output_ids, tokenizer.eos_token_id)
-        # fix improper PAD 
-        output_ids = np.where(output_ids != -100, output_ids, tokenizer.pad_token_id)
-        # fix improper PAD 
-        output_ids = np.where(output_ids != -1, output_ids, tokenizer.pad_token_id)
 
         # Decode output
         decoded = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
