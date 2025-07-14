@@ -1,0 +1,14 @@
+Disabling PyTorch because PyTorch >= 2.1 is required but found 1.12.1
+None of PyTorch, TensorFlow >= 2.0, or Flax have been found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Traceback (most recent call last):
+  File "/Users/anantha/github/ling573/eval/align_score.py", line 6, in <module>
+    from alignscore import AlignScore
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/alignscore/__init__.py", line 1, in <module>
+    from .alignscore import AlignScore
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/alignscore/alignscore.py", line 1, in <module>
+    from .inference import Inferencer
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/alignscore/inference.py", line 5, in <module>
+    from .model import BERTAlignModel
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/alignscore/model.py", line 3, in <module>
+    from transformers import AdamW, get_linear_schedule_with_warmup, AutoConfig
+ImportError: cannot import name 'AdamW' from 'transformers' (/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/transformers/__init__.py)
