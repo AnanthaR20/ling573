@@ -1,14 +1,31 @@
-Disabling PyTorch because PyTorch >= 2.1 is required but found 1.12.1
-None of PyTorch, TensorFlow >= 2.0, or Flax have been found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Some weights of RobertaModel were not initialized from the model checkpoint at roberta-base and are newly initialized: ['roberta.pooler.dense.bias', 'roberta.pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Lightning automatically upgraded your loaded checkpoint from v1.7.7 to v1.9.5. To apply the upgrade to your files permanently, run `python -m pytorch_lightning.utilities.upgrade_checkpoint --file AlignScore-base.ckpt`
+Some weights of RobertaModel were not initialized from the model checkpoint at roberta-base and are newly initialized: ['roberta.pooler.dense.bias', 'roberta.pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/pytorch_lightning/core/saving.py:255: UserWarning: Found keys that are not in the model state dict but in the checkpoint: ['base_model.embeddings.position_ids']
+  rank_zero_warn(
 Traceback (most recent call last):
-  File "/Users/anantha/github/ling573/eval/align_score.py", line 6, in <module>
-    from alignscore import AlignScore
-  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/alignscore/__init__.py", line 1, in <module>
-    from .alignscore import AlignScore
-  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/alignscore/alignscore.py", line 1, in <module>
-    from .inference import Inferencer
-  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/alignscore/inference.py", line 5, in <module>
-    from .model import BERTAlignModel
-  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/alignscore/model.py", line 3, in <module>
-    from transformers import AdamW, get_linear_schedule_with_warmup, AutoConfig
-ImportError: cannot import name 'AdamW' from 'transformers' (/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/transformers/__init__.py)
+  File "/Users/anantha/github/ling573/eval/align_score/align_score.py", line 8, in <module>
+    scorer = AlignScore(
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/alignscore/alignscore.py", line 6, in __init__
+    self.model = Inferencer(
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/alignscore/inference.py", line 14, in __init__
+    self.model = BERTAlignModel(model=model).load_from_checkpoint(checkpoint_path=ckpt_path, strict=False).to(self.device)
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/lightning_fabric/utilities/device_dtype_mixin.py", line 54, in to
+    return super().to(*args, **kwargs)
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/torch/nn/modules/module.py", line 927, in to
+    return self._apply(convert)
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/torch/nn/modules/module.py", line 579, in _apply
+    module._apply(fn)
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/torch/nn/modules/module.py", line 579, in _apply
+    module._apply(fn)
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/torch/nn/modules/module.py", line 579, in _apply
+    module._apply(fn)
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/torch/nn/modules/module.py", line 602, in _apply
+    param_applied = fn(param)
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/torch/nn/modules/module.py", line 925, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+  File "/opt/homebrew/Caskroom/miniforge/base/envs/align-score/lib/python3.9/site-packages/torch/cuda/__init__.py", line 211, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
