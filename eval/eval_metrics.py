@@ -63,6 +63,19 @@ def eval_lftk(text:str, lftk_features:list[str] = READFORMULA, suffix:str = "") 
   feature_dict = LFTK.extract(lftk_features)
   return {key+suffix:val for key,val in feature_dict.items()}
 
+def eval_alignscore(text: str) -> dict:
+    """Gets a dictionary of AlignScore factuality scores for a 
+    claim given some context.
+
+    Arguments:
+      context: body of text the claim is evaluated against. typically will be
+      the bill or gold summary.
+      claim: the generated summary whose text will be scored against the claim.
+    """
+
+
+    return None
+
 def eval_all(
   gold_text: str, 
   gen_text: str,
@@ -113,11 +126,7 @@ def eval_all(
   print("Rouge and LFTK evaluated")
   return results
 
-def get_factuality_scores(text: str) -> dict:
-    """
-    Gets a dictionary of factuality scores for a summary.
-    """
-    return None
+
 
 
 # if __name__ == "__main__":
