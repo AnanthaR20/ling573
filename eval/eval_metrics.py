@@ -63,14 +63,19 @@ def eval_lftk(text:str, lftk_features:list[str] = READFORMULA, suffix:str = "") 
   feature_dict = LFTK.extract(lftk_features)
   return {key+suffix:val for key,val in feature_dict.items()}
 
-def eval_alignscore(text: str) -> dict:
+def eval_alignscore(context:str, claim: str) -> dict:
     """Gets a dictionary of AlignScore factuality scores for a 
-    claim given some context.
+    claim given some context. Paper at
+    https://arxiv.org/abs/2305.16739
 
     Arguments:
       context: body of text the claim is evaluated against. typically will be
       the bill or gold summary.
       claim: the generated summary whose text will be scored against the claim.
+
+    Returns:
+      A number in range [0,1] indicating the degree to which the claim
+      is factually consistent with the context.
     """
 
 
