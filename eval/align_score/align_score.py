@@ -53,17 +53,10 @@ def main():
             bills = f.read().splitlines()[1:]
         generated_summaries = list(pd.read_csv(args.summary_file)["predicted_summary"])
 
-    # print(f"bills: {bills}\n generated summaries: {generated_summaries}")
-    align_score_values = eval_alignscore(bills,generated_summaries)
-    df = pd.DataFrame({
-        "bills": bills,
-        "predicted_summary": generated_summaries,
-        "AlignScore": align_score_values
-    })
-    if args.output_file:
-        df.to_csv(args.output_file)
-    else:
-        print(df)
+    # Iteratively record AlignScore values in case it quits randomly at a certain point.
+    for i,context,claim in zip(range(len(bills)),bills,generated_summaries):
+        align_score_values = eval_alignscore([context],[claim])
+        print(f"<ROW>{i}</ROW><BILL>{context}</BILL><GENERATED_SUMMARY>{claim}</GENERATED_SUMMARY><ALIGNSCORE>{align_score_values[0]}</ALIGNSCORE>")
     
 
 
@@ -71,7 +64,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--bill_file", default="../../preprocess/data/clean_billsum_test.csv", help="File containing bill text")
     parser.add_argument("--summary_file", default="../../output/deliverable_4/led-base/led-base_billsum_clean_test_se3-led-2048-512.csv", help="File containing the summary texts")
-    parser.add_argument("--output_file",default=None, help="name of the csv dataframe containing the AlignScores")
     parser.add_argument("--num_examples",default=None, help="Specifies the number of examples. Evaluates all by default.")
     parser.add_argument("--checkpoint", default="https://huggingface.co/yzha/AlignScore/resolve/main/AlignScore-base.ckpt", help="The model checkpoint to use")
     args = parser.parse_args()
