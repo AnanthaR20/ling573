@@ -1,0 +1,31 @@
+--- Model: led-base_2048 ---
+         model          row summary bill summary_from bill_from
+nbr.val     NA  100.0000000      NA   NA           NA        NA
+nbr.null    NA    1.0000000      NA   NA           NA        NA
+nbr.na      NA    0.0000000      NA   NA           NA        NA
+min         NA    0.0000000      NA   NA           NA        NA
+max         NA   99.0000000      NA   NA           NA        NA
+range       NA   99.0000000      NA   NA           NA        NA
+sum         NA 4950.0000000      NA   NA           NA        NA
+median      NA   49.5000000      NA   NA           NA        NA
+mean        NA   49.5000000      NA   NA           NA        NA
+SE.mean     NA    2.9011492      NA   NA           NA        NA
+CI.mean     NA    5.7565094      NA   NA           NA        NA
+var         NA  841.6666667      NA   NA           NA        NA
+std.dev     NA   29.0114920      NA   NA           NA        NA
+coef.var    NA    0.5860907      NA   NA           NA        NA
+           alignscore
+nbr.val  1.000000e+02
+nbr.null 0.000000e+00
+nbr.na   0.000000e+00
+min      3.836527e-01
+max      7.657640e-01
+range    3.821113e-01
+sum      6.157846e+01
+median   6.219787e-01
+mean     6.157846e-01
+SE.mean  7.716082e-03
+CI.mean  1.531038e-02
+var      5.953792e-03
+std.dev  7.716082e-02
+coef.var 1.253049e-01

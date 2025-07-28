@@ -1,0 +1,31 @@
+--- Model: wugNATSS-led_on_unsimp ---
+         model          row summary bill summary_from bill_from
+nbr.val     NA  100.0000000      NA   NA           NA        NA
+nbr.null    NA    1.0000000      NA   NA           NA        NA
+nbr.na      NA    0.0000000      NA   NA           NA        NA
+min         NA    0.0000000      NA   NA           NA        NA
+max         NA   99.0000000      NA   NA           NA        NA
+range       NA   99.0000000      NA   NA           NA        NA
+sum         NA 4950.0000000      NA   NA           NA        NA
+median      NA   49.5000000      NA   NA           NA        NA
+mean        NA   49.5000000      NA   NA           NA        NA
+SE.mean     NA    2.9011492      NA   NA           NA        NA
+CI.mean     NA    5.7565094      NA   NA           NA        NA
+var         NA  841.6666667      NA   NA           NA        NA
+std.dev     NA   29.0114920      NA   NA           NA        NA
+coef.var    NA    0.5860907      NA   NA           NA        NA
+           alignscore
+nbr.val  100.00000000
+nbr.null   0.00000000
+nbr.na     0.00000000
+min        0.03261271
+max        0.98259455
+range      0.94998184
+sum       45.10531318
+median     0.44164526
+mean       0.45105313
+SE.mean    0.02570648
+CI.mean    0.05100723
+var        0.06608230
+std.dev    0.25706477
+coef.var   0.56992127

@@ -1,0 +1,31 @@
+--- Model: gold ---
+         model          row summary bill summary_from bill_from
+nbr.val     NA  100.0000000      NA   NA           NA        NA
+nbr.null    NA    1.0000000      NA   NA           NA        NA
+nbr.na      NA    0.0000000      NA   NA           NA        NA
+min         NA    0.0000000      NA   NA           NA        NA
+max         NA   99.0000000      NA   NA           NA        NA
+range       NA   99.0000000      NA   NA           NA        NA
+sum         NA 4950.0000000      NA   NA           NA        NA
+median      NA   49.5000000      NA   NA           NA        NA
+mean        NA   49.5000000      NA   NA           NA        NA
+SE.mean     NA    2.9011492      NA   NA           NA        NA
+CI.mean     NA    5.7565094      NA   NA           NA        NA
+var         NA  841.6666667      NA   NA           NA        NA
+std.dev     NA   29.0114920      NA   NA           NA        NA
+coef.var    NA    0.5860907      NA   NA           NA        NA
+           alignscore
+nbr.val  100.00000000
+nbr.null   0.00000000
+nbr.na     0.00000000
+min        0.14880122
+max        0.96629345
+range      0.81749223
+sum       61.58630769
+median     0.66918367
+mean       0.61586308
+SE.mean    0.02089180
+CI.mean    0.04145386
+var        0.04364671
+std.dev    0.20891796
+coef.var   0.33922793

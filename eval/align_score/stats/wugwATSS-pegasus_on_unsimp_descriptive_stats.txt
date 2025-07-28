@@ -1,0 +1,31 @@
+--- Model: wugwATSS-pegasus_on_unsimp ---
+         model          row summary bill summary_from bill_from
+nbr.val     NA  100.0000000      NA   NA           NA        NA
+nbr.null    NA    1.0000000      NA   NA           NA        NA
+nbr.na      NA    0.0000000      NA   NA           NA        NA
+min         NA    0.0000000      NA   NA           NA        NA
+max         NA   99.0000000      NA   NA           NA        NA
+range       NA   99.0000000      NA   NA           NA        NA
+sum         NA 4950.0000000      NA   NA           NA        NA
+median      NA   49.5000000      NA   NA           NA        NA
+mean        NA   49.5000000      NA   NA           NA        NA
+SE.mean     NA    2.9011492      NA   NA           NA        NA
+CI.mean     NA    5.7565094      NA   NA           NA        NA
+var         NA  841.6666667      NA   NA           NA        NA
+std.dev     NA   29.0114920      NA   NA           NA        NA
+coef.var    NA    0.5860907      NA   NA           NA        NA
+           alignscore
+nbr.val  100.00000000
+nbr.null   0.00000000
+nbr.na     0.00000000
+min        0.12977308
+max        0.88661736
+range      0.75684428
+sum       50.87361418
+median     0.51097950
+mean       0.50873614
+SE.mean    0.01376004
+CI.mean    0.02730291
+var        0.01893388
+std.dev    0.13760042
+coef.var   0.27047503
