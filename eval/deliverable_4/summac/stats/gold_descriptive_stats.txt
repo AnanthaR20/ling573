@@ -1,0 +1,16 @@
+--- Model: gold ---
+         model          row summary bill       summac
+nbr.val     NA 2.545000e+03      NA   NA 2.545000e+03
+nbr.null    NA 1.000000e+00      NA   NA 0.000000e+00
+nbr.na      NA 0.000000e+00      NA   NA 0.000000e+00
+min         NA 0.000000e+00      NA   NA 1.114003e-01
+max         NA 2.544000e+03      NA   NA 9.999996e-01
+range       NA 2.544000e+03      NA   NA 8.885994e-01
+sum         NA 3.237240e+06      NA   NA 2.341472e+03
+median      NA 1.272000e+03      NA   NA 9.657043e-01
+mean        NA 1.272000e+03      NA   NA 9.200284e-01
+SE.mean     NA 1.456594e+01      NA   NA 2.230495e-03
+CI.mean     NA 2.856231e+01      NA   NA 4.373771e-03
+var         NA 5.399642e+05      NA   NA 1.266165e-02
+std.dev     NA 7.348225e+02      NA   NA 1.125240e-01
+coef.var    NA 5.776907e-01      NA   NA 1.223049e-01

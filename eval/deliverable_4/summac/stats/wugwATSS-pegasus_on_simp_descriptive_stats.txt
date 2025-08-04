@@ -1,0 +1,16 @@
+--- Model: wugwATSS-pegasus_on_simp ---
+         model          row summary bill       summac
+nbr.val     NA 2.545000e+03      NA   NA 2.545000e+03
+nbr.null    NA 1.000000e+00      NA   NA 0.000000e+00
+nbr.na      NA 0.000000e+00      NA   NA 0.000000e+00
+min         NA 0.000000e+00      NA   NA 3.489923e-01
+max         NA 2.544000e+03      NA   NA 1.000000e+00
+range       NA 2.544000e+03      NA   NA 6.510077e-01
+sum         NA 3.237240e+06      NA   NA 2.441952e+03
+median      NA 1.272000e+03      NA   NA 9.899703e-01
+mean        NA 1.272000e+03      NA   NA 9.595094e-01
+SE.mean     NA 1.456594e+01      NA   NA 1.449296e-03
+CI.mean     NA 2.856231e+01      NA   NA 2.841920e-03
+var         NA 5.399642e+05      NA   NA 5.345668e-03
+std.dev     NA 7.348225e+02      NA   NA 7.311407e-02
+coef.var    NA 5.776907e-01      NA   NA 7.619943e-02
