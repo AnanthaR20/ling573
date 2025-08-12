@@ -15,7 +15,7 @@ error = evaluate_phase_2.$(Cluster).$(Process).err
 log = evaluate_phase_2.$(Cluster).$(Process).log
 request_GPUs = 1
 Requirements = (Machine == "patas-gn3.ling.washington.edu")
-request_memory = 3000
+request_memory = 5000
 notification = error
 queue
 
@@ -36,7 +36,7 @@ error = evaluate_phase_2.$(Cluster).$(Process).err
 log = evaluate_phase_2.$(Cluster).$(Process).log
 request_GPUs = 1
 Requirements = (Machine == "patas-gn3.ling.washington.edu")
-request_memory = 3000
+request_memory = 5000
 notification = error
 queue
 
