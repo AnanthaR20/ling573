@@ -29,7 +29,7 @@ def reconstruct_by_doc_id(
     grouped_chunks = defaultdict(lambda: {
         "texts": [],
         "references": [],
-        "generated": [],
+        "predictions": [],
         "confidences": []
     })
 
@@ -43,9 +43,12 @@ def reconstruct_by_doc_id(
 
         # Get model confidence if it exists
         conf = row.get("model_confidence", None)
-        doc["generated"].append((idx, row["prediction"], conf))
+        doc["predictions"].append((idx, row["prediction"], conf))
     
+    # Store final summaries
     final_data = []
+    # Store problem outptus
+    empty_results = []
     # Sort and reconstruct final documents
     for doc_id, chunks in grouped_chunks.items():
         # Always sort text and reference summary by index
@@ -53,28 +56,39 @@ def reconstruct_by_doc_id(
         # Only include contentful strings for reconstruction with whitespace
         references = [r for _, r in sorted(chunks["references"], key=lambda x: x[0]) if len(r)]
 
-        # Prepare generated chunks for reconstruction
-        generated_chunks = chunks["generated"]
+        # Prepare generated predictions for reconstruction
+        generated_predictions = chunks["predictions"]
 
         if k_limit is not None and expect_confidence:
             # Sort by confidence
-            generated_chunks = sorted(generated_chunks, key=lambda x: x[2], reverse=True)
+            generated_predictions = sorted(generated_predictions, key=lambda x: x[2], reverse=True)
             # Apply top-k cutoff
-            generated_chunks = generated_chunks[:k_limit]
+            generated_predictions = generated_predictions[:k_limit]
         
         # Always sort by original index in-place
         # Only include contentful strings for reconstruction with whitespace
-        generated = [g for _, g, _ in sorted(generated_chunks, key=lambda x: x[0]) if len (g)]
+        predictions = [g for _, g, _ in sorted(generated_predictions, key=lambda x: x[0]) if len(g)]
         
         # Reconstruct with whitespace between
-        final_data.append({
-            "doc_id": doc_id,
-            "text": " ".join(texts),
-            "summary": " ".join(references),
-            "predicted_summary": " ".join(generated)
-        })
+        row = {
+                "doc_id": doc_id,
+                "text": " ".join(texts),
+                "summary": " ".join(references),
+                "predicted_summary": " ".join(predictions)
+            }
+        
+        # Only add contentful predictions to final data for evaluation
+        if len(predictions):
+            final_data.append(row)
+        else: 
+            # Save empty results to a separate dataset 
+            empty_results.append(row)
 
-    return Dataset.from_list(final_data)
+    # Return early if there is no final data -- hopefully unlikely
+    if len(final_data) == 0:
+        sys.exit("No summaries were generated. This setting does not work.")
+
+    return Dataset.from_list(final_data), Dataset.from_list(empty_results)
 
 def generate_blank_targets(
         data_skipped: Dataset,
@@ -267,7 +281,7 @@ def update_model_tokenizer(
     print(tokenizer.all_special_tokens)
     return model, tokenizer, tokenizer.convert_tokens_to_ids("[NO_SUMMARY]")
 
-def prepare_output_dir(
+def prepare_output_dirs(
         checkpoint_filepath: str,
         config_id: int
     ):
@@ -288,10 +302,10 @@ def prepare_output_dir(
     # set up output name
     prediction_filename = ".".join([str(config_id)] + prediction_attrs[1:]) + ".csv"
     prediction_path = f"output/{prediction_filename}"
-    
+    empty_path = f"output/{str(config_id)}.EMPTY.csv"
     print(f"Test predictions will be saved to {prediction_path}")
 
-    return prediction_path
+    return prediction_path, empty_path
 
 def load_model_tokenizer(
         checkpoint: str, 
@@ -441,7 +455,7 @@ def main():
         base_tokenizer=args.base_tokenizer
     )
     # prepare output directories
-    prediction_path = prepare_output_dir(
+    prediction_path, empty_path = prepare_output_dirs(
         checkpoint_filepath=args.checkpoint,
         config_id=args.config_id
     )
@@ -538,30 +552,33 @@ def main():
     # Step 9: Reconstruct full summaries
     ###########################################################################
     print("Reconstructing full summaries from generated predictions...")
-    test_hf = reconstruct_by_doc_id(
+    test_hf, test_empty = reconstruct_by_doc_id(
         data_hf=test_hf, 
         k_limit=args.k_limit, 
         expect_confidence=return_confidence_scores
     )
     
+    # If there are empty rows, write them to a separate file
+    if len(test_empty):
+        test_empty.to_csv(empty_path)
     ###########################################################################
     # Step 10: Compute metrics and save output
     ###########################################################################
-    print("Computing metrics in batches...")
-    # print("BERTScore...")
-    # test_hf = test_hf.map(
-    #     lambda ex: metrics.get_bertscore_metrics(ex["predicted_summary"], ex["summary"]),
-    #     batched=True,
-    #     batch_size=args.batch_size
-    # )
+    print(f"Computing metrics for {len(test_hf)} generated summaries...")
+    print("BERTScore...")
+    test_hf = test_hf.map(
+        lambda ex: metrics.get_bertscore_metrics(ex["predicted_summary"], ex["summary"]),
+        batched=True,
+        batch_size=args.batch_size
+    )
     # Evaluate ROUGE, AlignScore, SummaC
-    print("AlignScore...")
+    print("Starting AlignScore...")
     test_hf = test_hf.map(
         metrics.eval_alignscore_batch,
         batched=True,
         batch_size=args.batch_size
     )
-    print("ROUGE...")
+    print("Starting ROUGE...")
     test_hf = test_hf.map(
         metrics.eval_rouge_batch,
         batched=True,
@@ -574,14 +591,13 @@ def main():
     #     batch_size=args.batch_size
     # )
 
-    print("Computing metrics one at a time...")
     # Evaluate LFTK
-    print("LFTK...")
+    print("Starting LFTK...")
     test_hf = test_hf.map(
         lambda ex: metrics.eval_lftk(ex["predicted_summary"], suffix=".GEN"),
         batched=False
     )
-    print("Redundancy scores...")
+    print("Computing overall redundancy scores...")
     _, _, _, _ = metrics.get_redundancy_scores(test_hf["predicted_summary"])
     print("Saving predictions...")
     test_hf.to_csv(prediction_path)
