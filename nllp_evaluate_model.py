@@ -261,6 +261,10 @@ def convert_data(test_data:pd.DataFrame):
     Returns:
         the full test data as HF Dataset
     """
+    # Log number of null rows to be dropped
+    print(f"Detected {test_data.isna().sum().sum()} rows with null values, dropping...")
+    # Drop any null rows
+    test_data = test_data.dropna()
     # convert to HF Dataset type
     data_hf = Dataset.from_pandas(test_data)
 
