@@ -153,9 +153,13 @@ def generate_predictions(
         if return_confidence:
             confidences.extend(outputs.sequences_scores.cpu().tolist())
             # Decode output tokens to text for each batch
-            decoded = tokenizer.batch_decode(outputs.sequences, skip_special_tokens=True)
+            decoded = tokenizer.batch_decode(outputs.sequences, skip_special_tokens=False)
         else:
-            decoded = tokenizer.batch_decode(outputs, skip_special_tokens=True)
+            decoded = tokenizer.batch_decode(outputs, skip_special_tokens=False)
+        
+        # Manually remove special tokens that are not [NO_SUMMARY]
+        for special_token in ['<s>', '</s>', '<unk>', '<pad>', '<mask>']:
+            decoded = decoded.replace(special_token, "")
         # Store decoded predictions
         predictions.extend(decoded)
 
