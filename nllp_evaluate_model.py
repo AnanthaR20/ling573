@@ -547,17 +547,17 @@ def main():
     # Step 7: generate blank targets for filtered rows
     ###########################################################################
     # If there are skippable rows, override prediction with blank targets
-    if test_skipped is not None and len(test_skipped):
-        print("Generating [NO_SUMMARY] targets...")
-        test_skipped = generate_blank_targets(test_skipped, return_confidence_scores)
+    # if test_skipped is not None and len(test_skipped):
+    #     print("Generating [NO_SUMMARY] targets...")
+    #     test_skipped = generate_blank_targets(test_skipped, return_confidence_scores)
     
-        # Minimal validation that we didn't mess up earlier
-        if set(test_skipped.column_names) != set(test_hf.column_names):
-            raise ValueError("Partitions with normal targets vs. blank targets do not have the same columns")
+    #     # Minimal validation that we didn't mess up earlier
+    #     if set(test_skipped.column_names) != set(test_hf.column_names):
+    #         raise ValueError("Partitions with normal targets vs. blank targets do not have the same columns")
         
-        # Then we concatenate datasets of the same shape
-        print("Concatenating all targets...")
-        test_hf = test_hf.concatenate(test_skipped)
+    #     # Then we concatenate datasets of the same shape
+    #     print("Concatenating all targets...")
+    #     test_hf = test_hf.concatenate(test_skipped)
     ###########################################################################
     # Step 8: Prune columns before moving on
     ###########################################################################
@@ -571,16 +571,16 @@ def main():
     ###########################################################################
     # Step 9: Reconstruct full summaries
     ###########################################################################
-    print("Reconstructing full summaries from generated predictions...")
-    test_hf, test_empty = reconstruct_by_doc_id(
-        data_hf=test_hf, 
-        k_limit=args.k_limit, 
-        expect_confidence=return_confidence_scores
-    )
+    # print("Reconstructing full summaries from generated predictions...")
+    # test_hf, test_empty = reconstruct_by_doc_id(
+    #     data_hf=test_hf, 
+    #     k_limit=args.k_limit, 
+    #     expect_confidence=return_confidence_scores
+    # )
     
-    # If there are empty rows, write them to a separate file
-    if len(test_empty):
-        test_empty.to_csv(empty_path)
+    # # If there are empty rows, write them to a separate file
+    # if len(test_empty):
+    #     test_empty.to_csv(empty_path)
     ###########################################################################
     # Step 10: Compute metrics and save output
     ###########################################################################
@@ -617,8 +617,8 @@ def main():
     #     lambda ex: metrics.eval_lftk(ex["predicted_summary"], suffix=".GEN"),
     #     batched=False
     # )
-    print("Computing overall redundancy scores...")
-    _, _, _, _ = metrics.get_redundancy_scores(test_hf["predicted_summary"])
+    # print("Computing overall redundancy scores...")
+    # _, _, _, _ = metrics.get_redundancy_scores(test_hf["predicted_summary"])
     print("Saving predictions...")
     test_hf.to_csv(prediction_path)
     return
