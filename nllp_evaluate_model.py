@@ -196,9 +196,20 @@ def compute_control_token_probability(
                 "global_attention_mask": torch.tensor(batch["global_attention_mask"], dtype=torch.long).to(device)
             })
 
+        # Prepare decoder start token argument
+        decoder_input_ids = torch.full(
+            (batch_size, 1),
+            model.config.decoder_start_token_id,
+            dtype=torch.long,
+            device=inputs["input_ids"].device,
+        )
+
         # Ensure gradient is not calculated
         with torch.no_grad():
-            logits = model(**inputs).logits[:, 0, :]
+            logits = model(
+                **inputs, 
+                decoder_input_ids=decoder_input_ids
+            ).logits[:, 0, :]
             probs = torch.softmax(logits, dim=-1)[:, control_token_id]
         
         # Place probabilities on CPU to store for filtering
