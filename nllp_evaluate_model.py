@@ -584,39 +584,39 @@ def main():
     ###########################################################################
     # Step 10: Compute metrics and save output
     ###########################################################################
-    print(f"Computing metrics for {len(test_hf)} generated summaries...")
-    print("BERTScore...")
-    test_hf = test_hf.map(
-        lambda ex: metrics.get_bertscore_metrics(ex["predicted_summary"], ex["summary"]),
-        batched=True,
-        batch_size=args.batch_size
-    )
-    # Evaluate ROUGE, AlignScore, SummaC
-    print("Starting AlignScore...")
-    test_hf = test_hf.map(
-        metrics.eval_alignscore_batch,
-        batched=True,
-        batch_size=args.batch_size
-    )
-    print("Starting ROUGE...")
-    test_hf = test_hf.map(
-        metrics.eval_rouge_batch,
-        batched=True,
-        batch_size=args.batch_size
-    )
-    # print("SummaC...")
+    # print(f"Computing metrics for {len(test_hf)} generated summaries...")
+    # print("BERTScore...")
     # test_hf = test_hf.map(
-    #     metrics.eval_summac_batch,
+    #     lambda ex: metrics.get_bertscore_metrics(ex["predicted_summary"], ex["summary"]),
     #     batched=True,
     #     batch_size=args.batch_size
     # )
+    # # Evaluate ROUGE, AlignScore, SummaC
+    # print("Starting AlignScore...")
+    # test_hf = test_hf.map(
+    #     metrics.eval_alignscore_batch,
+    #     batched=True,
+    #     batch_size=args.batch_size
+    # )
+    # print("Starting ROUGE...")
+    # test_hf = test_hf.map(
+    #     metrics.eval_rouge_batch,
+    #     batched=True,
+    #     batch_size=args.batch_size
+    # )
+    # # print("SummaC...")
+    # # test_hf = test_hf.map(
+    # #     metrics.eval_summac_batch,
+    # #     batched=True,
+    # #     batch_size=args.batch_size
+    # # )
 
-    # Evaluate LFTK
-    print("Starting LFTK...")
-    test_hf = test_hf.map(
-        lambda ex: metrics.eval_lftk(ex["predicted_summary"], suffix=".GEN"),
-        batched=False
-    )
+    # # Evaluate LFTK
+    # print("Starting LFTK...")
+    # test_hf = test_hf.map(
+    #     lambda ex: metrics.eval_lftk(ex["predicted_summary"], suffix=".GEN"),
+    #     batched=False
+    # )
     print("Computing overall redundancy scores...")
     _, _, _, _ = metrics.get_redundancy_scores(test_hf["predicted_summary"])
     print("Saving predictions...")
