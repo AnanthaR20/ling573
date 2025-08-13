@@ -198,7 +198,7 @@ def compute_control_token_probability(
 
         # Prepare decoder start token argument
         decoder_input_ids = torch.full(
-            (batch_size, 1),
+            (len(batch["input_ids"]), 1),
             model.config.decoder_start_token_id,
             dtype=torch.long,
             device=inputs["input_ids"].device,
