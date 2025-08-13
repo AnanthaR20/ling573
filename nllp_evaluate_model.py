@@ -173,16 +173,17 @@ def compute_control_token_probability(
         model,
         data_hf,
         control_token_id,
+        eos_token_id,
         batch_size,
         device,
         p_limit: float=None
 ):
     """
-    Loop over a pre-tokenized Dataset to compute cumulative probability mass for [NO_SUMMARY] control token
+    Loop over a pre-tokenized Dataset to compute full sequence probability of [NO_SUMMARY] </s>
     and filter the data by p_limit into normal vs. skipped partitions if p_limit is provided
     """
     # store cumulative probability of [NO_SUMMARY]
-    control_prob_masses = []
+    control_seq_probs = []
 
     # Manually loop over data
     for start in tqdm(range(0, len(data_hf), batch_size), total=len(data_hf)//batch_size + 1):
@@ -200,8 +201,8 @@ def compute_control_token_probability(
                 "global_attention_mask": torch.tensor(batch["global_attention_mask"], dtype=torch.long).to(device)
             })
 
-        # Prepare decoder start token
-        decoder_input_ids = torch.full(
+        # Prepare decoder start token for step 1
+        decoder_input_step_1 = torch.full(
             (inputs["input_ids"].size(0), 1),
             model.config.decoder_start_token_id,
             dtype=torch.long,
@@ -210,35 +211,48 @@ def compute_control_token_probability(
 
         # Ensure gradient is not calculated
         with torch.no_grad():
-            # Forward pass
-            logits = model(
+            # Forward pass, get [batch_size x 1 x vocab_size]
+            logits_step_1 = model(
                 **inputs, 
-                decoder_input_ids=decoder_input_ids
+                decoder_input_ids=decoder_input_step_1
             ).logits[:, 0, :]
-            token_probs = torch.softmax(logits, dim=-1)
 
-            # Sorts probabilities in descending order with original indices (vocab IDs)
-            sorted_probs, sorted_indices = torch.sort(token_probs, descending=True, dim=-1)
-            # Compute cumulative running sum
-            cumsum_probs = torch.cumsum(sorted_probs, dim=-1)
-
-            # Find the cumulative probability including [NO_SUMMARY]
-            control_positions = (sorted_indices == control_token_id).nonzero(as_tuple=True)
-            batch_control_mass = cumsum_probs[control_positions[0], control_positions[1]]
+            # Select control token probability [batch_size]
+            p_control = torch.softmax(logits_step_1, dim=-1)[:, control_token_id]
         
-        # Place probabilities on CPU to store for filtering
-        control_prob_masses.extend(batch_control_mass.cpu().tolist())
+        # Prepare decoder start token for step 2
+        decoder_input_step_2 = torch.full(
+            (inputs["input_ids"].size(0), 2),
+            model.config.decoder_start_token_id,
+            dtype=torch.long,
+            device=device,
+        )
+        # Add [NO_SUMMARY] to decoder sequence
+        decoder_input_step_2[:, 1] = control_token_id
 
+        # Ensure gradient is not calculated
+        with torch.no_grad():
+            # Forward pass, get [batch_size x 2 x vocab_size]
+            logits_step_2 = model(
+                **inputs, 
+                decoder_input_ids=decoder_input_step_2
+            ).logits[:, 1, :]
+            
+            # Select EOS probability [batch_size]
+            p_eos = logits_step_2[:, eos_token_id]
+
+        seq_probs = (p_control * p_eos).cpu().tolist()
+        control_seq_probs.extend(seq_probs)
     # After loop finishes, add new column
-    data_hf = data_hf.add_column("no_summary_prob_mass", control_prob_masses)
+    data_hf = data_hf.add_column("no_summary_seq_prob", control_seq_probs)
 
     # Return early if no p limit is provided
     if p_limit is None:
         return None, data_hf
     
     # Filter to split
-    data_skipped = data_hf.filter(lambda ex: ex["no_summary_prob"] > p_limit)
-    data_normal = data_hf.filter(lambda ex: ex["no_summary_prob"] <= p_limit)
+    data_skipped = data_hf.filter(lambda ex: ex["no_summary_seq_prob"] > p_limit)
+    data_normal = data_hf.filter(lambda ex: ex["no_summary_seq_prob"] <= p_limit)
 
     return data_skipped, data_normal
 

@@ -100,10 +100,10 @@ def main():
     df.to_csv(f"{str(args.config_id)}_PROBE.csv")
 
     print("Statistics for p([NO_SUMMARY]) for true cases:")
-    print(df.loc[~df.summary.str.len().astype(bool), "no_summary_prob"].describe())
+    print(df.loc[~df.summary.str.len().astype(bool), "no_summary_seq_prob"].describe())
 
     print("Statistics for p([NO_SUMMARY]) for false cases:")
-    print(df.loc[df.summary.str.len().astype(bool), "no_summary_prob"].describe())
+    print(df.loc[df.summary.str.len().astype(bool), "no_summary_seq_prob"].describe())
 
 
 if __name__ == "__main__":
