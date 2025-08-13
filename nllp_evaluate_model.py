@@ -178,11 +178,11 @@ def compute_control_token_probability(
         p_limit: float=None
 ):
     """
-    Loop over a pre-tokenized Dataset to compute logits for [NO_SUMMARY] control token
-    and split data into normal vs. skipped partitions
+    Loop over a pre-tokenized Dataset to compute cumulative probability mass for [NO_SUMMARY] control token
+    and filter the data by p_limit into normal vs. skipped partitions if p_limit is provided
     """
-    # store prob([NO_SUMMARY])
-    no_summary_probs = []
+    # store cumulative probability of [NO_SUMMARY]
+    control_prob_masses = []
 
     # Manually loop over data
     for start in tqdm(range(0, len(data_hf), batch_size), total=len(data_hf)//batch_size + 1):
@@ -200,27 +200,37 @@ def compute_control_token_probability(
                 "global_attention_mask": torch.tensor(batch["global_attention_mask"], dtype=torch.long).to(device)
             })
 
-        # Prepare decoder start token argument
+        # Prepare decoder start token
         decoder_input_ids = torch.full(
-            (len(batch["input_ids"]), 1),
+            (inputs["input_ids"].size(0), 1),
             model.config.decoder_start_token_id,
             dtype=torch.long,
-            device=inputs["input_ids"].device,
+            device=device,
         )
 
         # Ensure gradient is not calculated
         with torch.no_grad():
+            # Forward pass
             logits = model(
                 **inputs, 
                 decoder_input_ids=decoder_input_ids
             ).logits[:, 0, :]
-            probs = torch.softmax(logits, dim=-1)[:, control_token_id]
+            token_probs = torch.softmax(logits, dim=-1)
+
+            # Sorts probabilities in descending order with original indices (vocab IDs)
+            sorted_probs, sorted_indices = torch.sort(token_probs, descending=True, dim=-1)
+            # Compute cumulative running sum
+            cumsum_probs = torch.cumsum(sorted_probs, dim=-1)
+
+            # Find the cumulative probability including [NO_SUMMARY]
+            control_positions = (sorted_indices == control_token_id).nonzero(as_tuple=True)
+            batch_control_mass = cumsum_probs[control_positions[0], control_positions[1]]
         
         # Place probabilities on CPU to store for filtering
-        no_summary_probs.extend(probs.cpu().tolist())
+        control_prob_masses.extend(batch_control_mass.cpu().tolist())
 
     # After loop finishes, add new column
-    data_hf = data_hf.add_column("no_summary_prob", no_summary_probs)
+    data_hf = data_hf.add_column("no_summary_prob_mass", control_prob_masses)
 
     # Return early if no p limit is provided
     if p_limit is None:
