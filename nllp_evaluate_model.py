@@ -69,12 +69,16 @@ def reconstruct_by_doc_id(
         # Only include contentful strings for reconstruction with whitespace
         predictions = [g for _, g, _ in sorted(generated_predictions, key=lambda x: x[0]) if len(g)]
         
+        predicted_summary = " ".join(predictions)
+        # Manually remove special tokens that are not [NO_SUMMARY]
+        for special_token in ['<s>', '</s>', '<unk>', '<pad>', '<mask>']:
+            predicted_summary = predicted_summary.replace(special_token, "")
         # Reconstruct with whitespace between
         row = {
                 "doc_id": doc_id,
                 "text": " ".join(texts),
                 "summary": " ".join(references),
-                "predicted_summary": " ".join(predictions)
+                "predicted_summary": predicted_summary
             }
         
         # Only add contentful predictions to final data for evaluation
@@ -156,10 +160,6 @@ def generate_predictions(
             decoded = tokenizer.batch_decode(outputs.sequences, skip_special_tokens=False)
         else:
             decoded = tokenizer.batch_decode(outputs, skip_special_tokens=False)
-        
-        # Manually remove special tokens that are not [NO_SUMMARY]
-        for special_token in ['<s>', '</s>', '<unk>', '<pad>', '<mask>']:
-            decoded = decoded.replace(special_token, "")
         # Store decoded predictions
         predictions.extend(decoded)
 
