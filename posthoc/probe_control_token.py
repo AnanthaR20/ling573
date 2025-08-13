@@ -91,19 +91,19 @@ def main():
     
     print(f"Removing columns {str(columns_to_remove)} that are not needed downstream...")
     test_hf = test_hf.remove_columns(columns_to_remove)
-    print(test_hf)
+    # print(test_hf)
     ###########################################################################
     # Step 6: Analyze control token probability
     ###########################################################################
     df = test_hf.to_pandas()
 
-    df.to_csv("PROBE.csv")
+    # df.to_csv("PROBE.csv")
 
     print("Statistics for p([NO_SUMMARY]) for true cases:")
-    print(df.loc[~df.summary.str.len(), "no_summary_prob"].describe())
+    print(df.loc[~df.summary.str.len().astype(bool), "no_summary_prob"].describe())
 
     print("Statistics for p([NO_SUMMARY]) for false cases:")
-    print(df.loc[df.summary.str.len(), "no_summary_prob"].describe())
+    print(df.loc[df.summary.str.len().astype(bool), "no_summary_prob"].describe())
 
 
 if __name__ == "__main__":
