@@ -214,7 +214,7 @@ def generate_no_summary_sequence_probability(
             log_probs = torch.log_softmax(logits, dim=-1)
 
             # Gather log-prob for target sequence
-            target_log_probs = log_probs.gather(2, labels.unsqueeze(-1).squeeze(-1))
+            target_log_probs = log_probs.gather(2, labels.unsqueeze(-1)).squeeze(-1)
             seq_log_prob = target_log_probs.sum(dim=1)
 
             # Convert to probability
