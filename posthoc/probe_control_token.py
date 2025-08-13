@@ -1,14 +1,7 @@
-from transformers import LEDForConditionalGeneration, LEDTokenizer
 from transformers import set_seed
-import torch
-import argparse
-import re
 import sys
 sys.path.insert(0, "..")
 from nllp_evaluate_model import *
-import os
-from collections import defaultdict
-import utils
 
 def main():
     args = load_args()
@@ -57,6 +50,9 @@ def main():
     ###########################################################################
     # update model + tokenizer vocab
     model, tokenizer, control_token_id = update_model_tokenizer(model, tokenizer)
+        
+    vocab_size = model.config.vocab_size
+    assert 0 <= control_token_id < vocab_size, f"control_token_id {control_token_id} out of range [0, {vocab_size})"
     ###########################################################################
     # Step 4: Prepare Se3-ed test data for ingestion
     ###########################################################################
