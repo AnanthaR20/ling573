@@ -50,9 +50,6 @@ def main():
     ###########################################################################
     # update model + tokenizer vocab
     model, tokenizer, control_token_id = update_model_tokenizer(model, tokenizer)
-        
-    vocab_size = model.config.vocab_size
-    assert 0 <= control_token_id < vocab_size, f"control_token_id {control_token_id} out of range [0, {vocab_size})"
     ###########################################################################
     # Step 4: Prepare Se3-ed test data for ingestion
     ###########################################################################
@@ -98,10 +95,14 @@ def main():
     ###########################################################################
     # Step 6: Analyze control token probability
     ###########################################################################
-    probs = test_hf.to_pandas()
+    df = test_hf.to_pandas()
 
-    print("STATISTICS FOR [NO_SUMMARY] PROBABILITY")
-    print(probs["no_summary_prob"].describe())
+    print("Statistics for p([NO_SUMMARY]) for true cases:")
+    print(df.loc[~df.summary.str.len, "no_summary_prob"].describe())
+
+    print("Statistics for p([NO_SUMMARY]) for false cases:")
+    print(df.loc[df.summary.str.len, "no_summary_prob"].describe())
+
 
 if __name__ == "__main__":
     main()
