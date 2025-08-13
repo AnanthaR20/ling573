@@ -25,7 +25,7 @@ queue
 executable = nllp_evaluate_model.sh
 getenv = true
 environment = "CLUSTER_ID=$(Cluster); PROCESS_ID=$(Process);"
-arguments = --config_id 2 --base_tokenizer allenai/led-base-16384 \
+arguments = --config_id 3 --base_tokenizer allenai/led-base-16384 \
 --checkpoint /home2/padminib/ling573/models/led-base/billsum_clean_train_se3-led-2048-512_simple/keep_blank_targets/2048_512_5_epochs/checkpoint-38490/ \
 --mode test \
 --testfile preprocess/nllp_data/billsum_clean_test_se3-led-2048-512.csv \
