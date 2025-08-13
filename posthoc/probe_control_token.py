@@ -97,7 +97,7 @@ def main():
     ###########################################################################
     df = test_hf.to_pandas()
 
-    # df.to_csv("PROBE.csv")
+    df.to_csv(f"{str(args.config_id)}_PROBE.csv")
 
     print("Statistics for p([NO_SUMMARY]) for true cases:")
     print(df.loc[~df.summary.str.len().astype(bool), "no_summary_prob"].describe())
