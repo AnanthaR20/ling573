@@ -73,7 +73,7 @@ def main():
     ###########################################################################
     # if p_limit is provided, compute [NO_SUMMARY] probability and split data
     print("Computing logits for [NO_SUMMARY] control token...")
-    _, test_hf = compute_control_token_probability(
+    _, test_hf = generate_no_summary_sequence_probability(
         model=model,
         data_hf=test_hf,
         control_token_id=control_token_id,

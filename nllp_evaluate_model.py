@@ -169,6 +169,72 @@ def generate_predictions(
         data_hf = data_hf.add_column("model_confidence", confidences)
     return data_hf
 
+def generate_no_summary_sequence_probability(
+        model,
+        data_hf,
+        control_token_id,
+        eos_token_id,
+        batch_size,
+        device,
+        p_limit: float=None
+):
+    # Sequence [NO_SUMMARY] </s>
+    target_ids = torch.tensor([control_token_id, eos_token_id], device=device).unsqueeze(0)
+    
+    sequence_probs = []
+
+    # Manually loop over data
+    for start in tqdm(range(0, len(data_hf), batch_size), total=len(data_hf)//batch_size + 1):
+        batch = data_hf[start:start+batch_size]
+
+        # Prepare inputs batch with tokenized tensors on device
+        input_ids = torch.tensor(batch["input_ids"], dtype=torch.long).to(device)
+        attention_mask = torch.tensor(batch["attention_mask"], dtype=torch.long).to(device)
+
+        # Repeat target_ids for current batch size
+        labels = target_ids.repeat(input_ids.size(0), 1)
+
+        # Create dictionary to unpack
+        inputs = {
+            "input_ids": input_ids,
+            "attention_mask": attention_mask
+        }
+
+        # Add global attention mask if it exists
+        if "global_attention_mask" in batch.keys():
+            inputs.update({
+                "global_attention_mask": torch.tensor(batch["global_attention_mask"], dtype=torch.long).to(device)
+            })
+        
+        with torch.no_grad():
+            # Forward pass
+            outputs = model(**inputs, labels=labels, return_dict=True)
+            # Get logits
+            logits = outputs.logits
+            log_probs = torch.log_softmax(logits, dim=-1)
+
+            # Gather log-prob for target sequence
+            target_log_probs = log_probs.gather(2, labels.unsqueeze(-1).squeeze(-1))
+            seq_log_prob = target_log_probs.sum(dim=1)
+
+            # Convert to probability
+            seq_prob = torch.exp(seq_log_prob)
+
+            sequence_probs.extend(seq_prob.cpu().tolist())
+    # After loop finishes, add new column
+    data_hf = data_hf.add_column("no_summary_seq_prob", sequence_probs)
+
+    # Return early if no p limit is provided
+    if p_limit is None:
+        return None, data_hf
+    
+    # Filter to split
+    data_skipped = data_hf.filter(lambda ex: ex["no_summary_seq_prob"] > p_limit)
+    data_normal = data_hf.filter(lambda ex: ex["no_summary_seq_prob"] <= p_limit)
+
+    return data_skipped, data_normal
+    return
+
 def compute_control_token_probability(
         model,
         data_hf,
