@@ -77,6 +77,7 @@ def main():
         model=model,
         data_hf=test_hf,
         control_token_id=control_token_id,
+        eos_token_id=model.config.eos_token_id,
         batch_size=args.batch_size,
         device=device,
         p_limit=args.p_limit
