@@ -186,14 +186,14 @@ def compute_control_token_probability(
 
         # Prepare inputs batch with tokenized tensors on device
         inputs = {
-            "input_ids": torch.tensor(batch["input_ids"]).to(device),
-            "attention_mask": torch.tensor(batch["attention_mask"]).to(device),
+            "input_ids": torch.tensor(batch["input_ids"], dtype=torch.long).to(device),
+            "attention_mask": torch.tensor(batch["attention_mask"], dtype=torch.long).to(device),
         }
 
         # Add global attention mask if it exists
         if "global_attention_mask" in batch.keys():
             inputs.update({
-                "global_attention_mask": torch.tensor(batch["global_attention_mask"]).to(device)
+                "global_attention_mask": torch.tensor(batch["global_attention_mask"], dtype=torch.long).to(device)
             })
 
         # Ensure gradient is not calculated
