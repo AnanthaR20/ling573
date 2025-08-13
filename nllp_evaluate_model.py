@@ -177,9 +177,6 @@ def compute_control_token_probability(
     Loop over a pre-tokenized Dataset to compute logits for [NO_SUMMARY] control token
     and split data into normal vs. skipped partitions
     """
-    # Return early if no p limit is provided
-    if p_limit is None:
-        return None, data_hf
     # store prob([NO_SUMMARY])
     no_summary_probs = []
 
@@ -210,7 +207,11 @@ def compute_control_token_probability(
     # After loop finishes, add new column
     data_hf = data_hf.add_column("no_summary_prob", no_summary_probs)
 
-    # Make mask for splitting
+    # Return early if no p limit is provided
+    if p_limit is None:
+        return None, data_hf
+    
+    # Filter to split
     data_skipped = data_hf.filter(lambda ex: ex["no_summary_prob"] > p_limit)
     data_normal = data_hf.filter(lambda ex: ex["no_summary_prob"] <= p_limit)
 
@@ -300,7 +301,7 @@ def prepare_output_dirs(
     prediction_attrs = os.path.dirname(checkpoint_filepath).split("/")
 
     # set up output name
-    prediction_filename = ".".join([str(config_id)] + prediction_attrs[1:]) + ".csv"
+    prediction_filename = ".".join([str(config_id)] + prediction_attrs[-5:]) + ".csv"
     prediction_path = f"output/{prediction_filename}"
     empty_path = f"output/{str(config_id)}.EMPTY.csv"
     print(f"Test predictions will be saved to {prediction_path}")
