@@ -7,7 +7,7 @@ environment = "CLUSTER_ID=$(Cluster); PROCESS_ID=$(Process);"
 arguments = --config_id 2 --base_tokenizer allenai/led-base-16384 \
 --checkpoint /home2/padminib/ling573/models/led-base/billsum_clean_train_se3-led-1024-512/keep_blank_targets/1024_512_5_epochs/checkpoint-132824/ \
 --mode test \
---testfile preprocess/nllp_data/billsum_clean_test_se3-led-1024-512.csv \
+--testfile ../preprocess/nllp_data/billsum_clean_test_se3-led-1024-512.csv \
 --batch_size 4 
 transfer_executable = false
 output = probe_phase_2.$(Cluster).$(Process).out
@@ -28,7 +28,7 @@ environment = "CLUSTER_ID=$(Cluster); PROCESS_ID=$(Process);"
 arguments = --config_id 3 --base_tokenizer allenai/led-base-16384 \
 --checkpoint /home2/padminib/ling573/models/led-base/billsum_clean_train_se3-led-2048-512_simple/keep_blank_targets/2048_512_5_epochs/checkpoint-38490/ \
 --mode test \
---testfile preprocess/nllp_data/billsum_clean_test_se3-led-2048-512.csv \
+--testfile ../preprocess/nllp_data/billsum_clean_test_se3-led-2048-512.csv \
 --batch_size 4 
 transfer_executable = false
 output = probe_phase_2.$(Cluster).$(Process).out
