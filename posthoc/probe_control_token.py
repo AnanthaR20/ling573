@@ -73,11 +73,10 @@ def main():
     ###########################################################################
     # if p_limit is provided, compute [NO_SUMMARY] probability and split data
     print("Computing logits for [NO_SUMMARY] control token...")
-    _, test_hf = generate_no_summary_sequence_probability(
+    _, test_hf = compute_control_token_probability(
         model=model,
         data_hf=test_hf,
         control_token_id=control_token_id,
-        eos_token_id=model.config.eos_token_id,
         batch_size=args.batch_size,
         device=device,
         p_limit=args.p_limit
@@ -100,11 +99,11 @@ def main():
 
     df.to_csv(f"{str(args.config_id)}_PROBE.csv")
 
-    print("Statistics for p([NO_SUMMARY]) for true cases:")
-    print(df.loc[~df.summary.str.len().astype(bool), "no_summary_seq_prob"].describe())
+    print("Statistics for [NO_SUMMARY] rank for true cases:")
+    print(df.loc[~df.summary.str.len().astype(bool), "no_summary_rank"].describe())
 
-    print("Statistics for p([NO_SUMMARY]) for false cases:")
-    print(df.loc[df.summary.str.len().astype(bool), "no_summary_seq_prob"].describe())
+    print("Statistics for [NO_SUMMARY] rank for false cases:")
+    print(df.loc[df.summary.str.len().astype(bool), "no_summary_rank"].describe())
 
 
 if __name__ == "__main__":
