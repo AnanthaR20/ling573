@@ -157,9 +157,9 @@ def generate_predictions(
         if return_confidence:
             confidences.extend(outputs.sequences_scores.cpu().tolist())
             # Decode output tokens to text for each batch
-            decoded = tokenizer.batch_decode(outputs.sequences, skip_special_tokens=False)
+            decoded = tokenizer.batch_decode(outputs.sequences, skip_special_tokens=True)
         else:
-            decoded = tokenizer.batch_decode(outputs, skip_special_tokens=False)
+            decoded = tokenizer.batch_decode(outputs, skip_special_tokens=True)
         # Store decoded predictions
         predictions.extend(decoded)
 
@@ -181,6 +181,10 @@ def compute_control_token_probability(
     Loop over a pre-tokenized Dataset to compute full sequence probability of [NO_SUMMARY]
     and filter the data by p_limit into normal vs. skipped partitions if p_limit is provided
     """
+    # Return early if no p limit is provided
+    if p_limit is None:
+        return None, data_hf
+    
     # store cumulative probability of [NO_SUMMARY]
     control_ranks = []
 
@@ -224,10 +228,6 @@ def compute_control_token_probability(
         control_ranks.extend(relative_ranks.cpu().tolist())
     # After loop finishes, add new column
     data_hf = data_hf.add_column("no_summary_rank", control_ranks)
-
-    # Return early if no p limit is provided
-    if p_limit is None:
-        return None, data_hf
     
     # Filter to split
     data_skipped = data_hf.filter(lambda ex: ex["no_summary_rank"] > p_limit)
