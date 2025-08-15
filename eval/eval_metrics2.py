@@ -23,8 +23,8 @@ curr_device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 nlp = spacy.load("en_core_web_sm")
 
 # load NLTK corpora
-nltk.download("stopwords")
-nltk.download("punkt")
+# nltk.download("stopwords")
+# nltk.download("punkt")
 
 # LFTK feature families of interest
 READFORMULA = lftk.search_features(family="readformula", return_format = "list_key")
