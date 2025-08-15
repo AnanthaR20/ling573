@@ -164,7 +164,48 @@ def eval_lftk(text:str, lftk_features:list[str] = ALL_FEATURES, suffix:str = "")
   return {key+suffix:val for key,val in feature_dict.items()}
 
 ################################################################################
-# temporary: adapted from Se3 evaluation.py
+# Information coverage accuracy
+################################################################################
+def get_decision_metrics(preds, refs):
+  # Store counts of each classification
+  counts = {
+    "TP": 0,
+    "FP": 0,
+    "TN": 0,
+    "FN": 0
+  }
+  # Pair up each prediction and reference (which are already sorted)
+  for pred, ref in zip(preds, refs):
+    # Does prediction contain text? T/F
+    pred_pos = bool(len(pred))
+    # Does reference contain text? T/F 
+    ref_pos = bool(len(ref))
+
+    if ref_pos and pred_pos:
+      counts["TP"] += 1
+    elif not ref_pos and pred_pos:
+      counts["FP"] += 1
+    elif not ref_pos and not pred_pos:
+      counts["TN"] += 1
+    elif ref_pos and not pred_pos:
+      counts["FN"] += 1
+  
+  print("Counts by classification results:")
+  print(counts)
+
+  accuracy = (counts["TP"] + counts["TN"])/sum(counts.values())
+  precision = counts["TP"]/(counts["TP"] + counts["FP"])
+  recall = counts["TP"]/(counts["TP"] + counts["FN"])
+  fscore = (2 * precision * recall)/(precision + recall)
+
+  print(f"Decision accuracy: {accuracy}")
+  print(f"Decision precision: {precision}")
+  print(f"Decision recall: {recall}")
+  print(f"Decision F1: {fscore}")
+  return
+
+################################################################################
+# Adapted from Se3
 ################################################################################
 
 def get_bertscore_metrics(preds, refs):

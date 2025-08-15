@@ -622,6 +622,10 @@ def main():
     )
     print("Computing overall redundancy scores...")
     _, _, _, _ = metrics.get_redundancy_scores(test_hf["predicted_summary"])
+
+    print("Computing decision classification metrics...")
+    metrics.get_decision_metrics(test_hf["predicted_summary"], test_hf["summary"])
+
     print("Saving predictions...")
     test_hf.to_csv(prediction_path)
     return
