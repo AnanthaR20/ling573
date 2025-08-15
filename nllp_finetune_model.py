@@ -145,7 +145,7 @@ def tokenize_split_data(
     # use train_test_split function to create a development partition
     data_dict = examples.train_test_split(
         train_size = 0.98,
-        test_size = 0.2,
+        test_size = 0.02,
         seed= random_seed
     )
     data_dict["dev"] = data_dict["test"]
@@ -356,6 +356,7 @@ def main():
     # update model + tokenizer vocab
     model, tokenizer = update_model_tokenizer(model, tokenizer)
     
+    print("Adding special tokens before converting to Dataset...")
     # update training data with blank-target setting
     # convert to HF Dataset
     train_hf = convert_data(
@@ -363,6 +364,7 @@ def main():
         blank_target_setting=args.blank_targets
     )
 
+    print("Tokenizing data...")
     # Tokenize and split the original train data into new train and dev sets
     train_hf, dev_hf = tokenize_split_data(
         data_hf=train_hf,
@@ -374,6 +376,7 @@ def main():
         has_global_attn=has_global_attn
     )
 
+    print("Finetuning...")
     # train model
     finetune(
         model=model,
