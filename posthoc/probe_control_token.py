@@ -1,6 +1,6 @@
 from transformers import set_seed
 import sys
-sys.path.insert(0, "..")
+sys.path.insert(0, ".")
 from nllp_evaluate_model import *
 
 def main():
