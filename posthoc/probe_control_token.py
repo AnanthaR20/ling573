@@ -49,7 +49,11 @@ def main():
     # Step 3: Add special token to pretrained tokenizer
     ###########################################################################
     # update model + tokenizer vocab
-    model, tokenizer, control_token_id = update_model_tokenizer(model, tokenizer)
+    model, tokenizer, control_token_id = update_model_tokenizer(
+        model, 
+        tokenizer, 
+        metadata["blank_target_setting"]
+    )
     ###########################################################################
     # Step 4: Prepare Se3-ed test data for ingestion
     ###########################################################################
