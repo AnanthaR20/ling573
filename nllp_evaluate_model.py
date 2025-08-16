@@ -120,53 +120,21 @@ def generate_predictions(
         data_hf,
         batch_size,
         device,
-        return_confidence=False
 ):
     """
-    Loop over a pre-tokenized Dataset to generate predictions, with scores if requested
+    Map a pre-tokenized Dataset to generate predictions.
     """
-    # Store predictions and confidences as lists
-    predictions = []
-    confidences = []
-
-    for start in tqdm(range(0, len(data_hf), batch_size), total=len(data_hf)//batch_size + 1):
-        batch = data_hf[start:start+batch_size]
-
-        # Prepare inputs batch with tokenized tensors on device
-        inputs = {
-            "input_ids": torch.tensor(batch["input_ids"]).to(device),
-            "attention_mask": torch.tensor(batch["attention_mask"]).to(device),
-        }
-
-        # Add global attention mask if it exists
-        if "global_attention_mask" in batch.keys():
-            inputs.update({
-                "global_attention_mask": torch.tensor(batch["global_attention_mask"]).to(device)
-            })
-        
-        # Ensure no gradients are computed
-        with torch.no_grad():
-            outputs = model.generate(
-                **inputs,
-                output_scores=return_confidence,
-                return_dict_in_generate=return_confidence,
-                max_length=max_output_length,
-                num_beams=2 # Hard-coded beam search
-            )
-        # Store confidences for each batch 
-        if return_confidence:
-            confidences.extend(outputs.sequences_scores.cpu().tolist())
-            # Decode output tokens to text for each batch
-            decoded = tokenizer.batch_decode(outputs.sequences, skip_special_tokens=True)
-        else:
-            decoded = tokenizer.batch_decode(outputs, skip_special_tokens=True)
-        # Store decoded predictions
-        predictions.extend(decoded)
-
-    # Finally add columns to the Dataset
-    data_hf = data_hf.add_column("prediction", predictions)
-    if return_confidence:
-        data_hf = data_hf.add_column("model_confidence", confidences)
+    predict_fn = utils.generate_prediction_factory(
+        model=model,
+        tokenizer=tokenizer,
+        max_output_length=max_output_length,
+        device=device
+    )
+    data_hf = data_hf.map(
+        predict_fn,
+        batch_size=batch_size,
+        batched=True
+    )
     return data_hf
 
 def compute_control_token_probability(
@@ -179,7 +147,8 @@ def compute_control_token_probability(
 ):
     """
     Loop over a pre-tokenized Dataset to compute full sequence probability of [NO_SUMMARY]
-    and filter the data by p_limit into normal vs. skipped partitions if p_limit is provided
+    and convert to relative rank. Optionally include a p_limit float for gating
+    generation after this step.
     """
     # Return early if no p limit is provided
     if p_limit is None:
@@ -279,25 +248,34 @@ def convert_data(test_data:pd.DataFrame):
 
 def update_model_tokenizer(
         model: LEDForConditionalGeneration,
-        tokenizer: LEDTokenizer
+        tokenizer: LEDTokenizer,
+        blank_target_setting: str
     ):
-    """Modifies the model vocabulary to include the custom 
-    [NO_SUMMARY] token
+    """Modifies the model vocabulary to include the custom tokens depending on
+        the blank target setting
 
     Arguments:
         model: Model object
         tokenizer: Associated tokenizer for model
+        blank_target_setting: "keep" or "drop" for inclusion/exclusion in training data
+
     Returns:
-        the model, tokenizer
+        the model, tokenizer and special_tokens_dict
     """
     print("Pretrained model special tokens")
     print(tokenizer.all_special_tokens)
-    special_tokens_dict = {'additional_special_tokens': ["[NO_SUMMARY]"]}
+
+    # Add only one token to tokenizer vocab unless using binary token setting
+    if blank_target_setting != "binary":
+        special_tokens_dict = {'additional_special_tokens': ["[NO_SUMMARY]"]}
+    else:
+        special_tokens_dict = {'additional_special_tokens': ["[NO_SUMMARY]", "[SUMMARIZE]"]}
 
     num_added_toks = tokenizer.add_special_tokens(special_tokens_dict)
     print("We have added", num_added_toks, "special tokens")
 
     # Notice: resize_token_embeddings expect to receive the full size of the new vocabulary, i.e., the length of the tokenizer.
+    # For our finetuned models, this should do nothing
     model.resize_token_embeddings(len(tokenizer))
 
     print("Updated special tokens")
@@ -308,7 +286,8 @@ def prepare_output_dirs(
         checkpoint_filepath: str,
         config_id: int
     ):
-    """Prepares output directories for various finetuned models
+    """Prepares output directories for this finetuned model, given its properties
+        and config ID
 
     Arguments:
         checkpoint_filepath: TODO
@@ -338,14 +317,12 @@ def load_model_tokenizer(
 
     Arguments:
         checkpoint: name of finetuned checkpoint
-        max_output_length: maximum number of output tokens
-        base_model: name of base HuggingFace model for tokenizer loading
+        base_tokenizer: name of base HuggingFace model for tokenizer loading
     Returns:
-        model_name: simplified model name as a string for output directory
-        model: LEDForConditionalGeneration object
-        tokenizer: LEDTokenizer object
-        device: torch.device object for saving Tensors
-        has_global_attn: boolean for data preprocessing
+        model: LEDForConditionalGeneration from checkpoint
+        tokenizer: appropriate LEDTokenizer
+        metadata: dict with attrs like model name, input/output length, 
+                  global attn setting, blank target setting
     """
     # Set device
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -354,9 +331,13 @@ def load_model_tokenizer(
     has_global_attn = "led-base" in checkpoint
 
     # Parse training input and output lengths from model checkpoint
-    pattern = re.compile("se3-\w+-(\d+)-(\d+)")
-    max_input_len = int(pattern.search(checkpoint).group(1))
-    max_output_len = int(pattern.search(checkpoint).group(2))
+    size_pattern = re.compile("se3-\w+-(\d+)-(\d+)")
+    max_input_len = int(size_pattern.search(checkpoint).group(1))
+    max_output_len = int(size_pattern.search(checkpoint).group(2))
+
+    # Parse blank target setting from model checkpoint
+    blank_pattern = re.compile("(\w+)_blank_targets")
+    blank_target_setting = blank_pattern.search(checkpoint).group(1)
 
     # Model name and settings
     model_name = '-'.join(checkpoint.split("/")[1].split("-")[0:2])
@@ -376,7 +357,14 @@ def load_model_tokenizer(
     else:
         tokenizer = LEDTokenizer.from_pretrained(checkpoint)
 
-    return model_name, max_input_len, max_output_len, model, tokenizer, device, has_global_attn
+    metadata = {
+        "model_name": model_name,
+        "max_input_length": max_input_len,
+        "max_output_length": max_output_len,
+        "has_global_attn": has_global_attn,
+        "blank_target_setting": blank_target_setting
+    }
+    return model, tokenizer, device, metadata
 
 def load_data(sourcefile: str):
     """Returns the training data as a pandas.Dataframe and the 
@@ -473,7 +461,7 @@ def main():
 
     # load model, validate train and test length values
     # load model, tokenizer 
-    model_name, train_max_input_len, train_max_output_len, model, tokenizer, device, has_global_attn = load_model_tokenizer(
+    model, tokenizer, device, metadata = load_model_tokenizer(
         checkpoint=args.checkpoint,
         base_tokenizer=args.base_tokenizer
     )
@@ -485,22 +473,26 @@ def main():
     ###########################################################################
     # Step 2: validate that test data and model have compatible I/O length
     ###########################################################################
-    input_mismatch = train_max_input_len != test_max_input_len
-    output_mismatch = train_max_output_len != test_max_output_len
+    input_mismatch = metadata["max_input_length"] != test_max_input_len
+    output_mismatch = metadata["max_output_length"] != test_max_output_len
 
     # Here we set input & output lengths after validating that test and training data were compatible
     if input_mismatch or output_mismatch:
         print("Train and test file do NOT have compatible input and/or output lengths. Try again.")
         sys.exit(1)
     else:
-        max_input_len = train_max_input_len
-        max_output_len = train_max_output_len
+        max_input_len = metadata["max_input_length"]
+        max_output_len = metadata["max_output_length"]
         print(f"Detected input length:{max_input_len} and output length:{max_output_len}")
     ###########################################################################
     # Step 3: Add special token to pretrained tokenizer
     ###########################################################################
     # update model + tokenizer vocab
-    model, tokenizer, control_token_id = update_model_tokenizer(model, tokenizer)
+    model, tokenizer, control_token_id = update_model_tokenizer(
+        model, 
+        tokenizer, 
+        metadata["blank_target_setting"]
+        )
     ###########################################################################
     # Step 4: Prepare Se3-ed test data for ingestion
     ###########################################################################
@@ -517,7 +509,7 @@ def main():
         updated_tokenizer=tokenizer, 
         batch_size=args.batch_size,
         max_input_length=max_input_len,
-        has_global_attn=has_global_attn
+        has_global_attn=metadata["has_global_attn"]
         )
     ###########################################################################
     # Step 5: use p-threshold as a filter
@@ -571,8 +563,15 @@ def main():
     
     print(f"Removing columns {str(columns_to_remove)} that are not needed downstream...")
     test_hf = test_hf.remove_columns(columns_to_remove)
+
     ###########################################################################
-    # Step 9: Reconstruct full summaries
+    # Step 9: Chunk-level classification metrics
+    ###########################################################################
+    print("Computing decision classification metrics...")
+    metrics.get_decision_metrics(test_hf["prediction"], test_hf["summary"])
+
+    ###########################################################################
+    # Step 10: Reconstruct full summaries
     ###########################################################################
     print("Reconstructing full summaries from generated predictions...")
     test_hf, test_empty = reconstruct_by_doc_id(
@@ -585,7 +584,7 @@ def main():
     if len(test_empty):
         test_empty.to_csv(empty_path)
     ###########################################################################
-    # Step 10: Compute metrics and save output
+    # Step 11: Compute metrics and save output
     ###########################################################################
     print(f"Computing metrics for {len(test_hf)} generated summaries...")
     print("BERTScore...")
@@ -622,9 +621,6 @@ def main():
     )
     print("Computing overall redundancy scores...")
     _, _, _, _ = metrics.get_redundancy_scores(test_hf["predicted_summary"])
-
-    print("Computing decision classification metrics...")
-    metrics.get_decision_metrics(test_hf["predicted_summary"], test_hf["summary"])
 
     print("Saving predictions...")
     test_hf.to_csv(prediction_path)
