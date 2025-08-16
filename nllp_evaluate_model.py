@@ -570,6 +570,11 @@ def main():
     print("Computing blank-target classification metrics...")
     metrics.get_decision_metrics(test_hf["prediction"], test_hf["summary"])
 
+    # TEMPORARY
+    print("Saving readable chunk-level results...")
+    chunk_predictions_path = os.path.dirname(prediction_path) + "chunked." + os.path.basename(prediction_path)
+    test_hf.to_csv(chunk_predictions_path)
+    
     ###########################################################################
     # Step 10: Reconstruct full summaries
     ###########################################################################
