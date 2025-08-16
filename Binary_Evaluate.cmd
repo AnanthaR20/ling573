@@ -5,9 +5,9 @@ executable = nllp_evaluate_model.sh
 getenv = true
 environment = "CLUSTER_ID=$(Cluster); PROCESS_ID=$(Process);"
 arguments = --config_id 4 --base_tokenizer allenai/led-base-16384 \
---checkpoint /home2/jcmw614/ling573/models/led-base/billsum_clean_train_se3-led-2048-512_simple/binary_blank_targets/2048_512_5_epochs/checkpoint-33528/ \
+--checkpoint /home2/jcmw614/ling573/models/led-base/billsum_clean_train_se3-led-1024-512/binary_blank_targets/1024_512_5_epochs/checkpoint-/ \
 --mode test \
---testfile preprocess/nllp_data/billsum_clean_test_se3-led-2048-512.csv \
+--testfile preprocess/nllp_data/billsum_clean_test_se3-led-1024-512.csv \
 --batch_size 6 
 transfer_executable = false
 output = evaluate_phase_2.$(Cluster).$(Process).out
