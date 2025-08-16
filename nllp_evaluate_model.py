@@ -535,8 +535,7 @@ def main():
         max_output_length=max_output_len,
         data_hf=test_hf,
         batch_size=args.batch_size,
-        device=device,
-        return_confidence=return_confidence_scores
+        device=device
     )
     ###########################################################################
     # Step 7: generate blank targets for filtered rows
@@ -574,7 +573,7 @@ def main():
     print("Saving readable chunk-level results...")
     chunk_predictions_path = os.path.dirname(prediction_path) + "chunked." + os.path.basename(prediction_path)
     test_hf.to_csv(chunk_predictions_path)
-    
+
     ###########################################################################
     # Step 10: Reconstruct full summaries
     ###########################################################################
