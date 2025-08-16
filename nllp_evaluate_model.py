@@ -70,9 +70,9 @@ def reconstruct_by_doc_id(
         predictions = [g for _, g, _ in sorted(generated_predictions, key=lambda x: x[0]) if len(g)]
         
         predicted_summary = " ".join(predictions)
-        # Manually remove special tokens that are not [NO_SUMMARY]
-        for special_token in ['<s>', '</s>', '<unk>', '<pad>', '<mask>']:
-            predicted_summary = predicted_summary.replace(special_token, "")
+        # # Manually remove special tokens that are not [NO_SUMMARY]
+        # for special_token in ['<s>', '</s>', '<unk>', '<pad>', '<mask>']:
+        #     predicted_summary = predicted_summary.replace(special_token, "")
         # Reconstruct with whitespace between
         row = {
                 "doc_id": doc_id,
@@ -120,6 +120,7 @@ def generate_predictions(
         data_hf,
         batch_size,
         device,
+        skip_special_tokens=False
 ):
     """
     Map a pre-tokenized Dataset to generate predictions.
@@ -128,7 +129,8 @@ def generate_predictions(
         model=model,
         tokenizer=tokenizer,
         max_output_length=max_output_length,
-        device=device
+        device=device,
+        skip_special_tokens=skip_special_tokens
     )
     data_hf = data_hf.map(
         predict_fn,

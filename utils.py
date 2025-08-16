@@ -9,6 +9,7 @@ def generate_prediction_factory(
         tokenizer,
         max_output_length,
         device,
+        skip_special_tokens,
         num_beams=2
     ):
     def factory(examples):
@@ -31,7 +32,7 @@ def generate_prediction_factory(
                 max_length=max_output_length,
                 num_beams=num_beams # Hard-coded beam search
             )
-        decoded = tokenizer.batch_decode(outputs, skip_special_tokens=True)
+        decoded = tokenizer.batch_decode(outputs, skip_special_tokens=skip_special_tokens)
         return {
             "prediction": decoded
         }
