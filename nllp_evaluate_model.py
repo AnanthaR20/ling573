@@ -150,10 +150,6 @@ def compute_control_token_probability(
     and convert to relative rank. Optionally include a p_limit float for gating
     generation after this step.
     """
-    # Return early if no p limit is provided
-    if p_limit is None:
-        return None, data_hf
-    
     # store cumulative probability of [NO_SUMMARY]
     control_ranks = []
 
@@ -198,6 +194,9 @@ def compute_control_token_probability(
     # After loop finishes, add new column
     data_hf = data_hf.add_column("no_summary_rank", control_ranks)
     
+    # Return early if no p limit is provided
+    if p_limit is None:
+        return None, data_hf
     # Filter to split
     data_skipped = data_hf.filter(lambda ex: ex["no_summary_rank"] > p_limit)
     data_normal = data_hf.filter(lambda ex: ex["no_summary_rank"] <= p_limit)
