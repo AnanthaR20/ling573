@@ -464,6 +464,7 @@ def main():
         checkpoint=args.checkpoint,
         base_tokenizer=args.base_tokenizer
     )
+    print(f"Running inference and evaluation for model:\n{metadata}")
     # prepare output directories
     prediction_path, empty_path = prepare_output_dirs(
         checkpoint_filepath=args.checkpoint,
@@ -566,7 +567,7 @@ def main():
     ###########################################################################
     # Step 9: Chunk-level classification metrics
     ###########################################################################
-    print("Computing decision classification metrics...")
+    print("Computing blank-target classification metrics...")
     metrics.get_decision_metrics(test_hf["prediction"], test_hf["summary"])
 
     ###########################################################################
