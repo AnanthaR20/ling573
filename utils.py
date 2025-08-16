@@ -4,6 +4,39 @@ import torch
 # NLLP utils functions
 ################################################################################
 
+def generate_prediction_factory(
+        model,
+        tokenizer,
+        max_output_length,
+        device,
+        num_beams=2
+    ):
+    def factory(examples):
+        # Prepare inputs batch with tokenized tensors on device
+        inputs = {
+            "input_ids": torch.tensor(examples["input_ids"]).to(device),
+            "attention_mask": torch.tensor(examples["attention_mask"]).to(device),
+        }
+
+        # Add global attention mask if it exists
+        if "global_attention_mask" in examples.keys():
+            inputs.update({
+                "global_attention_mask": torch.tensor(examples["global_attention_mask"]).to(device)
+            })
+        
+        # Ensure no gradients are computed
+        with torch.no_grad():
+            outputs = model.generate(
+                **inputs,
+                max_length=max_output_length,
+                num_beams=num_beams # Hard-coded beam search
+            )
+        decoded = tokenizer.batch_decode(outputs, skip_special_tokens=True)
+        return {
+            "prediction": decoded
+        }
+    return factory
+
 def tokenize_text_factory(
         max_input_len: int,
         tokenizer,
