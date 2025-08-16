@@ -87,8 +87,9 @@ def convert_data(train_data:pd.DataFrame, blank_target_setting:str):
         train_data = train_data.loc[train_data.text.notna()]
         # Add the special negative token for null summary targets
         train_data.loc[train_data.summary.isna(), 'summary'] = "[NO_SUMMARY]"
+
+        # Add special positive token for non-null targets
         if blank_target_setting == "binary":
-            # Prepend special positive token to contentful summary targets
             train_data.loc[train_data.summary.notna(), 'summary'] = "[SUMMARIZE] " + train_data.loc[train_data.summary.notna(), 'summary']
     else:
         train_data = train_data.dropna() # Drop any row with ANY null values
@@ -154,7 +155,8 @@ def tokenize_split_data(
 
 def update_model_tokenizer(
         model: AutoModelForSeq2SeqLM,
-        tokenizer: AutoTokenizer
+        tokenizer: AutoTokenizer,
+        blank_target_setting: str
     ):
     """Modifies the model vocabulary to include the custom 
     [NO_SUMMARY] token
@@ -169,7 +171,12 @@ def update_model_tokenizer(
     """
     print("Pretrained model special tokens")
     print(tokenizer.all_special_tokens)
-    special_tokens_dict = {'additional_special_tokens': ["[NO_SUMMARY]", "[SUMMARIZE]"]}
+
+    # Add only one token to tokenizer vocab unless using binary token setting
+    if blank_target_setting != "binary":
+        special_tokens_dict = {'additional_special_tokens': ["[NO_SUMMARY]"]}
+    else:
+        special_tokens_dict = {'additional_special_tokens': ["[NO_SUMMARY]", "[SUMMARIZE]"]}
 
     num_added_toks = tokenizer.add_special_tokens(special_tokens_dict)
     print("We have added", num_added_toks, "special tokens")
@@ -354,7 +361,7 @@ def main():
     )
 
     # update model + tokenizer vocab
-    model, tokenizer = update_model_tokenizer(model, tokenizer)
+    model, tokenizer = update_model_tokenizer(model, tokenizer, args.blank_targets)
     
     print("Adding special tokens before converting to Dataset...")
     # update training data with blank-target setting
