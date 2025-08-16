@@ -573,7 +573,7 @@ def main():
 
     # TEMPORARY
     print("Saving readable chunk-level results...")
-    chunk_predictions_path = os.path.dirname(prediction_path) + "chunked." + os.path.basename(prediction_path)
+    chunk_predictions_path = os.path.dirname(prediction_path) + "/chunked." + os.path.basename(prediction_path)
     test_hf.to_csv(chunk_predictions_path)
 
     ###########################################################################
