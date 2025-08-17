@@ -2,7 +2,7 @@ import torch
 import sys
 sys.path.insert(0, ".")
 import eval.eval_metrics2 as metrics
-from datasets import Dataset
+from datasets import Dataset, load_dataset
 import pandas as pd
 import argparse
 import warnings
@@ -28,6 +28,8 @@ def compute(metric_name: str, is_gold: bool, ds: Dataset, batch_size:int):
 
     if is_gold:
         target_column = "summary"
+        data_hf = load_dataset("billsum", split="test")
+        ds = ds.add_column(data_hf["text"])
     else:
         target_column = "predicted_summary"
     
