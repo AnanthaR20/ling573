@@ -58,7 +58,7 @@ def main():
     print("Running on ", device)
 
     # Load input file
-    data = load_data(args.file, args.target)
+    data = load_data(args.file, args.metric)
 
     # Compute metric
     data = compute(args.metric, data, args.batch_size)
