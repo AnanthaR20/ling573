@@ -85,12 +85,14 @@ def convert_data(train_data:pd.DataFrame, blank_target_setting:str):
     if blank_target_setting != "drop":
         # Filter the training data by any null document chunks (if any) as a precaution
         train_data = train_data.loc[train_data.text.notna()]
+        
+        # Add special positive token for non-null targets if using
+        if blank_target_setting == "binary":
+            train_data.loc[train_data.summary.notna(), 'summary'] = "[SUMMARIZE]" + train_data.loc[train_data.summary.notna(), 'summary']
+        
         # Add the special negative token for null summary targets
         train_data.loc[train_data.summary.isna(), 'summary'] = "[NO_SUMMARY]"
 
-        # Add special positive token for non-null targets
-        if blank_target_setting == "binary":
-            train_data.loc[train_data.summary.notna(), 'summary'] = "[SUMMARIZE] " + train_data.loc[train_data.summary.notna(), 'summary']
     else:
         train_data = train_data.dropna() # Drop any row with ANY null values
 
