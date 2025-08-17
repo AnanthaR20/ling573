@@ -53,7 +53,12 @@ def eval_alignscore_batch(batch):
     "align_score": align_scorer.score(contexts=batch["text"], claims=batch["predicted_summary"])
   }
 
-def eval_summac_batch(batch):
+def eval_alignscore_tmp(texts, summaries):
+  return {
+    "align_score": align_scorer.score(contexts=texts, claims=summaries)
+  }
+
+def eval_summac_batch(texts, summaries):
   """
   Get SummaC score for a Dataset batch
 
@@ -63,7 +68,7 @@ def eval_summac_batch(batch):
     dict with 'summac_score' list aligned with batch
   """
   return {
-    "summac": summac_conv.score(batch['text'], batch['predicted_summary'])["scores"]
+    "summac": summac_conv.score(texts, summaries)["scores"]
   }
 
 # def eval_summac(bill_text:str,gen_text:str) -> dict[str, float|int]:
