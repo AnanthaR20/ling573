@@ -19,7 +19,8 @@ tqdm = lambda *args, **kwargs: _tqdm(*args, file=sys.stderr, **kwargs)
 def reconstruct_by_doc_id(
         data_hf,
         k_limit: int=None,
-        expect_confidence=False
+        expect_confidence=False,
+        special_tokens=['<s>', '</s>', '<unk>', '<pad>', '<mask>','[SUMMARIZE]', '[NO_SUMMARY]']
 ):
     """
     Loop over a Dataset and reconstruct the final documents + generated summaries
@@ -70,9 +71,9 @@ def reconstruct_by_doc_id(
         predictions = [g for _, g, _ in sorted(generated_predictions, key=lambda x: x[0]) if len(g)]
         
         predicted_summary = " ".join(predictions)
-        # # Manually remove special tokens that are not [NO_SUMMARY]
-        # for special_token in ['<s>', '</s>', '<unk>', '<pad>', '<mask>']:
-        #     predicted_summary = predicted_summary.replace(special_token, "")
+        # Manually remove special tokens that are not [NO_SUMMARY]
+        for special_token in special_tokens:
+            predicted_summary = predicted_summary.replace(special_token, "").strip()
         # Reconstruct with whitespace between
         row = {
                 "doc_id": doc_id,
