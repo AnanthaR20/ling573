@@ -171,7 +171,11 @@ def eval_lftk(text:str, lftk_features:list[str] = ALL_FEATURES, suffix:str = "")
 ################################################################################
 # Information coverage accuracy
 ################################################################################
-def get_decision_metrics(preds, targets):
+def get_decision_metrics(
+    preds, 
+    targets,
+    special_tokens=['<s>', '</s>', '<unk>', '<pad>', '<mask>','[SUMMARIZE]', '[NO_SUMMARY]']
+    ):
   # Store counts of each classification
   counts = {
     "TP": 0,
@@ -181,8 +185,13 @@ def get_decision_metrics(preds, targets):
   }
   # Pair up each prediction and reference (which are already sorted)
   for pred, target in zip(preds, targets):
+    # Clean up special tokens from text for this process
+    for special_token in special_tokens:
+      pred = pred.replace(special_token, "").strip()
+      ref = ref.replace(special_token, "").strip()
+
     # Does prediction contain text? T/F
-    pred_pos = bool(len(pred))
+    pred_pos = bool(len(pred)) 
     # Does reference contain text? T/F 
     ref_pos = bool(len(target))
 
