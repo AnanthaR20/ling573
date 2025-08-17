@@ -28,7 +28,7 @@ def compute(metric_name: str, is_gold: bool, ds: Dataset, batch_size:int):
 
     if is_gold:
         target_column = "summary"
-        data_hf = load_dataset("billsum", split="test")["test"]
+        data_hf = load_dataset("billsum", split="test")
         ds = ds.add_column("text", data_hf["text"])
     else:
         target_column = "predicted_summary"
