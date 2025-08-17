@@ -28,8 +28,8 @@ def compute(metric_name: str, is_gold: bool, ds: Dataset, batch_size:int):
 
     if is_gold:
         target_column = "summary"
-        data_hf = load_dataset("billsum", split="test")
-        ds = ds.add_column(data_hf["text"])
+        data_hf = load_dataset("billsum", split="test")["test"]
+        ds = ds.add_column("text", data_hf["text"])
     else:
         target_column = "predicted_summary"
     
@@ -49,6 +49,9 @@ def compute(metric_name: str, is_gold: bool, ds: Dataset, batch_size:int):
             batched=True,
             batch_size=batch_size
         )
+    if is_gold:
+        # Remove the mounted text column
+        ds = ds.remove_columns(column_names="text")
     return ds
 
 def load_data(source_file:str, metric_name:str):
