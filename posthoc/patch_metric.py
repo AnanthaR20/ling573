@@ -1,6 +1,6 @@
 import torch
 import sys
-sys.path.insert(0, "..")
+sys.path.insert(0, ".")
 import eval.eval_metrics2 as metrics
 from datasets import Dataset
 import pandas as pd
