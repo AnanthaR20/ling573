@@ -60,7 +60,7 @@ def compute(metric_name: str,
             batched=True,
             batch_size=batch_size
         )
-    if is_gold:
+    if is_gold or is_baseline:
         # Remove the mounted text column
         ds = ds.remove_columns(column_names="text")
     return ds
