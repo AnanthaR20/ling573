@@ -80,7 +80,7 @@ def main():
     _, test_hf = compute_control_token_probability(
         model=model,
         data_hf=test_hf,
-        control_token_id=tokenizer.convert_tokens_to_ids["[SUMMARIZE]"],
+        control_token_id=tokenizer.convert_tokens_to_ids("[SUMMARIZE]"),
         batch_size=args.batch_size,
         device=device,
         p_limit=args.p_limit
@@ -103,11 +103,11 @@ def main():
 
     df.to_csv(f"{str(args.config_id)}_PROBE.csv")
 
-    print("Statistics for [NO_SUMMARY] rank for true cases:")
-    print(df.loc[~df.summary.str.len().astype(bool), "no_summary_rank"].describe())
-
-    print("Statistics for [NO_SUMMARY] rank for false cases:")
+    print("Statistics for [SUMMARIZE] rank for true cases:")
     print(df.loc[df.summary.str.len().astype(bool), "no_summary_rank"].describe())
+
+    print("Statistics for [SUMMARIZE] rank for false cases:")
+    print(df.loc[~df.summary.str.len().astype(bool), "no_summary_rank"].describe())
 
 
 if __name__ == "__main__":
