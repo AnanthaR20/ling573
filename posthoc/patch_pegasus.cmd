@@ -6,9 +6,9 @@ getenv = true
 arguments = --file output/pegasusbillsum_baseline_ALL_metrics.csv \
 --metric redundancy --batch_size 8
 transfer_executable = false
-output = patch_metric.pegasus.alignscore.out
-error = patch_metric.pegasus.alignscore.err
-log = patch_metric.pegasus.alignscore.log
+output = patch_metric.pegasus.redundancy.out
+error = patch_metric.pegasus.redundancy.err
+log = patch_metric.pegasus.redundancy.log
 request_memory = 1000
 notification = error
 queue
