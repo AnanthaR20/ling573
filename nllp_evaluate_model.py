@@ -126,12 +126,14 @@ def generate_predictions(
         data_hf,
         batch_size,
         device,
-        tokens_to_suppress: list=[],
+        tokens_to_suppress=[],
         skip_special_tokens=False
 ):
     """
     Map a pre-tokenized Dataset to generate predictions.
     """
+    if len(tokens_to_suppress):
+        print(f"Suppressing token IDs: {tokens_to_suppress}")
     predict_fn = utils.generate_prediction_factory(
         model=model,
         tokenizer=tokenizer,
@@ -289,6 +291,7 @@ def update_model_tokenizer(
 
     print("Updated special tokens")
     print(tokenizer.all_special_tokens)
+    print(tokenizer.convert_tokens_to_ids(tokenizer.all_special_tokens))
     return model, tokenizer, tokenizer.convert_tokens_to_ids("[NO_SUMMARY]")
 
 def prepare_output_dirs(
