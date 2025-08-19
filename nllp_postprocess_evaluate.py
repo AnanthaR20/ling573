@@ -94,7 +94,9 @@ def load_chunk_level_predictions(config_id: int):
         metadata["max_input_length"] = int(pattern.search(file).group(1))
         # max_output_length: 512
         metadata["max_output_length"] = int(pattern.search(file).group(2))
-        test_df = pd.read_csv(file)
+        data = pd.read_csv(file)
+        # Normalize empty reference summary rows with empty strings
+        data.loc[data["summary"].isna(), "summary"] = ""
         first_pass_chunks = Dataset.from_pandas(test_df)
 
     for file in glob(f"output/{str(config_id)}.*.csv"):
