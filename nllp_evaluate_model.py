@@ -147,7 +147,7 @@ def generate_predictions(
     )
     return data_hf
 
-def compute_control_token_probability(
+def compute_control_token_likelihood(
         model,
         data_hf,
         control_token_id,
@@ -526,7 +526,7 @@ def main():
     ###########################################################################
     # if p_limit is provided, compute [NO_SUMMARY] probability and split data
     print("Computing relative probability rank for [NO_SUMMARY] control token...")
-    test_skipped, test_hf = compute_control_token_probability(
+    test_skipped, test_hf = compute_control_token_likelihood(
         model=model,
         data_hf=test_hf,
         control_token_id=control_token_id,
