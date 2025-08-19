@@ -46,7 +46,7 @@ def select_k_chunks(test_empty, k, ascending_sort=None):
                 empty_rows.extend(random_empty.to_dict('records'))
     return Dataset.from_list(top_k_rows), Dataset.from_list(empty_rows)
 
-def prepare_output_dir(checkpoint: str, config_id: int):
+def prepare_output_dir(checkpoint: str, new_config_id: int):
     """
     Args:
         checkpoint: model checkpoint path with attributes
@@ -57,7 +57,7 @@ def prepare_output_dir(checkpoint: str, config_id: int):
     prediction_attrs = os.path.dirname(checkpoint).split("/")
 
     # set up output name
-    prediction_filename = ".".join([str(config_id + 2)] + prediction_attrs[-5:]) + ".csv"
+    prediction_filename = ".".join([str(new_config_id)] + prediction_attrs[-5:]) + ".csv"
     prediction_path = f"output/{prediction_filename}"
     print(f"Test predictions will be saved to {prediction_path}")
 
@@ -120,6 +120,7 @@ def load_chunk_level_predictions(config_id: int):
 def load_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config_id", type=int, help="Specify inference/evaluation configuration ID (1, 2, 3)")
+    parser.add_argument("--new_config_id", type=int, help="Specify NEW inference/evaluation configuration ID (1, 2, 3)")
     parser.add_argument("--base_tokenizer", type=str, help="The base model tokenizer to reference")
     parser.add_argument("--checkpoint", default="google/pegasus-billsum", help="The local finetuned model checkpoint to evaluate")
     parser.add_argument("--k_selector", type=str, default=None, help="Specify control token for relative likelihood computation")
@@ -153,7 +154,7 @@ def main():
     # prepare output directories
     prediction_path = prepare_output_dir(
         checkpoint_filepath=args.checkpoint,
-        config_id=args.config_id
+        new_config_id=args.new_config_id
     )
     ###########################################################################
     # Step 2: validate that test data and model have compatible I/O length
