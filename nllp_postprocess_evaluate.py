@@ -78,7 +78,8 @@ def load_chunk_level_predictions(config_id: int):
         "se3_config": None
     }
 
-    test_hf = None
+    first_pass_chunks = None
+    first_pass_eval = None
     test_empty = None
     pattern = re.compile("se3-\w+-(\d+)-(\d+)")
 
@@ -94,8 +95,11 @@ def load_chunk_level_predictions(config_id: int):
         # max_output_length: 512
         metadata["max_output_length"] = int(pattern.search(file).group(2))
         test_df = pd.read_csv(file)
-        test_hf = Dataset.from_pandas(test_df)
+        first_pass_chunks = Dataset.from_pandas(test_df)
 
+    for file in glob(f"output/{str(config_id)}.*.csv"):
+        test_df = pd.read_csv(file)
+        first_pass_eval = Dataset.from_pandas(test_df)
     print("Loading source chunk-level inputs...")
     # Load input data
     _, _, source_data = load_data(f"preprocess/nllp_data/billsum_clean_test_{metadata['se3_config']}.csv")
@@ -112,10 +116,11 @@ def load_chunk_level_predictions(config_id: int):
         test_empty = Dataset.from_pandas(source_data[second_pass_mask])
 
     # Check if any are invalid before returning
-    assert test_hf is not None
+    assert first_pass_chunks is not None
+    assert first_pass_eval is not None
     assert test_empty is not None
     assert all([v is not None for v in metadata.values()])
-    return test_hf, test_empty, metadata
+    return first_pass_chunks, first_pass_eval, test_empty, metadata
 
 def load_args():
     parser = argparse.ArgumentParser()
@@ -142,7 +147,7 @@ def main():
     ###########################################################################
     # Step 1: load data, model and inferred properties (input/output length)
     ###########################################################################
-    first_pass, test_empty, test_metadata = load_chunk_level_predictions(args.config_id)
+    first_pass_chunks, first_pass_eval, test_empty, test_metadata = load_chunk_level_predictions(args.config_id)
 
     # load model, validate train and test length values
     # load model, tokenizer 
@@ -244,32 +249,30 @@ def main():
     test_k = test_k.remove_columns(columns_to_remove)
 
     ###########################################################################
-    # Step 8: Recombine second-pass inference with remaining blank targets
+    # Step 8: Recombine second-pass inference with remaining targets
     ###########################################################################   
     # Generate blank targets and tack them onto planned rows
     print("Generating blank targets for remaining chunks...")
     test_empty = test_empty.add_column("prediction", [""] * len(test_empty))
     
-    print("Concatenating all targets...")
-    test_hf = concatenate_datasets([test_k, test_empty])
+    # Concatenate test_empty and test_k
+    print("Concatenating second-pass predictions to remaining blank targets...")
+    second_pass = concatenate_datasets([test_k, test_empty])
 
     ###########################################################################
     # Step 9: Chunk-level classification metrics
     ###########################################################################
-    print("Computing blank-target classification metrics...")
-    metrics.get_decision_metrics(test_hf["prediction"], test_hf["summary"])
-
-    # TEMPORARY
-    # print("Saving readable chunk-level results...")
-    # chunk_predictions_path = os.path.dirname(prediction_path) + "/chunked." + os.path.basename(prediction_path)
-    # test_hf.to_csv(chunk_predictions_path)
+    print("Computing blank-target classification metrics across both first and second passes...")
+    # Concatenate with first_pass (chunk level) to compute new IS metrics
+    chunk_level_predictions = concatenate_datasets([first_pass_chunks, second_pass])
+    metrics.get_decision_metrics(chunk_level_predictions["prediction"], chunk_level_predictions["summary"])
 
     ###########################################################################
     # Step 10: Reconstruct full summaries
     ###########################################################################
     print("Reconstructing full summaries from generated predictions...")
-    test_hf, _ = reconstruct_by_doc_id(
-        data_hf=test_hf, 
+    second_pass, _ = reconstruct_by_doc_id(
+        data_hf=second_pass, 
         special_tokens=tokenizer.all_special_tokens
     )
     
@@ -309,7 +312,7 @@ def main():
     # Step 12: Concatenate with first-pass inference and save
     ###########################################################################
     print("Concatenating first-pass inference with second-pass...")
-    test_hf = concatenate_datasets([first_pass, test_hf])
+    test_hf = concatenate_datasets([first_pass_eval, test_hf])
 
     print("Saving predictions...")
     test_hf.to_csv(prediction_path)
