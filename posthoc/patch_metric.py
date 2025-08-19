@@ -37,7 +37,7 @@ def compute(metric_name: str,
     else:
         # If using the stored gold or baseline data
         # TEMPORARY: hard-coded filepath
-        text_data = pd.read_csv("../preprocess/nllp_data/billsum_clean_test.csv")
+        text_data = pd.read_csv("preprocess/nllp_data/billsum_clean_test.csv")
         ds = ds.add_column("text", text_data["text"].tolist())
         if is_gold:
             target_column = "summary"
