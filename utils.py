@@ -29,7 +29,7 @@ def generate_prediction_factory(
         # Prepare to suppress [NO_SUMMARY] if it was provided
         if len(tokens_to_suppress):
             inputs.update({
-                "begin_suppress_tokens": tokens_to_suppress
+                "suppress_tokens": tokens_to_suppress
             })
 
         # Ensure no gradients are computed

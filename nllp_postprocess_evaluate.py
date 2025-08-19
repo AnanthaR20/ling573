@@ -260,6 +260,8 @@ def main():
     metrics.get_decision_metrics(test_hf["prediction"], test_hf["summary"])
 
     # TEMPORARY
+    print("Second-pass inference peek...")
+    print(test_k["prediction"].tolist())
     # print("Saving readable chunk-level results...")
     # chunk_predictions_path = os.path.dirname(prediction_path) + "/chunked." + os.path.basename(prediction_path)
     # test_hf.to_csv(chunk_predictions_path)
