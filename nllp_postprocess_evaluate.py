@@ -98,7 +98,7 @@ def load_chunk_level_predictions(config_id: int):
 
     print("Loading source chunk-level inputs...")
     # Load input data
-    _, _, source_data = load_data(f"tmp/nllp_data/billsum_clean_test_{metadata['se3_config']}.csv")
+    _, _, source_data = load_data(f"preprocess/nllp_data/billsum_clean_test_{metadata['se3_config']}.csv")
 
     print("Loading document IDs for second-pass inference...")
     # Load document IDs with empty summaries
