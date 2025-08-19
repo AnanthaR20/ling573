@@ -8,8 +8,10 @@ import os
 from eval import eval_metrics2 as metrics
 from nllp_evaluate_model import *
 from glob import glob
+from rouge_score import rouge_scorer
 
-def select_k_chunks(test_empty, k, ascending_sort=None):
+
+def select_k_chunks(test_empty, k, rouge_scorer=None, ascending_sort=None):
     """
     Args:
         test_empty: HF Dataset of input chunks that all predicted blank targets on first-pass inference
@@ -29,8 +31,14 @@ def select_k_chunks(test_empty, k, ascending_sort=None):
             top_k_rows.extend(group.to_dict('records'))
         else:
             if ascending_sort is not None:
-                # Sort the group by no_summary_rank
-                ranked = group.sort_values('no_summary_rank', ascending=ascending_sort).to_dict('records')
+                if rouge_scorer is None:
+                    # Sort the group by no_summary_rank if no scorer is provided
+                    ranked = group.sort_values('no_summary_rank', ascending=ascending_sort).to_dict('records')
+                else:
+                    # Compute ROUGE-1 F1 to the full document
+                    doc = " ".join(group.text.to_list())
+                    group["rouge1_f1"] = group.text.apply(lambda x: rouge_scorer.score(doc, x)["rouge1"].fmeasure)
+                    ranked = group.sort_values('rouge1_f1', ascending=ascending_sort).to_dict('records')
                 # Add the first k to top_k_rows
                 top_k_rows.extend(ranked[0:k])
 
@@ -220,6 +228,9 @@ def main():
     elif args.k_selector == "[SUMMARIZE]":
         print(f"Selecting max-{args.k_limit} chunks for each document set...")
         test_k, test_empty = select_k_chunks(test_empty, args.k_limit, True)
+    elif args.k_selector == "rouge":
+        rouge = rouge_scorer.RougeScorer(rouge_types=["rouge1"],use_stemmer=True)
+        test_k, test_empty = select_k_chunks(test_empty, args.k_limit, rouge, False)
     else:
         print(f"Selecting random-{args.k_limit} chunks for each document set...")
         test_k, test_empty = select_k_chunks(test_empty, args.k_limit)
