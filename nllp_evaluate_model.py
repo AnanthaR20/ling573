@@ -349,7 +349,10 @@ def load_model_tokenizer(
     blank_target_setting = blank_pattern.search(checkpoint).group(1)
 
     # Model name and settings
-    model_name = '-'.join(checkpoint.split("/")[1].split("-")[0:2])
+    # Model name expects FULL path
+    model_name = '-'.join(checkpoint.split("/")[5].split("-")[0:2])
+    if not checkpoint.startswith("/"):
+        print("WARNING: model_name is not correctly parsed from relative filepath, but proceeding...")
     model = LEDForConditionalGeneration.from_pretrained(checkpoint).to(device)
     model.config.num_beams = 2
     model.config.max_length = max_output_len
