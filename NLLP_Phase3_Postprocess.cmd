@@ -6,9 +6,7 @@ getenv = true
 environment = "CLUSTER_ID=$(Cluster); PROCESS_ID=$(Process);"
 arguments = --config_id 5 --new_config_id 6 --base_tokenizer allenai/led-base-16384 \
 --checkpoint /home2/jcmw614/ling573/models/led-base/billsum_clean_train_se3-led-2048-512/binary_blank_targets/2048_512_5_epochs/checkpoint-45220/ \
---k_selector [NO_SUMMARY] \
---k_limit 2
---batch_size 8
+--k_selector [NO_SUMMARY] --k_limit 2 --batch_size 8
 transfer_executable = false
 output = postprocess_empties.$(Cluster).$(Process).out
 error = postprocess_empties.$(Cluster).$(Process).err
@@ -27,9 +25,7 @@ getenv = true
 environment = "CLUSTER_ID=$(Cluster); PROCESS_ID=$(Process);"
 arguments = --config_id 5 --new_config_id 7 --base_tokenizer allenai/led-base-16384 \
 --checkpoint /home2/jcmw614/ling573/models/led-base/billsum_clean_train_se3-led-2048-512/binary_blank_targets/2048_512_5_epochs/checkpoint-45220/ \
---k_selector [SUMMARIZE] \
---k_limit 2
---batch_size 8
+--k_selector [NO_SUMMARY] --k_limit 2 --batch_size 8
 transfer_executable = false
 output = postprocess_empties.$(Cluster).$(Process).out
 error = postprocess_empties.$(Cluster).$(Process).err
@@ -48,8 +44,7 @@ getenv = true
 environment = "CLUSTER_ID=$(Cluster); PROCESS_ID=$(Process);"
 arguments = --config_id 5 --new_config_id 8 --base_tokenizer allenai/led-base-16384 \
 --checkpoint /home2/jcmw614/ling573/models/led-base/billsum_clean_train_se3-led-2048-512/binary_blank_targets/2048_512_5_epochs/checkpoint-45220/ \
---k_limit 2
---batch_size 8
+--k_limit 2 --batch_size 8
 transfer_executable = false
 output = postprocess_empties.$(Cluster).$(Process).out
 error = postprocess_empties.$(Cluster).$(Process).err
