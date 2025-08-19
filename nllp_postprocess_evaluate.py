@@ -1,4 +1,4 @@
-from datasets import Dataset
+from datasets import Dataset, concatenate_datasets
 from transformers import set_seed
 import pandas as pd
 import argparse
@@ -251,7 +251,7 @@ def main():
     test_empty = test_empty.add_column("prediction", [""] * len(test_empty))
     
     print("Concatenating all targets...")
-    test_hf = test_k.concatenate(test_empty)
+    test_hf = concatenate_datasets([test_k, test_empty])
 
     ###########################################################################
     # Step 9: Chunk-level classification metrics
@@ -309,7 +309,7 @@ def main():
     # Step 12: Concatenate with first-pass inference and save
     ###########################################################################
     print("Concatenating first-pass inference with second-pass...")
-    test_hf = test_hf.concatenate(first_pass)
+    test_hf = concatenate_datasets([first_pass, test_hf])
 
     print("Saving predictions...")
     test_hf.to_csv(prediction_path)
