@@ -281,40 +281,41 @@ def main():
     ###########################################################################
     # Step 11: Compute metrics
     ###########################################################################
-    print(f"Computing metrics for {len(test_hf)} generated summaries...")
+    print(f"Computing metrics for {len(second_pass)} generated summaries...")
     print("BERTScore...")
-    test_hf = test_hf.map(
+    second_pass = second_pass.map(
         lambda ex: metrics.get_bertscore_metrics(ex["predicted_summary"], ex["summary"]),
         batched=True,
         batch_size=args.batch_size
     )
     # Evaluate ROUGE, AlignScore, SummaC
     print("Starting AlignScore...")
-    test_hf = test_hf.map(
+    second_pass = second_pass.map(
         metrics.eval_alignscore_batch,
         batched=True,
         batch_size=args.batch_size
     )
     print("Starting ROUGE...")
-    test_hf = test_hf.map(
+    second_pass = second_pass.map(
         metrics.eval_rouge_batch,
         batched=True,
         batch_size=args.batch_size
     )
     # Evaluate LFTK
     print("Starting LFTK...")
-    test_hf = test_hf.map(
+    second_pass = second_pass.map(
         lambda ex: metrics.eval_lftk(ex["predicted_summary"], suffix=".GEN"),
         batched=False
     )
-    print("Computing overall redundancy scores...")
-    _, _, _, _ = metrics.get_redundancy_scores(test_hf["predicted_summary"])
 
     ###########################################################################
     # Step 12: Concatenate with first-pass inference and save
     ###########################################################################
     print("Concatenating first-pass inference with second-pass...")
-    test_hf = concatenate_datasets([first_pass_eval, test_hf])
+    test_hf = concatenate_datasets([first_pass_eval, second_pass])
+
+    print("Computing new overall redundancy scores...")
+    _, _, _, _ = metrics.get_redundancy_scores(test_hf["predicted_summary"])
 
     print("Saving predictions...")
     test_hf.to_csv(prediction_path)
