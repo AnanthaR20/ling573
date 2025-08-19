@@ -49,7 +49,7 @@ def main():
     # Step 3: Add special token to pretrained tokenizer
     ###########################################################################
     # update model + tokenizer vocab
-    model, tokenizer, control_token_id = update_model_tokenizer(
+    model, tokenizer, _ = update_model_tokenizer(
         model, 
         tokenizer, 
         metadata["blank_target_setting"]
@@ -80,7 +80,7 @@ def main():
     _, test_hf = compute_control_token_probability(
         model=model,
         data_hf=test_hf,
-        control_token_id=control_token_id,
+        control_token_id=tokenizer.convert_tokens_to_ids["[SUMMARIZE]"],
         batch_size=args.batch_size,
         device=device,
         p_limit=args.p_limit
