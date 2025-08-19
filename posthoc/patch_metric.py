@@ -44,13 +44,14 @@ def compute(metric_name: str,
         if is_baseline:
             target_column = "summary_generated"
     
+    print(f"Targeting column {target_column}")
     # Redundancy is only computed in aggregate
     if metric_name == "redundancy":
         _, _, _, _ = func(ds[target_column])
     # BERTScore always requires preds + refs
     elif metric_name == "bertscore":
         ds = ds.map(
-            lambda ex: func(ex["predicted_summary"], ex["summary"]),
+            lambda ex: func(ex[target_column], ex["summary"]),
             batched=True,
             batch_size=batch_size
         )
@@ -76,6 +77,12 @@ def load_data(source_file:str, metric_name:str):
     # Check if this is gold or prediction data
     is_gold = "gold" in source_file
     is_baseline = "pegasus" in source_file
+    if is_gold:
+        print("Detected gold data")
+    if is_baseline:
+        print("Detected baseline data")
+    else:
+        print("Detected NLLP prediction data")
 
     # Read as dataframe
     df = pd.read_csv(source_file)
