@@ -153,7 +153,7 @@ def main():
     print(f"Running inference and evaluation for model:\n{metadata}")
     # prepare output directories
     prediction_path = prepare_output_dir(
-        checkpoint_filepath=args.checkpoint,
+        checkpoint=args.checkpoint,
         new_config_id=args.new_config_id
     )
     ###########################################################################
