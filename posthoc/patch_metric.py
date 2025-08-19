@@ -37,12 +37,13 @@ def compute(metric_name: str,
     else:
         # If using the stored gold or baseline data
         # TEMPORARY: hard-coded filepath
-        text_data = pd.read_csv("preprocess/nllp_data/billsum_clean_test.csv")
-        ds = ds.add_column("text", text_data["text"].tolist())
+        source_data = pd.read_csv("preprocess/nllp_data/billsum_clean_test.csv")
+        ds = ds.add_column("text", source_data["text"].tolist())
         if is_gold:
             target_column = "summary"
         if is_baseline:
             target_column = "summary_generated"
+            ds = ds.add_column("summary", source_data["summary"].tolist())
     
     print(f"Targeting column {target_column}")
     # Redundancy is only computed in aggregate
