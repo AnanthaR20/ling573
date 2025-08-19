@@ -25,6 +25,8 @@ output = patch_metric.pegasus.bertscore.out
 error = patch_metric.pegasus.bertscore.err
 log = patch_metric.pegasus.bertscore.log
 request_memory = 4000
+request_GPUs = 1
+Requirements = (Machine == "patas-gn3.ling.washington.edu")
 notification = error
 queue
 
@@ -40,5 +42,7 @@ output = patch_metric.pegasus.alignscore.out
 error = patch_metric.pegasus.alignscore.err
 log = patch_metric.pegasus.alignscore.log
 request_memory = 4000
+request_GPUs = 1
+Requirements = (Machine == "patas-gn3.ling.washington.edu")
 notification = error
 queue
