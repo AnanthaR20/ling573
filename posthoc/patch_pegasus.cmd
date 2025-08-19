@@ -3,7 +3,7 @@
 ############
 executable = posthoc/patch_metric.sh
 getenv = true
-arguments = --file output/pegasusbillsum_baseline_ALL_metrics.csv \
+arguments = --file output/deliverable_2/pegasusbillsum_baseline_ALL_metrics.csv \
 --metric redundancy --batch_size 8
 transfer_executable = false
 output = patch_metric.pegasus.redundancy.out
@@ -18,7 +18,7 @@ queue
 ############
 executable = posthoc/patch_metric.sh
 getenv = true
-arguments = --file output/pegasusbillsum_baseline_ALL_metrics.csv \
+arguments = --file output/deliverable_2/pegasusbillsum_baseline_ALL_metrics.csv \
 --metric bertscore --batch_size 8
 transfer_executable = false
 output = patch_metric.pegasus.bertscore.out
@@ -33,7 +33,7 @@ queue
 ############
 executable = posthoc/patch_metric.sh
 getenv = true
-arguments = --file output/pegasusbillsum_baseline_ALL_metrics.csv \
+arguments = --file output/deliverable_2/pegasusbillsum_baseline_ALL_metrics.csv \
 --metric alignscore --batch_size 8
 transfer_executable = false
 output = patch_metric.pegasus.alignscore.out
