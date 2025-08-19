@@ -126,6 +126,7 @@ def generate_predictions(
         data_hf,
         batch_size,
         device,
+        tokens_to_suppress: list=[],
         skip_special_tokens=False
 ):
     """
@@ -136,6 +137,7 @@ def generate_predictions(
         tokenizer=tokenizer,
         max_output_length=max_output_length,
         device=device,
+        tokens_to_suppress=tokens_to_suppress,
         skip_special_tokens=skip_special_tokens
     )
     data_hf = data_hf.map(

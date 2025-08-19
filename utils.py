@@ -9,6 +9,7 @@ def generate_prediction_factory(
         tokenizer,
         max_output_length,
         device,
+        tokens_to_suppress,
         skip_special_tokens,
         num_beams=2
     ):
@@ -25,6 +26,12 @@ def generate_prediction_factory(
                 "global_attention_mask": torch.tensor(examples["global_attention_mask"]).to(device)
             })
         
+        # Prepare to suppress [NO_SUMMARY] if it was provided
+        if len(tokens_to_suppress):
+            inputs.update({
+                "begin_suppress_tokens": tokens_to_suppress
+            })
+
         # Ensure no gradients are computed
         with torch.no_grad():
             outputs = model.generate(
