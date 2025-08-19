@@ -26,7 +26,7 @@ def select_k_chunks(test_empty, k, ascending_sort=None):
     for _, group in temp.groupby("doc_id"):
         # If there are k or fewer chunks for this document, accept all of them
         if len(group) <= k:
-            top_k_rows.extend(group.to_dict())
+            top_k_rows.extend(group.to_dict('records'))
         else:
             if ascending_sort is not None:
                 # Sort the group by no_summary_rank
