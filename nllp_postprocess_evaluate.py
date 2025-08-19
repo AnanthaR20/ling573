@@ -97,11 +97,11 @@ def load_chunk_level_predictions(config_id: int):
         data = pd.read_csv(file)
         # Normalize empty reference summary rows with empty strings
         data.loc[data["summary"].isna(), "summary"] = ""
-        first_pass_chunks = Dataset.from_pandas(test_df)
+        first_pass_chunks = Dataset.from_pandas(data)
 
     for file in glob(f"output/{str(config_id)}.*.csv"):
-        test_df = pd.read_csv(file)
-        first_pass_eval = Dataset.from_pandas(test_df)
+        data = pd.read_csv(file)
+        first_pass_eval = Dataset.from_pandas(data)
     print("Loading source chunk-level inputs...")
     # Load input data
     _, _, source_data = load_data(f"preprocess/nllp_data/billsum_clean_test_{metadata['se3_config']}.csv")
