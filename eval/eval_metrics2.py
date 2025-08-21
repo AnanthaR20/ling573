@@ -33,12 +33,20 @@ WORDDIFF = lftk.search_features(family="worddiff", return_format = "list_key")
 ALL_FEATURES = READFORMULA + WORDSENT + WORDDIFF
 
 # load scoring objects
+# AlignScore model
 align_scorer = AlignScore(model='roberta-base', batch_size=32, device=curr_device, ckpt_path='AlignScore-base.ckpt', evaluation_mode='nli_sp')
-summac_conv = SummaCConv(models=["vitc"], bins='percentile', granularity="sentence", nli_labels="e", device=curr_device, agg="mean")
+# BERTScore scorer; returns P, R, F1
 bertscore = load("bertscore")
+
+# ROUGE - defining types to define scorer
 rouge_types = ["rouge1","rouge2","rougeL","rougeLsum"]
 score_types = ["precision", "recall", "f1"]
 rouge = rouge_scorer.RougeScorer(rouge_types=rouge_types,use_stemmer=True)
+
+# SummaC
+summac_conv = SummaCConv(models=["vitc"], bins='percentile', granularity="sentence", nli_labels="e", device=curr_device, agg="mean")
+# Manually set SummaC model into evaluation mode
+summac_conv.eval()
 
 def eval_alignscore_batch(batch):
   """
@@ -67,8 +75,13 @@ def eval_summac_batch(texts, summaries):
   Returns:
     dict with 'summac_score' list aligned with batch
   """
+  scores = None
+  with torch.no_grad():
+    # Make sure that no gradients are computed just in case that matters
+    scores = summac_conv.score(texts, summaries)["scores"]
+  assert scores is not None
   return {
-    "summac": summac_conv.score(texts, summaries)["scores"]
+    "summac": scores
   }
 
 # def eval_summac(bill_text:str,gen_text:str) -> dict[str, float|int]:
