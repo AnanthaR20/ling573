@@ -9,7 +9,7 @@ import warnings
 
 def compute(metric_name: str, 
             is_gold: bool, 
-            is_baseline: bool,
+            is_pilot: bool,
             ds: Dataset, 
             batch_size:int
         ):
@@ -32,7 +32,7 @@ def compute(metric_name: str,
     func = metric_fns[metric_name]
 
     # NLLP predictions have the column predicted_summary
-    if not is_gold and not is_baseline:
+    if not is_gold and not is_pilot:
         target_column = "predicted_summary"
     else:
         # If using the stored gold or baseline data
@@ -41,7 +41,7 @@ def compute(metric_name: str,
         ds = ds.add_column("text", source_data["text"].tolist())
         if is_gold:
             target_column = "summary"
-        if is_baseline:
+        if is_pilot:
             target_column = "summary_generated"
             ds = ds.add_column("summary", source_data["summary"].tolist())
     
@@ -62,7 +62,7 @@ def compute(metric_name: str,
             batched=True,
             batch_size=batch_size
         )
-    if is_gold or is_baseline:
+    if is_gold or is_pilot:
         # Remove the mounted text column
         ds = ds.remove_columns(column_names="text")
     return ds
@@ -75,22 +75,22 @@ def load_data(source_file:str, metric_name:str):
     Returns:
         Huggingface Dataset for mapping metric and boolean to represent if data is 'gold'
     """
-    # Check if this is gold or prediction data
+    # Check if this is gold, spring deliverable or prediction data
     is_gold = "gold" in source_file
-    is_baseline = "pegasus" in source_file
+    is_pilot = "deliverable" in source_file
     if is_gold:
-        print("Detected gold data")
-    if is_baseline:
-        print("Detected baseline data")
+        print(f"Preparing to patch {metric_name} onto gold data")
+    if is_pilot:
+        print("Preparing to patch {metric_name} onto baseline/pilot data")
     else:
-        print("Detected NLLP prediction data")
+        print(f"Preparing to patch {metric_name} onto NLLP prediction data")
 
     # Read as dataframe
     df = pd.read_csv(source_file)
     if metric_name in df.columns:
         warnings.warn("Metric already exists in source file; this job will overwrite it!")
     # Convert to HF Dataset
-    return Dataset.from_pandas(df), is_gold, is_baseline
+    return Dataset.from_pandas(df), is_gold, is_pilot
 
 def load_args():
     parser = argparse.ArgumentParser()
@@ -108,13 +108,14 @@ def main():
     print("Running on ", device)
 
     # Load input file
-    data, is_gold, is_baseline = load_data(args.file, args.metric)
+    data, is_gold, is_pilot = load_data(args.file, args.metric)
 
     # Compute metric
-    data = compute(args.metric, is_gold, is_baseline, data, args.batch_size)
+    data = compute(args.metric, is_gold, is_pilot, data, args.batch_size)
 
     # Overwrite file
     data.to_csv(args.file)
+    print("Patching metric complete")
     return
 
 if __name__ == "__main__":
