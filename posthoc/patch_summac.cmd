@@ -81,5 +81,4 @@ request_GPUs = 1
 Requirements = (Machine == "patas-gn3.ling.washington.edu")
 request_memory = 5000
 notification = error
-queue= error
 queue
