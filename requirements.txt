@@ -191,7 +191,6 @@ spacy-legacy==3.0.12
 spacy-loggers==1.0.5
 srsly==2.5.1
 stack-data==0.6.3
-summac==0.0.4
 sympy==1.14.0
 TatSu==5.13.1
 tensorboard==2.19.0
@@ -228,3 +227,4 @@ widgetsnbextension==4.0.14
 wrapt==1.17.2
 xxhash==3.5.0
 yarl==1.20.0
+git+https://github.com/tomhosking/summac.git@nparraywarning

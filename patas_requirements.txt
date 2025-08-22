@@ -242,3 +242,4 @@ widgetsnbextension==4.0.14
 wrapt==1.17.2
 xxhash==3.5.0
 yarl==1.20.0
+git+https://github.com/tomhosking/summac.git@nparraywarning
