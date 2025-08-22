@@ -7,18 +7,11 @@ import pandas as pd
 import argparse
 import warnings
 
-def check_mem_usage(batch_size):
-    allocated = torch.cuda.memory_allocated() / 1e9
-    total = torch.cuda.get_device_properties(0).total_memory / 1e9
-    memory_ratio = allocated / total
-    
-    print(f"✓ Batch size {batch_size} succeeded - Memory: {memory_ratio:.1%} ({allocated:.1f}GB/{total:.1f}GB)")
-    return memory_ratio
-
 def compute(metric_name: str, 
             is_gold: bool, 
             is_pilot: bool,
-            ds: Dataset
+            ds: Dataset,
+            batch_size: int
         ):
     """
     Args:
@@ -61,43 +54,14 @@ def compute(metric_name: str,
         ds = ds.map(
             lambda ex: func(ex[target_column], ex["summary"]),
             batched=True,
-            batch_size=8
+            batch_size=batch_size
         )
     else: 
-        best_batch_size = 1
-        # Test diff batch sizes for AlignScore and SummaC
-        for batch_size in [1, 2, 4, 8]:
-
-            print(f"\n--- Testing batch size {batch_size} ---")
-            torch.cuda.empty_cache()  # Clear cache
-            
-            try:
-                # Test with small subset (3x batch size for good measure)
-                test_result = ds.select(range(batch_size * 3)).map(
-                    lambda ex: func(ex["text"], ex[target_column]),
-                    batched=True,
-                    batch_size=batch_size
-                )
-                
-                # Check memory usage
-                memory_ratio = check_mem_usage(batch_size)
-                
-                if memory_ratio < 0.85:  # Safe threshold
-                    best_batch_size = batch_size
-                else:
-                    print(f"Memory usage too high, stopping at batch size {best_batch_size}")
-                    break
-                    
-            except Exception as e:
-                print(f"Batch size {batch_size} failed: {str(e)[:100]}...")
-                break
-    
-        print(f"\nProceeding with batch size: {best_batch_size}")
-
+        torch.cuda.empty_cache()  # Clear any leftover memory usage just in case
         ds = ds.map(
             lambda ex: func(ex['text'], ex[target_column]),
             batched=True,
-            batch_size=best_batch_size
+            batch_size=batch_size
         )
     if is_gold or is_pilot:
         # Remove the mounted text column
@@ -133,6 +97,7 @@ def load_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--file", type=str, help="File to add metrics")
     parser.add_argument("--metric", type=str, help="Specify metric to compute")
+    parser.add_argument("--batch_size", type=int, default=1)
     args = parser.parse_args()
     return args
 
@@ -147,11 +112,11 @@ def main():
     data, is_gold, is_pilot = load_data(args.file, args.metric)
 
     # Compute metric
-    data = compute(args.metric, is_gold, is_pilot, data)
+    data = compute(args.metric, is_gold, is_pilot, data, args.batch_size)
 
     # Overwrite file
     data.to_csv(args.file)
-    print("Patching metric complete")
+    print("COMPLETE")
     return
 
 if __name__ == "__main__":
