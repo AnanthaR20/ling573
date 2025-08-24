@@ -45,7 +45,7 @@ def compute(metric_name: str,
         if is_pilot:
             target_column = "summary_generated"
             # If reference summary is not in existing columns, add it
-            if "summary" not in ds.column_names():
+            if "summary" not in ds.column_names:
                 print("Adding reference summary column...")
                 ds = ds.add_column("summary", source_data["summary"].tolist())
     
