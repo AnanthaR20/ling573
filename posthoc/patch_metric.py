@@ -62,7 +62,7 @@ def compute(metric_name: str,
         )
     elif metric_name == "lftk":
         ds = ds.map(
-        lambda ex: func(ex["predicted_summary"], suffix=".GEN"),
+        lambda ex: func(ex[target_column], suffix=".GEN"),
         batched=False
     )
     else: 
