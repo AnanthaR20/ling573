@@ -44,7 +44,10 @@ def compute(metric_name: str,
             target_column = "summary"
         if is_pilot:
             target_column = "summary_generated"
-            ds = ds.add_column("summary", source_data["summary"].tolist())
+            # If reference summary is not in existing columns, add it
+            if "summary" not in ds.column_names():
+                print("Adding reference summary column...")
+                ds = ds.add_column("summary", source_data["summary"].tolist())
     
     print(f"Targeting column {target_column}")
     # Redundancy is only computed in aggregate
