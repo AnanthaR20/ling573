@@ -9,7 +9,9 @@ transfer_executable = false
 output = patch_metric.d4.alignscore.out
 error = patch_metric.d4.alignscore.err
 log = patch_metric.d4.alignscore.log
-request_memory = 4000
+request_GPUs = 1
+Requirements = (Machine == "patas-gn3.ling.washington.edu")
+request_memory = 5000
 notification = error
 queue
 
@@ -24,7 +26,9 @@ transfer_executable = false
 output = patch_metric.pegasus.summac.out
 error = patch_metric.pegasus.summac.err
 log = patch_metric.pegasus.summac.log
-request_memory = 4000
+request_GPUs = 1
+Requirements = (Machine == "patas-gn3.ling.washington.edu")
+request_memory = 5000
 notification = error
 queue
 
@@ -39,6 +43,8 @@ transfer_executable = false
 output = patch_metric.d4.summac.out
 error = patch_metric.d4.summac.err
 log = patch_metric.d4.summac.log
-request_memory = 4000
+request_GPUs = 1
+Requirements = (Machine == "patas-gn3.ling.washington.edu")
+request_memory = 5000
 notification = error
 queue
