@@ -28,7 +28,8 @@ def compute(metric_name: str,
         "redundancy": metrics.get_redundancy_scores,
         "alignscore": metrics.eval_alignscore_tmp,
         "summac": metrics.eval_summac_batch,
-        "lftk": metrics.eval_lftk
+        "lftk": metrics.eval_lftk,
+        "rouge": metrics.eval_rouge_batch
     }
     func = metric_fns[metric_name]
 
@@ -38,8 +39,9 @@ def compute(metric_name: str,
     else:
         # If using the stored gold or baseline data
         # TEMPORARY: hard-coded filepath
-        source_data = pd.read_csv("preprocess/nllp_data/billsum_clean_test.csv")
-        ds = ds.add_column("text", source_data["text"].tolist())
+        if metric_name == "summac" or metric_name == "alignscore":
+            source_data = pd.read_csv("preprocess/nllp_data/billsum_clean_test.csv")
+            ds = ds.add_column("text", source_data["text"].tolist())
         if is_gold:
             target_column = "summary"
         if is_pilot:
@@ -54,7 +56,7 @@ def compute(metric_name: str,
     if metric_name == "redundancy":
         _, _, _, _ = func(ds[target_column])
     # BERTScore always requires preds + refs
-    elif metric_name == "bertscore":
+    elif metric_name == "bertscore" or metric_name == "rouge":
         ds = ds.map(
             lambda ex: func(ex[target_column], ex["summary"]),
             batched=True,

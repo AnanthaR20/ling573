@@ -116,6 +116,26 @@ def eval_bert(gold_text:str,gen_text:str) -> dict[str, float|int]:
     results[f"bert_score_{s}"] = sum(curr)/len(curr)
   return results
 
+
+def eval_rouge_patch(preds, refs):
+  """
+  Return a list of ROUGE score dicts corresponding to each example in a batch
+  """
+  # Store ROUGE scores in a dict of lists
+  results = {}
+  for rt in rouge_types:
+    results[f"{rt}_precision"] = []
+    results[f"{rt}_recall"] = []
+    results[f"{rt}_fmeasure"] = []
+
+  for ref, pred in zip(refs, preds):
+    scores = rouge.score(ref, pred)
+    for rt in rouge_types:
+      results[f"{rt}_precision"].append(scores[rt].precision)
+      results[f"{rt}_recall"].append(scores[rt].recall)
+      results[f"{rt}_fmeasure"].append(scores[rt].fmeasure)
+  return results
+
 def eval_rouge_batch(batch):
   """
   Return a list of ROUGE score dicts corresponding to each example in a batch
