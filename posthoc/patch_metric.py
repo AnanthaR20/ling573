@@ -74,7 +74,7 @@ def compute(metric_name: str,
             batched=True,
             batch_size=batch_size
         )
-    if is_gold or is_pilot:
+    if (is_gold or is_pilot) and "text" in ds.column_names:
         # Remove the mounted text column
         ds = ds.remove_columns(column_names="text")
     return ds
