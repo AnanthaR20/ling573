@@ -29,7 +29,7 @@ def compute(metric_name: str,
         "alignscore": metrics.eval_alignscore_tmp,
         "summac": metrics.eval_summac_batch,
         "lftk": metrics.eval_lftk,
-        "rouge": metrics.eval_rouge_batch
+        "rouge": metrics.eval_rouge_patch
     }
     func = metric_fns[metric_name]
 
